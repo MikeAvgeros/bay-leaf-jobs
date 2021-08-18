@@ -25,13 +25,13 @@ mongo = PyMongo(app)
 @app.route("/home")
 @app.route("/index")
 def home():
-    return "Homepage"
+    return render_template("index.html")
 
 
 # --------------- About page ----------------
 @app.route("/about")
 def about():
-    return "Aboutpage"
+    return render_template("about.html")
 
 
 if __name__ == "__main__":

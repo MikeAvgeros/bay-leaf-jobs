@@ -80,7 +80,7 @@ nav .brand-logo {
 }
 
 .home-grid {
-    padding-top: 5rem;
+    padding-top: 4rem;
     display: grid;
     grid-auto-flow: column;
 }
@@ -94,6 +94,7 @@ nav .brand-logo {
     color: var(--very-dark-violet);
     font-weight: 700;
     font-size: 5rem;
+    padding-bottom: 1rem;
 }
 
 .sub-heading {

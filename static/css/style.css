@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+    --gray: hsl(0, 0%, 75%);
+    --grayish-violet: hsl(257, 7%, 63%);
+    --yellow: #ffee08; 
+    --cyan: hsl(180, 66%, 49%);
+    --dark-violet: hsl(257, 27%, 26%);
+    --red: hsl(0, 87%, 67%);
+    --very-dark-blue: hsl(255, 11%, 22%);
+    --very-dark-violet: hsl(260, 8%, 14%);
+    --font: 'Poppins', sans-serif;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+body {
+    font-size: 18px;
+}
+
+.nav-grid {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: auto auto 25% auto;
+    grid-template-areas: 
+    "logo main . user";
+}
+
+.brand-logo {
+    display: grid;
+    grid-area: logo;
+    margin-top: .5rem;
+}
+
+.main-links {
+    display: grid;
+    grid-area: main;
+    justify-self: start;
+    grid-auto-flow: column;
+}
+
+.user-links {
+    display: grid;
+    grid-area: user;
+    justify-self: end;
+    grid-auto-flow: column;
+}
+
+nav {
+    height: 60px;
+    line-height: 60px;
+    background: none;
+    box-shadow: none;
+}
+
+ul li a {
+    color: var(--grayish-violet);
+    font-weight: 500;
+    font-size: 18px;
+}
+
+nav .brand-logo {
+    color: var(--very-dark-violet);
+}
+
+.main-links {
+    margin-left: 2rem;
+}
+
+.btn-large {
+    background-color: var(--cyan);
+    font-weight: 500;
+}
+
+.home-grid {
+    padding-top: 5rem;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.hero-img {
+    display: grid;
+    justify-self: end;
+}
+
+.hero-header h1 {
+    color: var(--very-dark-violet);
+    font-weight: 700;
+    font-size: 5rem;
+}
+
+.sub-heading {
+    color: var(--grayish-violet);
+    font-weight: 500;
+    padding-bottom: 2rem;
+}
+
+.fa-bars {
+    color: var(--very-dark-violet);
+}

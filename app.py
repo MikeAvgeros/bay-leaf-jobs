@@ -11,7 +11,12 @@ if os.path.exists("env.py"):
     import env
 
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    instance_relative_config=False,
+    template_folder="templates",
+    static_folder="static"
+)
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")

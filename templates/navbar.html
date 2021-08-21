@@ -1,31 +1,31 @@
-{% extends 'base.html' %}
-{% block navbar %}
+<header>
+  <!-- Desktop Top Navbar -->
   <nav>
-    <div class="nav-wrapper transparent">
-      <a href="{{ url_for('main.home') }}" class="brand-logo left">bayleafjobs</a>
-
-      <button data-target="mobile" data-beloworigin="true" aria-label="open dropdown menu"
-        class="dropdown-trigger hide-on-large-only right">
-        <i class="nav-btn fas fa-bars" aria-hidden="true"></i>
-      </button>
-
-      <!-- Desktop nav -->
-      <ul class="right hide-on-med-and-down">
-        <li><a class="nav-item nav-text" href="{{ url_for('main.home') }}">Home</a></li>
-        <li><a class="nav-item nav-text" href="{{ url_for('main.home') }}">About</a></li>
-        <li><a class="nav-item nav-text" href="{{ url_for('auth.login') }}">Log in</a></li>
-        <li><a class="nav-item nav-text" href="{{ url_for('auth.signup') }}">Sign up</a></li>
-        <li><a class="nav-item nav-text" href="{{ url_for('main.browse_events_groups')}}">Jobs</a></li>
+    <div class="container nav-grid">
+      <a href="#!" class="brand-logo">
+        <img src="{{ url_for('static', filename='images/logo.svg')}}" alt="" />
+      </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+        ><i class="fas fa-bars"></i
+      ></a>
+      <ul class="hide-on-med-and-down main-links">
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
-
-      <!-- Mobile nav -->
-      <ul id="mobile" class='dropdown-content hide-on-large-only z-depth-5'>
-        <li><a href="{{ url_for('main.home') }}">Home</a></li>
-        <li><a class="nav-item nav-text" href="{{ url_for('main.home') }}">About</a></li>
-        <li><a href="{{ url_for('auth.login') }}">Log in</a></li>
-        <li><a href="{{ url_for('auth.signup') }}">Sign up</a></li>
-        <li><a href="{{ url_for('main.browse_events_groups')}}">Jobs</a></li>
+      <ul class="hide-on-med-and-down user-links">
+        <li><a href="#">Login</a></li>
+        <li><a class="btn-large" href="#">Register</a></li>
       </ul>
     </div>
   </nav>
-{% endblock navbar %}
+
+  <!-- Mobile Sidenav -->
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="#">Jobs</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Login</a></li>
+    <li><a href="#">Register</a></li>
+  </ul>
+</header>

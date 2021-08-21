@@ -1,26 +1,10 @@
-{% extends 'base.html' %}
-{% block footer %}
+<footer class="page-footer">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2 class="footer-text">Codzilla</h2>
-                <p class="footer-text">Meet, connect and develop with fellow coders!</p>
-                <a class="btn contact-btn" href="{{ url_for('contact') }}">Contact us</a>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h2 class="black-text">Useful links</h2>
-                <ul>
-                    <li><a class="footer-text" href="{{ url_for('users.login') }}">Login</a></li>
-                    <li><a class="footer-text" href="{{ url_for('users.register') }}">Register</a></li>
-                    <li><a class="footer-text" href="{{ url_for('faq') }}">F.A.Q</a></li>
-                </ul>
-            </div>
-        </div>
+        
     </div>
-
     <div class="footer-copyright">
         <div class="container footer-text">
             © 2021 Copyright Mike Avgeros
         </div>
     </div>
-{% endblock footer %}
+</footer>

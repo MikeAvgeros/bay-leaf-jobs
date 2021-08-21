@@ -53,6 +53,12 @@ def contact():
     return render_template("contact.html")
 
 
+# --------------- Upload job page ----------------
+@app.route("/upload_job")
+def upload_job():
+    return render_template("upload_job.html")
+
+
 # --------------- Login page ----------------
 @app.route("/login", methods=["GET", "POST"])
 def login():

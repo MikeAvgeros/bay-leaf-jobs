@@ -2,21 +2,31 @@
   <!-- Desktop Top Navbar -->
   <nav>
     <div class="container nav-grid">
+
       <a href="{{ url_for('main.home') }}" class="brand-logo">
         <img src="{{ url_for('static', filename='images/logo.svg')}}" alt="" />
       </a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-        ><i class="fas fa-bars"></i
-      ></a>
+
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+        <i class="fas fa-bars"></i>
+      </a>
+
       <ul class="hide-on-med-and-down main-links">
         <li><a href="#">Jobs</a></li>
         <li><a href="{{ url_for('main.about') }}">About</a></li>
         <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
       </ul>
+      
       <ul class="hide-on-med-and-down user-links">
-        <li><a href="{{ url_for('users.login') }}">Login</a></li>
-        <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
+        {% if session.user %}
+          <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        {% else %}
+          <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+          <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
+        {% endif %}
       </ul>
+
     </div>
   </nav>
 
@@ -25,7 +35,12 @@
     <li><a href="#">Jobs</a></li>
     <li><a href="{{ url_for('main.about') }}">About</a></li>
     <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
-    <li><a href="{{ url_for('users.login') }}">Login</a></li>
-    <li><a href="{{ url_for('users.register') }}">Register</a></li>
+    {% if session.user %}
+      <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+    {% else %}
+      <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+      <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
+    {% endif %}
   </ul>
 </header>

@@ -22,11 +22,13 @@ def init_app():
     # Import and register Blueprints
     from application.main.routes import main
     from application.users.routes import users
+    from application.jobs.routes import jobs
 
 
     # Register Blueprints
     app.register_blueprint(main)
     app.register_blueprint(users)
+    app.register_blueprint(jobs)
 
 
     return app

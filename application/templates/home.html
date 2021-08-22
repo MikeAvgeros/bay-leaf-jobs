@@ -22,7 +22,7 @@
     </div>
 
     <div class="search-container">
-        <form class="card search-bar" method="POST" action="#">
+        <form class="card search-bar" method="POST" action="{{ url_for('jobs.view_jobs') }}">
             <div class="card-panel">
                 <!-- job search -->
                 <div class="row">
@@ -45,7 +45,7 @@
         <div class="col s12">
             <p class="center-align">
                 Are you a recruiter?
-                <a href="#" class="light-blue-text text-darken-4">Upload a job here!</a>
+                <a href="{{ url_for('jobs.upload_job') }}" class="light-blue-text text-darken-4">Upload a job here!</a>
             </p>
         </div>
     </div>

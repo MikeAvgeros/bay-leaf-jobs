@@ -5,8 +5,8 @@ jobs = Blueprint('jobs', __name__)
 
 
 # --------------- Jobs page ----------------
-@jobs.route("/jobs")
-def show_jobs():
+@jobs.route("/view_jobs")
+def view_jobs():
     return render_template("jobs.html")
 
 

@@ -26,7 +26,7 @@ def register():
     if request.method == "POST":
         if existing_user():
             flash("Username already exists")
-            return redirect(url_for("register"))
+            return redirect(url_for("user.register"))
 
         register = {
             "username": request.form.get("username").lower(),
@@ -57,12 +57,12 @@ def login():
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("users.login"))
 
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            return redirect(url_for("users.login"))
 
     return render_template("login.html")
 
@@ -72,7 +72,7 @@ def logout():
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
-    return redirect(url_for("login"))
+    return redirect(url_for("users.login"))
 
 
 @users.route("/profile/<username>", methods=["GET", "POST"])

@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-
+from application import mongo
 
 jobs = Blueprint('jobs', __name__)
 
@@ -7,7 +7,8 @@ jobs = Blueprint('jobs', __name__)
 # --------------- Jobs page ----------------
 @jobs.route("/view_jobs")
 def view_jobs():
-    return render_template("jobs.html")
+    jobs_db = mongo.db.jobs.find()
+    return render_template("jobs.html", jobs_db=jobs_db)
 
 
 # --------------- Edit Job page ----------------

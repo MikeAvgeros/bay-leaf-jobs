@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <main class="container">
-        <h1>Jobs Page</h1>
+    <main class="container job-grid">
+        <ul class="collapsible popout">
+            {% for job in jobs_db %}
+                <li>
+                    <div class="collapsible-header">{{ job.company }} - {{ job.position }}</div>
+                    <div class="collapsible-body">
+                        Location: {{ job.location }}<br>
+                        Contract: {{ job.contract }}<br>
+                        Level: {{ job.level }}<br>
+                        Salary: {{ job.salary }}<br>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </main>
 {% endblock content %}

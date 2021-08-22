@@ -85,6 +85,10 @@ nav .brand-logo {
     grid-auto-flow: column;
 }
 
+.job-grid {
+    padding-top: 4rem;
+}
+
 .hero-img {
     display: grid;
     justify-self: end;

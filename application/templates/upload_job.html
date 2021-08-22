@@ -1,7 +1,70 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
 {% block content %}
+
     <main class="container">
-        <h1>Upload Job</h1>
+        <h3 class="center-align higher">Create job listing</h3>
+        <div class="row card">
+            <form class="col s12 m8 offset-m2" method="POST" action="">
+                <div class="row lower">
+                    <div class="input-field col s12">
+                        <input id="company" name="company" type="text" class="validate" />
+                        <label for="company">Company</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="position" name="position" type="text" class="validate" />
+                        <label for="position">Position</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="location" name="location" type="text" class="validate" />
+                        <label for="location">Location</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="salary" name="salary" type="text" class="validate" />
+                        <label for="salary">Salary</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Contract</option>
+                            <option value="fulltime">Full Time</option>
+                            <option value="parttime">Part Time</option>
+                            <option value="freelance">Freelance</option>
+                        </select>
+                        <label>Select</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Level</option>
+                            <option value="fulltime">Senior</option>
+                            <option value="parttime">Midweight</option>
+                            <option value="freelance">Associate</option>
+                        </select>
+                        <label>Select</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
     </main>
+    
+
 {% endblock content %}

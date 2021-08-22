@@ -118,6 +118,14 @@ nav .brand-logo {
     margin-bottom: 2rem;
 }
 
+.higher {
+    margin-bottom: 2rem;
+}
+
+.lower {
+    margin-top: 2rem;
+}
+
 footer {
     background-color: var(--dark-violet) !important;
 }

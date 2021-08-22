@@ -28,7 +28,7 @@ body {
 .nav-grid {
     padding-top: 1rem;
     display: grid;
-    grid-template-columns: auto auto 25% auto;
+    grid-template-columns: 10% 40% 25% 25%;
     grid-template-areas: 
     "logo main . user";
 }

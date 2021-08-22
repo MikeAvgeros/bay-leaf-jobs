@@ -21,6 +21,7 @@
 }
 
 body {
+    width: 100%;
     font-size: 18px;
 }
 
@@ -80,7 +81,7 @@ nav .brand-logo {
 }
 
 .home-grid {
-    padding-top: 4rem;
+    padding-top: 3rem;
     display: grid;
     grid-auto-flow: column;
 }
@@ -90,6 +91,7 @@ nav .brand-logo {
 }
 
 .hero-img {
+    padding-top: 1rem;
     display: grid;
     justify-self: end;
 }

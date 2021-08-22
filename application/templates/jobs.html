@@ -7,10 +7,13 @@
                 <li>
                     <div class="collapsible-header">{{ job.company }} - {{ job.position }}</div>
                     <div class="collapsible-body">
-                        Location: {{ job.location }}<br>
-                        Contract: {{ job.contract }}<br>
-                        Level: {{ job.level }}<br>
-                        Salary: {{ job.salary }}<br>
+                        {{ job.description}}<br>
+                        <br>
+                        {{ job.location }} &middot; {{ job.contract }}<br>
+                        <br>
+                        <strong>{{ job.salary }} a year</strong><br>
+                        <br>
+                        <a class="waves-effect waves-light btn-small">Apply</a>
                     </div>
                 </li>
             {% endfor %}

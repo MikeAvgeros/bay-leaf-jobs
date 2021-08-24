@@ -11,6 +11,13 @@ def view_jobs():
     jobs_db = mongo.db.jobs.find()
     return render_template("jobs.html", jobs_db=jobs_db)
 
+@jobs.route("/search", methods=["GET", "POST"])
+def filtered_jobs():
+    if request.method == "POST":
+        query = request.form.get("search")
+        jobs_db = mongo.db.jobs.find({"position": query})
+    return render_template("jobs.html", jobs_db=jobs_db)
+
 
 # --------------- Edit Job page ----------------
 @jobs.route("/edit_job")

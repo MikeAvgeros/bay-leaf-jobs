@@ -5,7 +5,7 @@
     --grayish-violet: hsl(257, 7%, 63%);
     --yellow: #ffee08; 
     --cyan: hsl(180, 66%, 49%);
-    --dark-violet: hsl(257, 27%, 26%);
+    --dark-violet: rgb(80, 50, 100);
     --red: hsl(0, 87%, 67%);
     --very-dark-blue: hsl(255, 11%, 22%);
     --very-dark-violet: hsl(260, 8%, 14%);
@@ -128,4 +128,10 @@ nav .brand-logo {
 
 footer {
     background-color: var(--dark-violet) !important;
+}
+
+.search-outer {
+    background-color: var(--dark-violet);
+    border-radius: 10px;
+    height: 25%;
 }

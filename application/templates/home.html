@@ -21,11 +21,11 @@
         </div>
     </div>
 
+    <!-- job search -->
     <div class="search-container">
-        <form class="card search-bar" method="POST" action="{{ url_for('jobs.filtered_jobs') }}">
-            <div class="card-panel">
-                <!-- job search -->
-                <div class="row">
+        <form method="POST" action="{{ url_for('jobs.filtered_jobs') }}">
+            <div class="card-panel search-outer">
+                <div class="row card-panel">
 					<div class="input-field col s8">
                         <i class="fas fa-search prefix"></i>
                         <textarea id="search" name="search" class="materialize-textarea validate"></textarea>

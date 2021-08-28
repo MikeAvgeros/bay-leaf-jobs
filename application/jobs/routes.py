@@ -34,22 +34,19 @@ def edit_job():
 def create_job():
     form = CreateJobForm()
     
-    if request.method == "POST":
-        if form.validate_on_submit():
-            company     = escape(form.company.data)
-            position	= escape(form.position.data)
-            description = escape(form.description.data)
-            salary		= form.salary.data
-            location	= escape(form.location.data)
-            contract    = form.contract.data
-            level       = form.level.data
+    if form.validate_on_submit():
+        company     = escape(form.company.data)
+        position	= escape(form.position.data)
+        description = escape(form.description.data)
+        salary		= form.salary.data
+        location	= escape(form.location.data)
+        contract    = form.contract.data
+        level       = form.level.data
 
-            job = Job(company, position, description, salary, location, contract, level)
-            job.insert_into_database()
+        job = Job(company, position, description, salary, location, contract, level)
+        job.insert_into_database()
 
-            flash("You have added a new job!")
-            return redirect(url_for("main.home"))
-        if form.errors:
-            flash("{}".format(form.errors))
+        flash("You have added a new job!")
+        return redirect(url_for("main.home"))
 
     return render_template("create_job.html", form=form)

@@ -14,20 +14,19 @@ users = Blueprint('users', __name__, template_folder="templates")
 def register():
     form = RegistrationForm()
 
-    if request.method == "POST":
-        if form.validate_on_submit:
-            username    = form.username.data.lower()
-            email       = form.email.data.lower()
-            password    = form.password.data
-            location    = form.location.data.lower()
-            experience  = form.experience.data
+    if form.validate_on_submit:
+        username    = form.username.data.lower()
+        email       = form.email.data.lower()
+        password    = form.password.data
+        location    = form.location.data.lower()
+        experience  = form.experience.data
 
-            user = User(username, email, password, location, experience)
-            user.insert_into_database()
+        user = User(username, email, password, location, experience)
+        user.insert_into_database()
 
-            flash("You are registered successfully")
-            session['email'] = email
-            return redirect(url_for("main.home"))
+        flash("You are registered successfully")
+        session['email'] = email
+        return redirect(url_for("main.home"))
 
     return render_template("register.html", form=form)
 
@@ -37,26 +36,25 @@ def register():
 def login():
     form = LoginForm()
 
-    if request.method == "POST":
-        if form.validate_on_submit():
-            email    = form.email.data
-            password = form.password.data
+    if form.validate_on_submit():
+        email    = form.email.data
+        password = form.password.data
 
-            # Check if user exists in DB
-            user = User.find_user_by_email(email.lower())
+        # Check if user exists in DB
+        user = User.find_user_by_email(email.lower())
 
-            if user:
-                correct_password = user["password"]
-                if check_password_hash(correct_password, password):
-                    # put user in session
-                    session["email"] = email.lower()
-                    flash("You are successfully logged in.")
-                    return redirect(url_for("main.home"))
-                else:
-                    form.password.errors.append("Incorrect password")
+        if user:
+            correct_password = user["password"]
+            if check_password_hash(correct_password, password):
+                # put user in session
+                session["email"] = email.lower()
+                flash("You are successfully logged in.")
+                return redirect(url_for("main.home"))
             else:
-                flash("Incorrect email and/or password")
-                return redirect(url_for("users.login"))
+                form.password.errors.append("Incorrect password")
+        else:
+            flash("Incorrect email and/or password")
+            return redirect(url_for("users.login"))
 
     return render_template("login.html", form=form)
 

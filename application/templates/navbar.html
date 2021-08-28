@@ -13,7 +13,6 @@
 
       <ul class="hide-on-med-and-down main-links">
         <li><a href="{{ url_for('main.home') }}">Home</a></li>
-        <li><a href="{{ url_for('jobs.view_jobs') }}">Jobs</a></li>
         <li><a href="{{ url_for('main.about') }}">About</a></li>
         <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
       </ul>
@@ -21,6 +20,7 @@
       <ul class="hide-on-med-and-down user-links">
         {% if session.email %}
           <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
+          <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
           <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
         {% else %}
           <li><a href="{{ url_for('users.login') }}">Log In</a></li>
@@ -34,12 +34,12 @@
   <!-- Mobile Sidenav -->
   <ul class="sidenav" id="mobile-demo">
     <li><a href="{{ url_for('main.home') }}">Home</a></li>
-    <li><a href="{{ url_for('jobs.view_jobs') }}">Jobs</a></li>
     <li><a href="{{ url_for('main.about') }}">About</a></li>
     <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
     {% if session.user %}
-      <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+      <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
+      <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
+      <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
     {% else %}
       <li><a href="{{ url_for('users.login') }}">Log In</a></li>
       <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>

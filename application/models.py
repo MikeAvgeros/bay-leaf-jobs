@@ -2,12 +2,56 @@ from application import mongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 
+
+class Role:
+    ADMIN    = 1
+    MUSICIAN = 2
+    EMPLOYER = 3
+
+
+class Job():
+    """
+    Class representing a user
+    """
+
+    def __init__(self, company, position, description, salary, location, contract, level):
+        self.company       = company
+        self.position      = position
+        self.description   = description
+        self.salary        = salary
+        self.location      = location
+        self.contract      = contract
+        self.level         = level
+    
+
+    def __repr__(self):
+        return '<Job %r>' % self.position
+
+
+    def get_job_info(self):
+        info = {"username": self.company.lower(),
+                "email":    self.position.lower(),
+                "password": self.description,
+                "salary":   self.salary,
+                "location": self.location,
+                "contract": self.contract,
+                "level":    self.level}
+        return info
+
+    
+    def insert_into_database(self):
+        """
+        Add a user in the database
+        """
+        mongo.db.jobs.insert_one(self.get_job_info())
+
+
 class User():
     """
     Class representing a user
     """
     
-    def __init__(self, username="", email="", password="", location="", experience="", _id=None):
+    def __init__(self, username, email, password, location, experience, _id=None):
         """
         initialize user attributes
         """
@@ -17,6 +61,7 @@ class User():
         self.password         = generate_password_hash(password)
         self.location         = location
         self.experience       = experience
+
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -98,4 +143,3 @@ class User():
         Delete a user in MongoDB
         """
         mongo.db.users.delete_one({"_id": ObjectId(user_id)})
-

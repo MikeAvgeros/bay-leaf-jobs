@@ -28,7 +28,7 @@ body {
 .nav-grid {
     padding-top: 1rem;
     display: grid;
-    grid-template-columns: 10% 40% 25% 25%;
+    grid-template-columns: 10% 40% 1fr auto;
     grid-template-areas: 
     "logo main . user";
 }
@@ -134,4 +134,28 @@ footer {
     background-color: var(--dark-violet);
     border-radius: 10px;
     height: 25%;
+}
+
+.alert {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    background-color: var(--cyan);
+    width: 50%;
+    height: 10%;
+}
+
+.message {
+    display: flex;
+    padding-left: 1rem;
+}
+
+.close {
+    cursor: pointer;
+    display: flex;
+    border: none;
+    background: none;
+    margin-left: 5rem;
 }

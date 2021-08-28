@@ -5,7 +5,7 @@
     <h3 class="center-align">Register</h3>
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.register') }}">
-            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
             <div class="card-panel">
                 <!-- username -->
                 <div class="row">

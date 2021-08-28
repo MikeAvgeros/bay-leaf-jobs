@@ -80,5 +80,3 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
-
-

@@ -54,8 +54,7 @@ def login():
                     flash("You are successfully logged in.")
                     return redirect(url_for("main.home"))
                 else:
-                    flash("Incorrect password")
-                    return redirect(url_for("users.login"))
+                    form.password.errors.append("Incorrect password")
             else:
                 flash("Incorrect email and/or password")
                 return redirect(url_for("users.login"))
@@ -71,7 +70,7 @@ def logout():
     return redirect(url_for("main.home"))
 
 
-@users.route("/profile/<username>", methods=["GET", "POST"])
+@users.route("/profile", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(

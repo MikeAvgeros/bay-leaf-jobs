@@ -6,7 +6,7 @@ from flask_pymongo import PyMongo
 mongo = PyMongo()
 
 
-def init_app():
+def create_app():
     """Initialize the application."""
     app = Flask(__name__, instance_relative_config=False)
 

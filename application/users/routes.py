@@ -2,7 +2,6 @@ from flask import (
     flash, render_template, redirect, 
     request, session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
-from application import mongo
 from application.models import User
 from application.users.forms import RegistrationForm, LoginForm
 
@@ -71,12 +70,10 @@ def logout():
 
 
 @users.route("/profile", methods=["GET", "POST"])
-def profile(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+def profile():
+    user = User.find_user_by_email(session["email"])
+    if user:
+        return render_template("profile.html", user=user)
 
-    if session["user"]:
-        return render_template("profile.html", username=username)
+    return render_template("login.html")
 
-    return redirect(url_for("login"))

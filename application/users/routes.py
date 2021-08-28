@@ -1,40 +1,35 @@
 from flask import (
     flash, render_template, redirect, 
     request, session, url_for, Blueprint)
+from werkzeug.security import check_password_hash
 from application import mongo
 from application.models import User
 from application.users.forms import RegistrationForm, LoginForm
-from werkzeug.security import generate_password_hash, check_password_hash
 
 
-users = Blueprint('users', __name__)
+users = Blueprint('users', __name__, template_folder="templates")
 
 
 # --------------- Register page ----------------
 @users.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
+
     if request.method == "POST":
         if form.validate_on_submit:
             username    = form.username.data.lower()
             email       = form.email.data.lower()
             password    = form.password.data
-            location    = form.location.data
-            description = form.description.data
+            location    = form.location.data.lower()
+            experience  = form.experience.data
 
-
-            user = User(username, email, password, location, description)
+            user = User(username, email, password, location, experience)
             user.insert_into_database()
 
-
-            # put the new user into 'session' cookie
+            flash("You are registered successfully")
             session['email'] = email
-            flash("You have been registered successfully!")
+            return redirect(url_for("main.home"))
 
-            
-            return redirect(url_for("profile", info=user.get_user_info))
-
-        
     return render_template("register.html", form=form)
 
 
@@ -42,19 +37,28 @@ def register():
 @users.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+
     if request.method == "POST":
         if form.validate_on_submit():
-            user = User.find_user_by_email(email=form.email.data)
-            session["user"] = request.form.get("username").lower()
-            flash("Welcome, {}".format(form.username.data))
-            return redirect(url_for("profile", info=user.get_user_info))
+            email    = form.email.data
+            password = form.password.data
 
+            # Check if user exists in DB
+            user = User.find_user_by_email(email.lower())
 
-        else:
-            # username or password don't exist
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("users.login"))
-
+            if user:
+                correct_password = user["password"]
+                if check_password_hash(correct_password, password):
+                    # put user in session
+                    session["email"] = email.lower()
+                    flash("You are successfully logged in.")
+                    return redirect(url_for("main.home"))
+                else:
+                    flash("Incorrect password")
+                    return redirect(url_for("users.login"))
+            else:
+                flash("Incorrect email and/or password")
+                return redirect(url_for("users.login"))
 
     return render_template("login.html", form=form)
 
@@ -62,9 +66,9 @@ def login():
 @users.route("/logout")
 def logout():
     # remove user from session cookie
-    flash("You have been logged out")
-    session.pop("user")
-    return redirect(url_for("users.login"))
+    session.pop("email", None)
+    flash("You are logged out")
+    return redirect(url_for("main.home"))
 
 
 @users.route("/profile/<username>", methods=["GET", "POST"])
@@ -77,3 +81,5 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+

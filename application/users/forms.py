@@ -4,6 +4,7 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired, DataRequired, EqualTo, Length, ValidationError, Email
 from application.models import User
 
+
 class RegistrationForm(FlaskForm):
     username        = StringField("Username *",
                                 validators=[
@@ -46,13 +47,13 @@ class RegistrationForm(FlaskForm):
 
 
     def validate_username(self, username):
-        user = User.find_user_by_username(username=username.data)
+        user = User.find_user_by_username(username.data)
         if user:
             raise ValidationError("This username already exists.")
 
 
     def validate_email(self, email):
-        user = User.find_user_by_email(email=email.data)
+        user = User.find_user_by_email(email.data)
         if user:
             raise ValidationError("This email already exists.")
 
@@ -73,4 +74,11 @@ class LoginForm(FlaskForm):
                                 ])
     remember        = BooleanField("Remember Me")
     submit          = SubmitField("Login")
+
+
+    def validate_email(self, email):
+        user = User.find_user_by_email(email.data)
+        if not user:
+            raise ValidationError("There is no registered account with that email.")
+
 

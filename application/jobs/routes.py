@@ -2,7 +2,7 @@ from flask import (render_template, request, redirect,
                     url_for, flash, Blueprint)
 from application import mongo
 
-jobs = Blueprint('jobs', __name__)
+jobs = Blueprint('jobs', __name__, template_folder="templates")
 
 
 # --------------- Jobs page ----------------

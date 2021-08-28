@@ -99,17 +99,3 @@ class User():
         """
         mongo.db.users.delete_one({"_id": ObjectId(user_id)})
 
-
-    @property
-    def password(self):
-        raise AttributeError("Password should not be read like this")
-
-
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-

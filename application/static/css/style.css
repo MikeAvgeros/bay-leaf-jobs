@@ -94,6 +94,7 @@ nav .brand-logo {
     padding-top: 1rem;
     display: grid;
     justify-self: end;
+    margin-top: .5rem;
 }
 
 .hero-header h1 {

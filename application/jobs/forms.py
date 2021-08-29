@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SubmitField, TextAreaField
+from wtforms.fields import StringField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import InputRequired, DataRequired, Length
 
 
@@ -33,18 +33,16 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=3, max=40, message="Location must be between 3 and 40 characters long")
 								])
-    contract	= StringField("Contract *",
-                                validators=[
-                                    InputRequired("Input is required!"),
-                                    DataRequired("Data is required!"),
-                                    Length(min=5, max=50, message="Contract must be between 5 and 50 characters long")
-                                ])
-    level		= StringField("Level *",
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!"),
-									Length(min=5, max=50, message="Level must be between 5 and 50 characters long")
-								])
+    contract	= SelectField("",
+								choices=[
+									("Full Time", "Full Time"), 
+									("Part Time", "Part Time"), 
+									("Freelance", "Freelance")])
+    level		= SelectField("",
+								choices=[
+									("Senior", "Senior"), 
+									("Midweight", "Midweigth"), 
+									("Associate", "Associate")])
 
 
 class CreateJobForm(JobForm):
@@ -53,3 +51,7 @@ class CreateJobForm(JobForm):
 
 class UpdateJobForm(JobForm):
 	submit 		= SubmitField("Update job")
+
+
+class DeleteJob(JobForm):
+	submit 		= SubmitField("Delete job")

@@ -1,6 +1,6 @@
 from flask import (
     flash, render_template, redirect, 
-    request, session, url_for, Blueprint)
+    session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
 from application.models import User
 from application.users.forms import RegistrationForm, LoginForm
@@ -14,18 +14,16 @@ users = Blueprint('users', __name__, template_folder="templates")
 def register():
     form = RegistrationForm()
 
-    if form.validate_on_submit:
+    if form.validate_on_submit():
         username    = form.username.data.lower()
         email       = form.email.data.lower()
         password    = form.password.data
-        location    = form.location.data.lower()
-        experience  = form.experience.data
+        location    = form.location.data
+        role        = form.role.data
 
-        user = User(username, email, password, location, experience)
+        user = User(username, email, password, location, role)
         user.insert_into_database()
-
         flash("You are registered successfully")
-        session['email'] = email
         return redirect(url_for("main.home"))
 
     return render_template("register.html", form=form)
@@ -37,18 +35,18 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        email    = form.email.data
+        email    = form.email.data.lower()
         password = form.password.data
 
         # Check if user exists in DB
-        user = User.find_user_by_email(email.lower())
+        user = User.find_user_by_email(email)
 
         if user:
             correct_password = user["password"]
             if check_password_hash(correct_password, password):
-                # put user in session
-                session["email"] = email.lower()
-                flash("You are successfully logged in.")
+                # put user in session using their email
+                session["email"] = email
+                session["role"] = user["role"]
                 return redirect(url_for("main.home"))
             else:
                 form.password.errors.append("Incorrect password")
@@ -63,6 +61,7 @@ def login():
 def logout():
     # remove user from session cookie
     session.pop("email", None)
+    session.pop("role", None)
     flash("You are logged out")
     return redirect(url_for("main.home"))
 

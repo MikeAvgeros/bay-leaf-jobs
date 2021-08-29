@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, PasswordField, SubmitField, TextAreaField, BooleanField
+from wtforms.fields import StringField, PasswordField, SubmitField, TextAreaField, BooleanField, SelectField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired, DataRequired, EqualTo, Length, ValidationError, Email
 from application.models import User
@@ -37,12 +37,10 @@ class RegistrationForm(FlaskForm):
                                     DataRequired("Data is required!"),
                                     Length(min=3, max=40, message="Location must be between 3 and 40 characters long")
                                 ])
-    experience      = TextAreaField("Work Experience *",
-                                validators=[
-                                    InputRequired("Input is required!"),
-                                    DataRequired("Data is required!"),
-                                    Length(min=10, max=200, message="Experience must be between 10 and 200 characters long")
-                                ])
+    role	        = SelectField("",
+								choices=[
+									("Developer", "Developer"), 
+									("Recruiter", "Recruiter")])
     submit          = SubmitField("Register")
 
 

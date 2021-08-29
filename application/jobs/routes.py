@@ -1,7 +1,7 @@
 from flask import (render_template, request, redirect, 
                     url_for, flash, Blueprint)
 from application import mongo
-from application.models import User, Role, Job
+from application.models import User, Job
 from werkzeug.utils import escape, unescape
 from application.jobs.forms import CreateJobForm, UpdateJobForm
 

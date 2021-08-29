@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Register{% endblock title %}
+{% from "_error_messages.html" import field_error_messages %}
 {% block content %}
 
     <h3 class="center-align">Register</h3>
@@ -13,6 +14,7 @@
                         <i class="fas fa-user-plus prefix"></i>
                         {{ form.username.label }}
                         {{ form.username(class="validate") }}
+                        {{ field_error_messages(form.username) }}
                     </div>
                 </div>
                 <!-- email -->
@@ -21,6 +23,7 @@
                         <i class="fas fa-envelope prefix"></i>
                         {{ form.email.label }}
                         {{ form.email(class="validate") }}
+                        {{ field_error_messages(form.email) }}
                     </div>
                 </div>
                 <!-- password -->
@@ -29,6 +32,7 @@
                         <i class="fas fa-user-lock prefix"></i>
                         {{ form.password.label }}
                         {{ form.password(class="validate") }}
+                        {{ field_error_messages(form.password) }}
                     </div>
                 </div>
                 <!-- confirm password -->
@@ -37,6 +41,7 @@
                         <i class="fas fa-user-lock prefix"></i>
                         {{ form.password_confirm.label }}
                         {{ form.password_confirm(class="validate") }}
+                        {{ field_error_messages(form.password_confirm) }}
                     </div>
                 </div>
                 <!-- location -->
@@ -45,14 +50,17 @@
                         <i class="fas fa-map-marked-alt prefix"></i>
                         {{ form.location.label }}
                         {{ form.location(class="validate") }}
+                        {{ field_error_messages(form.location) }}
                     </div>
                 </div>
-                <!-- experience -->
+                <!-- role -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-briefcase prefix"></i>
-                        {{ form.experience.label }}
-                        {{ form.experience(class="validate materialize-textarea") }}
+                        {{ form.role.label }}
+                        {{ form.role(class="validate") }}
+                        {{ field_error_messages(form.role) }}
+                        <label>I am a *</label>
                     </div>
                 </div>
                 <!-- register -->

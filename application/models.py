@@ -3,12 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 
 
-class Role:
-    ADMIN    = 1
-    MUSICIAN = 2
-    EMPLOYER = 3
-
-
 class Job():
     """
     Class representing a user
@@ -51,7 +45,7 @@ class User():
     Class representing a user
     """
     
-    def __init__(self, username, email, password, location, experience, _id=None):
+    def __init__(self, username, email, password, location, role, _id=None):
         """
         initialize user attributes
         """
@@ -60,7 +54,7 @@ class User():
         self.email            = email
         self.password         = generate_password_hash(password)
         self.location         = location
-        self.experience       = experience
+        self.role             = role
 
 
     def __repr__(self):
@@ -69,10 +63,10 @@ class User():
 
     def get_user_info(self):
         info = {"username": self.username.lower(),
-                "email": self.email.lower(),
+                "email"   : self.email.lower(),
                 "password": self.password,
                 "location": self.location,
-                "experience": self.experience}
+                "role"    : self.role}
         return info
 
     
@@ -81,6 +75,14 @@ class User():
         Add a user in the database
         """
         mongo.db.users.insert_one(self.get_user_info())
+
+
+    def is_authenticated(self):
+        return not "" == self.username
+
+
+    def is_anonymous(self):
+        return "" == self.username
 
 
     @staticmethod
@@ -117,6 +119,15 @@ class User():
         """
         user_id = mongo.db.users.find_one({"email": email.lower()})["_id"]
         return user_id
+
+
+    @staticmethod
+    def get_user_role(email):
+        """
+        Return a user Id in MongoDB using the user's email
+        """
+        user_role = mongo.db.users.find_one({"email": email.lower()})["role"]
+        return user_role
 
 
     @staticmethod

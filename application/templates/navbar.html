@@ -16,7 +16,6 @@
         <li><a href="{{ url_for('main.about') }}">About</a></li>
         <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
       </ul>
-      
       <ul class="hide-on-med-and-down user-links">
         {% if session.email %}
           <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
@@ -42,7 +41,11 @@
     <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
     {% if session.email %}
       <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
-      <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
+      {% if session.role == "Developer" %}
+        <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
+      {% elif session.role == "Recruiter" %}
+        <li><a href="{{ url_for('jobs.create_job') }}">Create Job</a></li>
+      {% endif %}
       <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
     {% else %}
       <li><a href="{{ url_for('users.login') }}">Log In</a></li>

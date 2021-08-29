@@ -3,80 +3,82 @@
 {% from "_error_messages.html" import field_error_messages %}
 {% block content %}
 
-    <h3 class="center-align">Register</h3>
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.register') }}">
-            {{ form.csrf_token }}
-            <div class="card-panel">
-                <!-- username -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-plus prefix"></i>
-                        {{ form.username.label }}
-                        {{ form.username(class="validate") }}
-                        {{ field_error_messages(form.username) }}
+    <main class="container">
+        <h3 class="center-align">Register</h3>
+        <div class="row card-panel grey lighten-5">
+            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.register') }}">
+                {{ form.csrf_token }}
+                    <!-- username -->
+                    <div class="row lower">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-plus prefix"></i>
+                            {{ form.username.label }}
+                            {{ form.username(class="validate") }}
+                            {{ field_error_messages(form.username) }}
+                        </div>
                     </div>
-                </div>
-                <!-- email -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-envelope prefix"></i>
-                        {{ form.email.label }}
-                        {{ form.email(class="validate") }}
-                        {{ field_error_messages(form.email) }}
+                    <!-- email -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-envelope prefix"></i>
+                            {{ form.email.label }}
+                            {{ form.email(class="validate") }}
+                            {{ field_error_messages(form.email) }}
+                        </div>
                     </div>
-                </div>
-                <!-- password -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-lock prefix"></i>
-                        {{ form.password.label }}
-                        {{ form.password(class="validate") }}
-                        {{ field_error_messages(form.password) }}
+                    <!-- password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-lock prefix"></i>
+                            {{ form.password.label }}
+                            {{ form.password(class="validate") }}
+                            {{ field_error_messages(form.password) }}
+                        </div>
                     </div>
-                </div>
-                <!-- confirm password -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-lock prefix"></i>
-                        {{ form.password_confirm.label }}
-                        {{ form.password_confirm(class="validate") }}
-                        {{ field_error_messages(form.password_confirm) }}
+                    <!-- confirm password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-lock prefix"></i>
+                            {{ form.password_confirm.label }}
+                            {{ form.password_confirm(class="validate") }}
+                            {{ field_error_messages(form.password_confirm) }}
+                        </div>
                     </div>
-                </div>
-                <!-- location -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-map-marked-alt prefix"></i>
-                        {{ form.location.label }}
-                        {{ form.location(class="validate") }}
-                        {{ field_error_messages(form.location) }}
+                    <!-- location -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-map-marked-alt prefix"></i>
+                            {{ form.location.label }}
+                            {{ form.location(class="validate") }}
+                            {{ field_error_messages(form.location) }}
+                        </div>
                     </div>
-                </div>
-                <!-- role -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-briefcase prefix"></i>
-                        {{ form.role.label }}
-                        {{ form.role(class="validate") }}
-                        {{ field_error_messages(form.role) }}
-                        <label>I am a *</label>
+                    <!-- role -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-briefcase prefix"></i>
+                            {{ form.role.label }}
+                            {{ form.role(class="validate") }}
+                            {{ field_error_messages(form.role) }}
+                            <label>I am a *</label>
+                        </div>
                     </div>
-                </div>
-                <!-- register -->
-                <div class="row">
-                    {{ form.submit(class="col s12 btn-large text-shadow")}}
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Already have an account?
-                <a href="{{ url_for('users.login') }}" class="light-blue-text text-darken-4">Login</a>
-            </p>
+                    <!-- register -->
+                    <div class="row">
+                        {{ form.submit(class="col s12 btn-large text-shadow")}}
+                    </div>
+            </form>
         </div>
-    </div>
+        <br>
+        <div class="row">
+            <div class="col s12">
+                <p class="center-align">
+                    Already have an account?
+                    <a href="{{ url_for('users.login') }}" class="light-blue-text text-darken-4">Login here</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    
 
 {% endblock content %}

@@ -16,10 +16,10 @@ class ContactForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
 								])
-    description = TextAreaField("Description *",
+    description = TextAreaField("Message *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
-									Length(min=10, max=200, message="Description must be between 10 and 200 characters long")
+									Length(min=10, max=200, message="Message must be between 10 and 200 characters long")
 								])
     submit          = SubmitField("Send")

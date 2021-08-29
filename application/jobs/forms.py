@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SubmitField, TextAreaField, SelectField
+from wtforms.fields import StringField, SubmitField, TextAreaField, DecimalField, SelectField
 from wtforms.validators import InputRequired, DataRequired, Length
 
 
@@ -22,7 +22,7 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=10, max=200, message="Description must be between 10 and 200 characters long")
 								])
-    salary		= StringField("Salary *",
+    salary		= DecimalField("Salary *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!")

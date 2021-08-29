@@ -1,4 +1,6 @@
-from flask import render_template, request, Blueprint
+from flask import render_template, Blueprint, flash, redirect, url_for
+from application.main.forms import ContactForm
+from application.models import Contact
 
 
 main = Blueprint('main', __name__, template_folder="templates")
@@ -19,9 +21,22 @@ def about():
 
 
 # --------------- Contact page ----------------
-@main.route("/contact")
+@main.route("/contact", methods=["GET", "POST"])
 def contact():
-    return render_template("contact.html")
+    form = ContactForm()
+
+    if form.validate_on_submit():
+        name        = form.name.data.lower()
+        email       = form.email.data.lower()
+        description = form.description.data
+
+        contact = Contact(name, email, description)
+        contact.insert_into_database()
+
+        flash("Request submitted successfully")
+        return redirect(url_for("main.home"))
+
+    return render_template("contact.html", form=form)
 
 
 # --------------- FAQ page ----------------

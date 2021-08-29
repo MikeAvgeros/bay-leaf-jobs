@@ -1,7 +1,44 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
+{% block title %}Contact{% endblock title %}
+{% from "_error_messages.html" import field_error_messages %}
 {% block content %}
+
     <main class="container">
-        <h1>Contact Page</h1>
+        <h3 class="center-align higher">Contact Us!</h3>
+        <div class="row card-panel grey lighten-5">
+            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('main.contact') }}">
+                {{ form.csrf_token }}
+                <div class="row lower">
+                    <div class="input-field col s12">
+                        <i class="fas fa-user-alt prefix"></i>
+                        {{ form.name.label }}
+                        {{ form.name(class="validate") }}
+                        {{ field_error_messages(form.name) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-envelope prefix"></i>
+                        {{ form.email.label }}
+                        {{ form.email(class="validate") }}
+                        {{ field_error_messages(form.email) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-info-circle prefix"></i>
+                        {{ form.description.label }}
+                        {{ form.description(class="validate materialize-textarea") }}
+                        {{ field_error_messages(form.description) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        {{ form.submit(class="col s12 btn-large text-shadow")}}
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
+    
 {% endblock content %}

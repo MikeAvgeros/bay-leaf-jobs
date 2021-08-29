@@ -1,6 +1,31 @@
 from application import mongo
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from bson.objectid import ObjectId
+
+
+class Contact():
+    """
+    Class representing a job post
+    """
+
+    def __init__(self, name, email, description):
+        self.name          = name
+        self.email         = email
+        self.description   = description
+
+
+    def get_contact_info(self):
+        info = {"name"     : self.name.lower(),
+                "email"    : self.email.lower(),
+                "password" : self.description}
+        return info
+
+
+    def insert_into_database(self):
+        """
+        Add a user in the database
+        """
+        mongo.db.contact.insert_one(self.get_contact_info())
 
 
 class Job():

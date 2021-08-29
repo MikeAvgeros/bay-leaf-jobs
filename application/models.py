@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 
 class Job():
     """
-    Class representing a user
+    Class representing a job post
     """
 
     def __init__(self, company, position, description, salary, location, contract, level):
@@ -23,13 +23,13 @@ class Job():
 
 
     def get_job_info(self):
-        info = {"username": self.company.lower(),
-                "email":    self.position.lower(),
-                "password": self.description,
-                "salary":   self.salary,
-                "location": self.location,
-                "contract": self.contract,
-                "level":    self.level}
+        info = {"username" : self.company.lower(),
+                "email"    : self.position.lower(),
+                "password" : self.description,
+                "salary"   : self.salary,
+                "location" : self.location,
+                "contract" : self.contract,
+                "level"    : self.level}
         return info
 
     
@@ -62,11 +62,11 @@ class User():
 
 
     def get_user_info(self):
-        info = {"username": self.username.lower(),
-                "email"   : self.email.lower(),
-                "password": self.password,
-                "location": self.location,
-                "role"    : self.role}
+        info = {"username" : self.username.lower(),
+                "email"    : self.email.lower(),
+                "password" : self.password,
+                "location" : self.location,
+                "role"     : self.role}
         return info
 
     

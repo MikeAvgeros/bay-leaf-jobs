@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock title %}
+{% block content %}
+<main class="container">
+
+    <div class="home-grid">
+        <div>
+            <div class="hero-header">
+                <h1>
+                    More than just
+                    <br>
+                    job listings
+                </h1>
+            </div>
+            <p class="sub-heading">Start your dream career now with bayleaf jobs!</p>
+            <a class="waves-effect waves-light btn-large" href="{{ url_for('users.register') }}">Get Started</a>
+        </div>
+        <div class="hero-img">
+            <img class="responsive-img banner-image" src="{{ url_for('static', filename='images/illustration-working.svg')}}"
+                width="520" height="450" alt="illustration of a group of people around a computer">
+        </div>
+    </div>
+    
+</main>
+{% endblock content %}

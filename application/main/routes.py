@@ -1,7 +1,7 @@
 from flask import render_template, request, Blueprint
 
 
-main = Blueprint('main', __name__)
+main = Blueprint('main', __name__, template_folder="templates")
 
 
 # ------------ Index / Home page -------------
@@ -22,3 +22,9 @@ def about():
 @main.route("/contact")
 def contact():
     return render_template("contact.html")
+
+
+# --------------- FAQ page ----------------
+@main.route("/faq")
+def faq():
+    return render_template("faq.html")

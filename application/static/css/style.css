@@ -126,8 +126,9 @@ nav .brand-logo {
     margin-top: 2rem;
 }
 
-footer {
-    background-color: var(--dark-violet) !important;
+.page-footer {
+    background-color: var(--very-dark-violet) !important;
+    margin-top: 2rem;
 }
 
 .search-outer {

@@ -77,6 +77,35 @@ class Job():
         return jobs
 
 
+class Application():
+    """
+    Class representing a job application
+    """
+
+    def __init__(self, notice_period, desired_salary, resume, cover_letter, developer_id):
+        self.notice_period  = notice_period
+        self.desired_salary = desired_salary
+        self.resume         = resume
+        self.cover_letter   = cover_letter
+        self.developer_id   = developer_id
+
+
+    def get_application_info(self):
+        info = {"notice_period"  : self.notice_period,
+                "desired_salary" : self.desired_salary,
+                "resume"         : self.resume,
+                "cover_letter"   : self.cover_letter,
+                "developer_id"   : self.developer_id}
+        return info
+
+
+    def insert_into_database(self):
+        """
+        Add a user in the database
+        """
+        mongo.db.applications.insert_one(self.get_application_info())
+
+
 class User():
     """
     Class representing a user

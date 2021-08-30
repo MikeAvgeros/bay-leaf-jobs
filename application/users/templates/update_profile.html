@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Update Profile{% endblock title %}
+{% from "_error_messages.html" import field_error_messages %}
+{% block content %}
+
+    <main class="container">
+        <h3 class="center-align">Update Profile</h3>
+        <div class="row card-panel grey lighten-5">
+            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.update_profile') }}">
+                {{ form.csrf_token }}
+                    <!-- username -->
+                    <div class="row lower">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-plus prefix"></i>
+                            {{ form.username.label }}
+                            {{ form.username(class="validate") }}
+                            {{ field_error_messages(form.username) }}
+                        </div>
+                    </div>
+                    <!-- email -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-envelope prefix"></i>
+                            {{ form.email.label }}
+                            {{ form.email(class="validate") }}
+                            {{ field_error_messages(form.email) }}
+                        </div>
+                    </div>
+                    <!-- location -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-map-marked-alt prefix"></i>
+                            {{ form.location.label }}
+                            {{ form.location(class="validate") }}
+                            {{ field_error_messages(form.location) }}
+                        </div>
+                    </div>
+                    <!-- picture -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-briefcase prefix"></i>
+                            {{ form.picture.label }}
+                            {{ form.picture(class="validate") }}
+                            {{ field_error_messages(form.picture) }}
+                        </div>
+                    </div>
+                    <!-- register -->
+                    <div class="row">
+                        {{ form.submit(class="col s12 btn-large text-shadow")}}
+                    </div>
+            </form>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s12">
+                <p class="center-align">
+                    Already have an account?
+                    <a href="{{ url_for('users.login') }}" class="light-blue-text text-darken-4">Login here</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    
+
+{% endblock content %}

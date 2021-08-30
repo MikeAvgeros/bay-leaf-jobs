@@ -3,7 +3,7 @@ from flask import (
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
 from application.models import User
-from application.users.forms import RegistrationForm, LoginForm
+from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 
 
 users = Blueprint('users', __name__, template_folder="templates")
@@ -47,6 +47,7 @@ def login():
                 # put user in session using their email
                 session["email"] = email
                 session["role"] = user["role"]
+                session["username"] = user["username"]
                 return redirect(url_for("main.home"))
             else:
                 form.password.errors.append("Incorrect password")
@@ -62,6 +63,7 @@ def logout():
     # remove user from session cookie
     session.pop("email", None)
     session.pop("role", None)
+    session.pop("username", None)
     flash("You are logged out")
     return redirect(url_for("main.home"))
 
@@ -74,3 +76,29 @@ def profile():
 
     return render_template("login.html")
 
+
+@users.route("/profile/update", methods=["GET", "POST"])
+def update_profile():
+    form = UpdateProfileForm()
+
+    if form.validate_on_submit():
+        username    = form.username.data.lower()
+        email       = form.email.data.lower()
+        location    = form.location.data
+        picture     = form.picture.data
+
+        updated_info = {
+            "username" : username,
+            "email"    : email,
+            "location" : location,
+            "picture"  : picture
+        }
+
+        user = User.find_user_by_email(session["email"])
+        User.edit_user(user["_id"], updated_info)
+        session["email"] = email
+        session["username"] = username
+        flash("Your profile has been updated!")
+        return redirect(url_for("users.profile", user=user))
+
+    return render_template("update_profile.html", form=form)

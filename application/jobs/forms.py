@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SubmitField, TextAreaField, DecimalField, SelectField
+from wtforms.fields import StringField, SubmitField, TextAreaField, SelectField, FileField
 from wtforms.validators import InputRequired, DataRequired, Length
 
 
@@ -22,11 +22,7 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=10, max=200, message="Description must be between 10 and 200 characters long")
 								])
-    salary		= DecimalField("Salary *",
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!")
-								])
+    salary		= StringField("Salary")
     location	= StringField("Location *",
 								validators=[
 									InputRequired("Input is required!"),
@@ -55,3 +51,25 @@ class UpdateJobForm(JobForm):
 
 class DeleteJob(JobForm):
 	submit 		= SubmitField("Delete job")
+
+
+class ApplicationForm(FlaskForm):
+	notice_period	= StringField("Notice Period *",
+								validators=[
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!"),
+									Length(min=3, max=20, message="Notice period must be between 3 and 20 characters long")
+								])
+	desired_salary	= StringField("Desired Salary *",
+								validators=[
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!"),
+									Length(min=3, max=20, message="Salary must be between 3 and 20 characters long")
+								])
+	upload_cv		= FileField("Upload CV *")
+	cover_letter	= TextAreaField("Cover Letter *",
+								validators=[
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!"),
+									Length(min=100, max=500, message="Cover letter must be between 100 and 500 characters long")
+								])

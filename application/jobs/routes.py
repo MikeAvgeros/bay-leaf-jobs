@@ -1,4 +1,4 @@
-from flask import (render_template, request, redirect, 
+from flask import (render_template, request, redirect, session, 
                     url_for, flash, Blueprint)
 from application import mongo
 from application.models import User, Job
@@ -11,16 +11,16 @@ jobs = Blueprint('jobs', __name__, template_folder="templates")
 # --------------- Jobs page ----------------
 @jobs.route("/view")
 def view_jobs():
-    jobs_db = mongo.db.jobs.find()
-    return render_template("jobs.html", jobs_db=jobs_db)
+    jobs = Job.find_all_jobs()
+    return render_template("jobs.html", jobs=jobs)
 
 
 @jobs.route("/search", methods=["GET", "POST"])
 def filtered_jobs():
     if request.method == "POST":
         query = request.form.get("search")
-        jobs_db = mongo.db.jobs.find({"position": query})
-    return render_template("jobs.html", jobs_db=jobs_db)
+        jobs = mongo.db.jobs.find({"position": query})
+    return render_template("jobs.html", jobs=jobs)
 
 
 # --------------- Edit Job page ----------------
@@ -42,8 +42,10 @@ def create_job():
         location	= escape(form.location.data)
         contract    = form.contract.data
         level       = form.level.data
+        employer_id = User.get_user_id(session["email"])
 
-        job = Job(company, position, description, salary, location, contract, level)
+        job = Job(company, position, description, salary, location, 
+                contract, level, employer_id)
         job.insert_into_database()
 
         flash("You have added a new job!")

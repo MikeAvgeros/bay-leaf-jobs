@@ -33,7 +33,8 @@ class Job():
     Class representing a job post
     """
 
-    def __init__(self, company, position, description, salary, location, contract, level):
+    def __init__(self, company, position, description, salary, 
+                location, contract, level, employer_id):
         self.company       = company
         self.position      = position
         self.description   = description
@@ -41,6 +42,7 @@ class Job():
         self.location      = location
         self.contract      = contract
         self.level         = level
+        self.employer_id   = employer_id
     
 
     def __repr__(self):
@@ -48,13 +50,14 @@ class Job():
 
 
     def get_job_info(self):
-        info = {"username" : self.company.lower(),
-                "email"    : self.position.lower(),
-                "password" : self.description,
-                "salary"   : self.salary,
-                "location" : self.location,
-                "contract" : self.contract,
-                "level"    : self.level}
+        info = {"username"    : self.company.lower(),
+                "email"       : self.position.lower(),
+                "password"    : self.description,
+                "salary"      : self.salary,
+                "location"    : self.location,
+                "contract"    : self.contract,
+                "level"       : self.level,
+                "employer_id" : self.employer_id}
         return info
 
     
@@ -65,22 +68,29 @@ class Job():
         mongo.db.jobs.insert_one(self.get_job_info())
 
 
+    @staticmethod
+    def find_all_jobs():
+        """
+        Find and return all users in MongoDB
+        """
+        jobs = list(mongo.db.jobs.find())
+        return jobs
+
+
 class User():
     """
     Class representing a user
     """
     
-    def __init__(self, username, email, password, location, role, _id=None):
+    def __init__(self, username, email, password, location, role):
         """
         initialize user attributes
         """
-        self._id              = _id
-        self.username         = username
-        self.email            = email
-        self.password         = generate_password_hash(password)
-        self.location         = location
-        self.role             = role
-
+        self.username      = username
+        self.email         = email
+        self.password      = generate_password_hash(password)
+        self.location      = location
+        self.role          = role
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -179,3 +189,5 @@ class User():
         Delete a user in MongoDB
         """
         mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+
+

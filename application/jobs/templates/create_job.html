@@ -67,6 +67,22 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-info-circle prefix"></i>
+                        {{ form.responsibilities.label }}
+                        {{ form.responsibilities(class="validate materialize-textarea") }}
+                        {{ field_error_messages(form.responsibilities) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-info-circle prefix"></i>
+                        {{ form.requirements.label }}
+                        {{ form.requirements(class="validate materialize-textarea") }}
+                        {{ field_error_messages(form.requirements) }}
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col s12 center-align">
                         {{ form.submit(class="col s12 btn-large text-shadow")}}
                     </div>

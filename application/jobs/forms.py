@@ -5,51 +5,63 @@ from wtforms.validators import InputRequired, DataRequired, Length
 
 
 class JobForm(FlaskForm):
-    company			= StringField("Company *",
+	company			= StringField("Company *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Company must be between 5 and 50 characters long")
 								])
-    position		= StringField("Position *",
+	position		= StringField("Position *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
 								])
-    description 	= TextAreaField("Description *",
+	description 	= TextAreaField("Description *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
-									Length(min=10, max=200, message="Description must be between 10 and 200 characters long")
+									Length(min=10, max=500, message="Description must be between 10 and 500 characters long")
 								])
-    salary			= StringField("Salary")
-    location		= StringField("Location *",
+	responsibilities 	= TextAreaField("Responsibilities *",
+									validators=[
+										InputRequired("Input is required!"),
+										DataRequired("Data is required!"),
+										Length(min=10, max=500, message="Responsibilities must be between 10 and 500 characters long")
+									])
+	requirements 	= TextAreaField("Requirements *",
+									validators=[
+										InputRequired("Input is required!"),
+										DataRequired("Data is required!"),
+										Length(min=10, max=500, message="Requirements must be between 10 and 500 characters long")
+									])
+	salary			= StringField("Salary")
+	location		= StringField("Location *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
 									Length(min=3, max=40, message="Location must be between 3 and 40 characters long")
 								])
-    contract		= SelectField("",
+	contract		= SelectField("",
 								choices=[
 									("         ", "         "),
 									("Full Time", "Full Time"), 
 									("Part Time", "Part Time"), 
 									("Freelance", "Freelance")],
 								validators=[
-                                    InputRequired("Please select an option"),
-                                    DataRequired("Please select an option")
-                                ])
-    level			= SelectField("",
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!")
+								])
+	level			= SelectField("",
 								choices=[
 									("      ", "      "),
 									("Senior", "Senior"), 
 									("Midweight", "Midweigth"), 
 									("Associate", "Associate")],
 								validators=[
-                                    InputRequired("Please select an option"),
-                                    DataRequired("Please select an option")
-                                ])
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!")
+								])
 
 
 class CreateJobForm(JobForm):
@@ -70,6 +82,12 @@ class ApplicationForm(FlaskForm):
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
 									Length(min=3, max=20, message="Notice period must be between 3 and 20 characters long")
+								])
+	current_salary	= StringField("Current Salary *",
+								validators=[
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!"),
+									Length(min=3, max=20, message="Salary must be between 3 and 20 characters long")
 								])
 	desired_salary	= StringField("Desired Salary *",
 								validators=[

@@ -2,18 +2,23 @@
 {% block title %}Profile{% endblock title %}
 {% block content %}
 
-<div class="row head-container">
-    <div class="col s12 l8 offset-l2">
-        <h1 class="center-align">{{ user.username.capitalize() }}'s Profile {{ session.role_id }}</h1>
-        <hr class="breakline">
-    </div>
-</div>
-
-<div class="row">
-    <div class="col 12 s12 l8 offset-l2">
-        <div class="row profile-container">
-
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+          <h5 class="center-align top-margins">
+            Welcome {{ user.username }}
+          </h5>
         </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <p class="center-align">
+              This is your personal profile. 
+              On this page you will find all the jobs you have applied for
+              as well as make changes to your details.
+          </p>
+        </div>
+      </div>
     </div>
 </div>
 

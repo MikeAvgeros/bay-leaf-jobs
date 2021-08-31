@@ -20,6 +20,7 @@ def view_jobs():
 def apply_to_job():
     return render_template("job_application.html")
 
+
 # --------------- Search for jobs ----------------
 @jobs.route("/search", methods=["GET", "POST"])
 def filtered_jobs():
@@ -60,3 +61,4 @@ def create_job():
         return redirect(url_for("main.home"))
 
     return render_template("create_job.html", form=form)
+

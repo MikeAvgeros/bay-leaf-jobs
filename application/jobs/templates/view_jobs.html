@@ -29,9 +29,16 @@
                 <li>
                     <div class="collapsible-header">{{ job.company.capitalize() }} - {{ job.position.capitalize() }}</div>
                     <div class="collapsible-body">
-                        {{ job.description}}<br>
+                        <h4>Description</h4>
+                        <p>{{ job.description}}</p>
                         <br>
-                        {{ job.location }} &middot; {{ job.contract }}<br>
+                        <h4>Responsibilities</h4>
+                        <p>{{ job.responsibilities}}</p>
+                        <br>
+                        <h4>Requirements</h4>
+                        <p>{{ job.requirements}}</p>
+                        <br>
+                        <p>{{ job.location }} &middot; {{ job.contract }}</p>
                         <br>
                         <strong>{{ job.salary }}</strong><br>
                         <br>

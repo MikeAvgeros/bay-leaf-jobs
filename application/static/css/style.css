@@ -122,8 +122,8 @@ nav .brand-logo {
 .breakline {
     width: 100px;
     border: 2px var(--very-dark-violet) solid;
+    border-radius: 2px;
     background-color: var(--very-dark-violet);
-    text-align: center;
     margin-bottom: 2rem;
 }
 

@@ -80,7 +80,7 @@ nav .brand-logo {
     border-radius: 8px;
 }
 
-.landing-page, .about-page {
+.landing-page {
     margin: 2rem 0 3rem 0;
 }
 
@@ -119,12 +119,19 @@ nav .brand-logo {
     font-weight: 700;
 }
 
+.breakline-row {
+    display: grid;
+    place-content: center;
+}
+
 .breakline {
-    width: 100px;
+    width: 120px;
     border: 2px var(--very-dark-violet) solid;
     border-radius: 2px;
     background-color: var(--very-dark-violet);
     margin-bottom: 2rem;
+    display: grid;
+    place-self: center;
 }
 
 .fa-bars {

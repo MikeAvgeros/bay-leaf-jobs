@@ -80,34 +80,51 @@ nav .brand-logo {
     border-radius: 8px;
 }
 
-.home-grid {
-    padding-top: 3rem;
-    display: grid;
-    grid-auto-flow: column;
+.landing-page, .about-page {
+    margin: 2rem 0 3rem 0;
 }
 
-.job-grid {
-    padding-top: 4rem;
-}
-
-.hero-img {
-    padding-top: 1rem;
-    display: grid;
-    justify-self: end;
-    margin-top: .5rem;
-}
-
-.hero-header h1 {
+.heading {
     color: var(--very-dark-violet);
     font-weight: 700;
     font-size: 5rem;
-    padding-bottom: 1rem;
 }
 
 .sub-heading {
     color: var(--grayish-violet);
     font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
     padding-bottom: 2rem;
+}
+
+.landing-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.large-font {
+    font-size: larger;
+    font-weight: 500;
+}
+
+.section-heading {
+    color: var(--very-dark-violet);
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.breakline {
+    width: 100px;
+    border: 2px var(--very-dark-violet) solid;
+    background-color: var(--very-dark-violet);
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .fa-bars {
@@ -130,6 +147,10 @@ nav .brand-logo {
 .page-footer {
     background-color: var(--very-dark-violet) !important;
     margin-top: 2rem;
+}
+
+.contact-btn {
+    margin-top: 1rem;
 }
 
 .search-outer {

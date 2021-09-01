@@ -13,7 +13,6 @@
 
       <ul class="hide-on-med-and-down main-links">
         <li><a href="{{ url_for('main.home') }}">Home</a></li>
-        <li><a href="{{ url_for('main.about') }}">About</a></li>
         <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
       </ul>
       <ul class="hide-on-med-and-down user-links">
@@ -37,7 +36,6 @@
   <!-- Mobile Sidenav -->
   <ul class="sidenav" id="mobile-demo">
     <li><a href="{{ url_for('main.home') }}">Home</a></li>
-    <li><a href="{{ url_for('main.about') }}">About</a></li>
     <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
     {% if session.email %}
       <li><a href="{{ url_for('users.profile') }}">Profile</a></li>

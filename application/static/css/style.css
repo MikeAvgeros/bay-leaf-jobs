@@ -115,7 +115,7 @@ nav .brand-logo {
 
 .section-heading {
     color: var(--very-dark-violet);
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
 }
 
@@ -132,6 +132,11 @@ nav .brand-logo {
     margin-bottom: 2rem;
     display: grid;
     place-self: center;
+}
+
+.job-card {
+    background-color: var(--dark-violet);
+    color: var(--gray);
 }
 
 .fa-bars {

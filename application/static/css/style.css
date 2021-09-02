@@ -80,7 +80,7 @@ nav .brand-logo {
     border-radius: 8px;
 }
 
-.landing-page {
+.landing-page, .job-page {
     margin: 2rem 0 3rem 0;
 }
 
@@ -144,16 +144,7 @@ nav .brand-logo {
 }
 
 .search-container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.higher {
-    margin-bottom: 2rem;
-}
-
-.lower {
-    margin-top: 2rem;
+    margin: 4rem 0 2rem 0;
 }
 
 .page-footer {

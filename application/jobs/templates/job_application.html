@@ -3,7 +3,8 @@
 {% from "_error_messages.html" import field_error_messages %}
 {% block content %}
 <main class="container">
-    <h3 class="center-align higher">Job Application</h3>
+    <h2 class="center-align section-heading">Job application</h2>
+    <div class="col s12 breakline-row"><hr class="breakline" /></div>
     <div class="row card-panel grey lighten-5">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('jobs.send_application') }}">
             {{ form.csrf_token }}

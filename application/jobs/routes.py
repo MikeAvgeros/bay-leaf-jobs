@@ -1,9 +1,9 @@
 from flask import (render_template, request, redirect, session, 
                     url_for, flash, Blueprint)
 from application import mongo
-from application.models import User, Job
+from application.models import Application, User, Job
 from werkzeug.utils import escape
-from application.jobs.forms import CreateJobForm, UpdateJobForm
+from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
 
 jobs = Blueprint('jobs', __name__, template_folder="templates")
 
@@ -18,7 +18,8 @@ def view_jobs():
 # --------------- Job application page ----------------
 @jobs.route("/apply")
 def apply_to_job():
-    return render_template("job_application.html")
+    form = ApplicationForm()
+    return render_template("job_application.html", form=form)
 
 
 # --------------- Search for jobs ----------------
@@ -53,8 +54,8 @@ def create_job():
         level            = form.level.data
         employer_id      = User.get_user_id(session["email"])
 
-        job = Job(company, position, description, salary, responsibilities,
-        requirements, location, contract, level, employer_id)
+        job = Job(company, position, description, responsibilities,
+        requirements, salary, location, contract, level, employer_id)
         job.insert_into_database()
 
         flash("You have created a new job!")

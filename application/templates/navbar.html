@@ -23,9 +23,9 @@
           {% elif session.role == "Recruiter" %}
             <li><a href="{{ url_for('jobs.create_job') }}">Create Job</a></li>
           {% endif %}
-          <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
+          <li><a href="{{ url_for('users.logout') }}">Sign Out</a></li>
         {% else %}
-          <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+          <li><a href="{{ url_for('users.login') }}">Sign In</a></li>
           <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
         {% endif %}
       </ul>
@@ -44,9 +44,9 @@
       {% elif session.role == "Recruiter" %}
         <li><a href="{{ url_for('jobs.create_job') }}">Create Job</a></li>
       {% endif %}
-      <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
+      <li><a href="{{ url_for('users.logout') }}">Sign Out</a></li>
     {% else %}
-      <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+      <li><a href="{{ url_for('users.login') }}">Sign In</a></li>
       <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
     {% endif %}
   </ul>

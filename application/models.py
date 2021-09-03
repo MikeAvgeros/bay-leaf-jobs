@@ -206,12 +206,12 @@ class User():
 
 
     @staticmethod
-    def find_user_by_id(user_id):
+    def find_username_by_id(user_id):
         """
-        Find and return a user in MongoDB by their id
+        Find and return a user's name in MongoDB by their id
         """
-        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-        return user
+        username = mongo.db.users.find_one({"_id": ObjectId(user_id)})["username"]
+        return username
 
 
     @staticmethod

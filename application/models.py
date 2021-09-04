@@ -147,6 +147,15 @@ class Application():
 
 
     @staticmethod
+    def find_all_applications():
+        """
+        Find and return all applications in MongoDB
+        """
+        applications = list(mongo.db.applications.find())
+        return applications
+
+
+    @staticmethod
     def delete_application(job_id):
         """
         Delete a job application in MongoDB (recruiters only)

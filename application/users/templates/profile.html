@@ -12,10 +12,58 @@
       <div class="row">
         <div class="col s12">
           <p class="center-align">
-              This is your personal profile. 
-              On this page you will find all the jobs you have applied for
-              as well as make changes to your details.
+              This is your personal {{ session.role }} profile. 
+              {% if session.role == "Developer" %}
+                On this page you will find all the jobs you have applied for
+                as well as make changes to your details.
+              {% else %}
+                On this page you will find all the jobs you have created
+                as well as make changes to your details and your jobs.
+              {% endif %}
           </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          {% if session.role == "Developer" %}
+            {% for application in applications if username|lower == job.developer|lower %}
+              {% for job in jobs if job._id == application.applied_for %}
+                <a class="col s6 offset-s6" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                  <div class="card job-card">
+                      <div class="card-content white-text">
+                        <span class="card-title">
+                            <strong>
+                              {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
+                            </strong>
+                        </span>
+                        <br />
+                        <p>{{ job.description}}</p>
+                        <br />
+                        <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                      </div>
+                  </div>
+                </a>
+              {% endfor %}
+            {% endfor %}
+          {% else %}
+            {% for job in jobs if username|lower == job.posted_by|lower %}
+              <a class="col s6" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                <div class="card job-card">
+                    <div class="card-content white-text">
+                      <span class="card-title">
+                          <strong>
+                            {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
+                          </strong>
+                      </span>
+                      <br />
+                      <p>{{ job.description}}</p>
+                      <br />
+                      <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                    </div>
+                </div>
+              </a>
+            {% endfor %}
+          {% endif %}
         </div>
       </div>
     </div>

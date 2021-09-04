@@ -2,7 +2,7 @@ from flask import (
     flash, render_template, redirect, 
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
-from application.models import User
+from application.models import User, Job, Application
 from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 
 
@@ -81,17 +81,20 @@ def profile(username):
             user["username"] == session["username"]
 
         except:
-            flash("Please sign in to your account.")
+            flash("You must be signed in to access this page.")
             return redirect(url_for("users.login"))
 
         if session["username"]:
-            return render_template("profile.html", username=session["username"])
+            jobs = Job.find_all_jobs()
+            applications = Application.find_all_applications()
+            return render_template("profile.html", username=session["username"], 
+                                    jobs=jobs, applications=applications)
 
     flash("Please create an account.")
     return redirect(url_for("users.register"))
 
 
-# --------------- Log out User ----------------
+# --------------- Log out user ----------------
 @users.route("/logout")
 def logout():
     # Remove user's info from session cookie
@@ -144,6 +147,7 @@ def update_profile(username):
                 session["email"] = email
                 session["username"] = username
                 flash("Your profile has been updated!")
+
                 return redirect(url_for("users.profile", username=session["username"]))
                 
             # Populate form data based on existing user info

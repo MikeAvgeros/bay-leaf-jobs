@@ -27,6 +27,15 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <i class="fas fa-layer-group prefix"></i>
+                        {{ form.stack.label }}
+                        {{ form.stack(class="validate") }}
+                        {{ field_error_messages(form.stack) }}
+                        <label>Stack *</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <i class="fas fa-map-marked-alt prefix"></i>
                         {{ form.location.label }}
                         {{ form.location(class="validate") }}

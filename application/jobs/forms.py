@@ -17,6 +17,16 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
 								])
+	stack			= SelectField("",
+								choices=[
+									("      ", "      "),
+									("Front End", "Front End"), 
+									("Back End", "Back End"), 
+									("Full Stack", "Full Stack")],
+								validators=[
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!")
+								])
 	description 	= TextAreaField("Description *",
 								validators=[
 									InputRequired("Input is required!"),

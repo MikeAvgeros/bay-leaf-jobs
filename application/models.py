@@ -7,13 +7,14 @@ class Job():
     """
     Class representing a job post
     """
-    def __init__(self, company, position, description, responsibilities, 
-                requirements, salary, location, contract, level, employer_id):
+    def __init__(self, company, position, stack, description, responsibilities, 
+                requirements, salary, location, contract, level, posted_by):
         """
         Initialize job attributes
         """
         self.company           = company
         self.position          = position
+        self.stack             = stack
         self.description       = description
         self.responsibilities  = responsibilities
         self.requirements      = requirements
@@ -21,7 +22,7 @@ class Job():
         self.location          = location
         self.contract          = contract
         self.level             = level
-        self.employer_id       = employer_id
+        self.posted_by         = posted_by
     
 
     def __repr__(self):
@@ -34,6 +35,7 @@ class Job():
         """
         info = {"company"          : self.company.lower(),
                 "position"         : self.position.lower(),
+                "stack"            : self.stack,
                 "description"      : self.description,
                 "responsibilities" : self.responsibilities,
                 "requirements"     : self.requirements,
@@ -41,7 +43,7 @@ class Job():
                 "location"         : self.location,
                 "contract"         : self.contract,
                 "level"            : self.level,
-                "employer_id"      : self.employer_id}
+                "posted_by"        : self.posted_by}
         return info
 
     
@@ -80,6 +82,15 @@ class Job():
 
 
     @staticmethod
+    def find_job_by_id(job_id):
+        """
+        Find and return a job in MongoDB by its id
+        """
+        job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+        return job
+
+
+    @staticmethod
     def edit_job(_id, info):
         """
         Update a job in MongoDB
@@ -101,7 +112,7 @@ class Application():
     Class representing a job application
     """
     def __init__(self, notice_period, current_salary, desired_salary, 
-                resume, cover_letter, developer_id):
+                resume, cover_letter, applied_for, developer):
         """
         Initialize application attributes
         """
@@ -110,7 +121,8 @@ class Application():
         self.desired_salary = desired_salary
         self.resume         = resume
         self.cover_letter   = cover_letter
-        self.developer_id   = developer_id
+        self.applied_for    = applied_for
+        self.developer      = developer
 
 
     def get_application_info(self):
@@ -122,7 +134,8 @@ class Application():
                 "desired_salary" : self.desired_salary,
                 "resume url"     : self.resume,
                 "cover_letter"   : self.cover_letter,
-                "developer_id"   : self.developer_id}
+                "applied_for"    : self.applied_for,
+                "application_by" : self.developer}
         return info
 
 
@@ -177,14 +190,6 @@ class User():
         Add a user in MongoDB
         """
         mongo.db.users.insert_one(self.get_user_info())
-
-
-    def is_authenticated(self):
-        return not "" == self.username
-
-
-    def is_anonymous(self):
-        return "" == self.username
 
 
     @staticmethod

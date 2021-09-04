@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_pymongo import PyMongo
+from flask_mail import Mail
 
 
-# Instantiate PyMongo
+# Instantiate PyMongo and Mail
 mongo = PyMongo()
+mail = Mail()
 
 
 def create_app():
@@ -15,8 +17,9 @@ def create_app():
     app.config.from_object('config.DevConfig')
 
 
-    # Setup an instance of PyMongo
+    # Setup an instance of PyMongo and Mail
     mongo.init_app(app)
+    mail.init_app(app)
 
 
     # Import and register Blueprints

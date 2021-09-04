@@ -8,6 +8,8 @@ class Config:
     MONGO_DBNAME = os.environ.get("MONGO_DBNAME")
     MONGO_URI = os.environ.get("MONGO_URI")
     SECRET_KEY = os.environ.get("SECRET_KEY")
+    MAIL_SERVER = os.environ.get("MAIL_SERVER")
+    MAIL_PORT = os.environ.get("MAIL_PORT")
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
 

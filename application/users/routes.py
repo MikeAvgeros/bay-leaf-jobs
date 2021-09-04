@@ -23,11 +23,17 @@ def register():
         location    = form.location.data
         role        = form.role.data
 
+        # Check if username exists
+        existing_user = User.find_user_by_username(username)
+        if existing_user:
+            flash("Username already exists.")
+            return redirect(url_for("users.register"))
+
         # Create an instance of User with the info the user submitter on the form
         user = User(username, email, password, location, role)
         user.insert_into_database()
-        flash("You are registered successfully")
-        return redirect(url_for("main.home"))
+        flash("You are registered successfully. You can now log in.")
+        return redirect(url_for("users.login"))
 
     return render_template("register.html", form=form)
 
@@ -43,7 +49,7 @@ def login():
         email    = form.email.data.lower()
         password = form.password.data
 
-        # Check if user exists in MongoDB
+        # Check if user exists in MongoDB using their email
         user = User.find_user_by_email(email)
 
         if user:
@@ -51,10 +57,10 @@ def login():
             correct_password = user["password"]
             if check_password_hash(correct_password, password):
                 # Put user's info in session
-                session["email"] = email
+                session["email"] = user["email"]
                 session["role"] = user["role"]
                 session["username"] = user["username"]
-                return redirect(url_for("main.home"))
+                return redirect(url_for("users.profile", username=session["username"]))
             else:
                 form.password.errors.append("Incorrect password")
         else:
@@ -62,6 +68,22 @@ def login():
             return redirect(url_for("users.login"))
 
     return render_template("login.html", form=form)
+
+
+@users.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # Find user in MongoDB by their username
+    user = User.find_user_by_username(username)
+    if user:
+        # Check if user is signed in session
+        if user["username"] == session["username"]:
+            return render_template("profile.html", username=session["username"])
+        else:
+            flash("Please sign in to your account.")
+            return redirect(url_for("users.login"))
+
+    flash("Please create an account.")
+    return redirect(url_for("users.register"))
 
 
 @users.route("/logout")
@@ -74,18 +96,11 @@ def logout():
     return redirect(url_for("main.home"))
 
 
-@users.route("/profile", methods=["GET", "POST"])
-def profile():
-    # Find user in MongoDB
-    user = User.find_user_by_email(session["email"])
-    if user:
-        return render_template("profile.html", user=user)
+@users.route("/profile/<username>/update", methods=["GET", "POST"])
+def update_profile(username):
+    # Find user in MongoDB by their username
+    user = User.find_user_by_username(username)
 
-    return render_template("login.html")
-
-
-@users.route("/profile/update", methods=["GET", "POST"])
-def update_profile():
     # Instantiate the updateprofile form
     form = UpdateProfileForm()
 
@@ -96,6 +111,7 @@ def update_profile():
         location    = form.location.data
         picture     = form.picture.data
 
+        # Register info based on what the user submitted on the form
         updated_info = {
             "username" : username,
             "email"    : email,
@@ -103,12 +119,19 @@ def update_profile():
             "picture"  : picture
         }
 
-        # Find user in MongoDB and update their info based on the submitted form
-        user = User.find_user_by_email(session["email"])
+        # Update user's info using the registered updated info.
         User.edit_user(user["_id"], updated_info)
+
+        # Update email and username in session
         session["email"] = email
         session["username"] = username
         flash("Your profile has been updated!")
-        return redirect(url_for("users.profile", user=user))
+        return redirect(url_for("users.profile", username=username))
+    
+    # Populate form data based on existing user info
+    form.username.data  = user["username"].capitalize()
+    form.email.data     = user["email"]
+    form.location.data  = user["location"]
+    form.picture.data   = user["picture"]
 
     return render_template("update_profile.html", form=form)

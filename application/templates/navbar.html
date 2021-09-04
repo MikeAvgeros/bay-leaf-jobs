@@ -2,7 +2,6 @@
   <!-- Desktop Top Navbar -->
   <nav>
     <div class="container nav-grid">
-
       <a href="{{ url_for('main.home') }}" class="brand-logo">
         <img src="{{ url_for('static', filename='images/logo.svg')}}" alt="" />
       </a>
@@ -17,7 +16,7 @@
       </ul>
       <ul class="hide-on-med-and-down user-links">
         {% if session.email %}
-          <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
+          <li><a href="{{ url_for('users.profile', username=session['username']) }}">Profile</a></li>
           {% if session.role == "Developer" %}
             <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
           {% elif session.role == "Recruiter" %}
@@ -29,7 +28,6 @@
           <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
         {% endif %}
       </ul>
-
     </div>
   </nav>
 
@@ -38,7 +36,7 @@
     <li><a href="{{ url_for('main.home') }}">Home</a></li>
     <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
     {% if session.email %}
-      <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
+      <li><a href="{{ url_for('users.profile', username=session['username']) }}">Profile</a></li>
       {% if session.role == "Developer" %}
         <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
       {% elif session.role == "Recruiter" %}

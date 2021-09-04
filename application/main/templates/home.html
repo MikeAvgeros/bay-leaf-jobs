@@ -32,8 +32,10 @@ content %}
 
   <!-- About Section -->
   <div class="row landing-page">
-    <h2 class="center-align section-heading">About us</h2>
-    <div class="breakline-row"><hr class="breakline" /></div>
+    <div class="col s12">
+      <h2 class="center-align section-heading">About us</h2>
+      <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    </div>
     <div class="row">
       <br />
       <p>
@@ -41,16 +43,16 @@ content %}
         quality rather than quantity. We ensure that all our jobs are
         well-presented, relevant, and genuine. We publish them without
         irritating advertising banners, Google Ads, or any other distractions.
-        We are also free of charge both for candidates and recruiters.
+        We are also offering our services, free of charge to both candidates and recruiters.
       </p>
     </div>
     <div class="row">
       <br />
       <p>
-        As a result, we attract many impressive advertisers – companies from
-        around the world that care how their Brand is presented and want only
-        the best for their company and many high calibre candidates that help
-        companies grow to their full potential.
+        As a result, our website attracts many impressive advertisers – recruiters 
+        from around the world that care how their client's brand and vision is presented 
+        and want only the best for their client. We can offer many high-calibre candidates 
+        that help companies grow to their full potential.
       </p>
     </div>
   </div>
@@ -59,8 +61,10 @@ content %}
 
   <!-- How It Works Section -->
   <div class="row landing-page">
-    <h2 class="center-align section-heading">How it works</h2>
-    <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    <div class="col s12">
+      <h2 class="center-align section-heading">How it works</h2>
+      <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    </div>
     <div class="row">
       <br />
       <h3 class="small-heading">As a developer</h3>
@@ -102,17 +106,19 @@ content %}
 
   <!-- Available Jobs Section -->
   <div class="row landing-page">
-    <h2 class="center-align section-heading">Available jobs</h2>
-    <div class="col s12 breakline-row"><hr class="breakline" /></div>
-    <div class="carousel">
+    <div class="col s12">
+      <h2 class="center-align section-heading">Available jobs</h2>
+      <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    </div>
+    {% if jobs|length > 0 %}
+    <div class="col 12 carousel">
       {% for job in jobs %}
-      <a class="col s6 center-align carousel-item" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+      <a class="col s6 carousel-item" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
           <div class="card job-card">
               <div class="card-content white-text">
                 <span class="card-title">
                     <strong>
-                    {{ job.company.capitalize() }} - {{ job.position.capitalize()
-                    }}
+                      {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
                     </strong>
                 </span>
                 <br />
@@ -124,6 +130,7 @@ content %}
       </a>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 </main>
 {% endblock content %}

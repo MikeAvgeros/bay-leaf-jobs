@@ -20,7 +20,13 @@
                 <br>
                 <strong>{{ job.responsibilities }}</strong><br>
                 <br>
+                {% if session.role == "Developer" %}
                 <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" class="waves-effect waves-light btn-large">Apply</a>
+                {% elif session.role == "Recruiter" %}
+                <a href="{{ url_for('jobs.update_job', job_id=job['_id']) }}" class="waves-effect waves-light btn-large">Update</a>
+                <a href="{{ url_for('jobs.delete_job', job_id=job['_id']) }}" class="waves-effect waves-light btn-large">Delete</a>
+                {% else %}
+                {% endif %}
             </div>
         </div>
     </main>

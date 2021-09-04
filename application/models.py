@@ -91,11 +91,11 @@ class Job():
 
 
     @staticmethod
-    def edit_job(_id, info):
+    def edit_job(job_id, info):
         """
         Update a job in MongoDB
         """
-        mongo.db.jobs.update_one({"_id": ObjectId(_id)},
+        mongo.db.jobs.update_one({"_id": ObjectId(job_id)},
                                 {"$set": info})
 
 

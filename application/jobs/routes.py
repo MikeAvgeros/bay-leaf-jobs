@@ -46,7 +46,7 @@ def view_job(job_id):
 
 
 # --------------- Update Job ----------------
-@jobs.route("/job/job_id/update", methods=["GET", "POST"])
+@jobs.route("/job/<job_id>/update", methods=["GET", "POST"])
 def update_job(job_id):
     # Find job in MongoD by its job id
     job = Job.find_job_by_id(job_id)
@@ -86,7 +86,7 @@ def update_job(job_id):
             # Update job's info using the registered updated info.
             Job.edit_job(job["_id"], updated_info)
             flash("The job has been updated!")
-            return redirect(url_for("jobs.view_job", job=job))
+            return redirect(url_for("users.profile", username=session["username"]))
 
         # Populate form data based on existing job info        
         form.company.data          = job["company"].capitalize()
@@ -100,11 +100,14 @@ def update_job(job_id):
         form.contract.data         = job["contract"]
         form.level.data            = job["level"]
 
-    return render_template("update_job.html", form=form)
+        return render_template("update_job.html", form=form)
+
+    flash("This job does not exist")
+    return redirect(url_for("main.home"))
 
 
 # --------------- Delete Job ----------------
-@jobs.route("/job/job_id/delete", methods=["POST"])
+@jobs.route("/job/<job_id>/delete", methods=["POST"])
 def delete_job(job_id):
     # Check if job exists in MongoDB
     job = Job.find_job_by_id(job_id)
@@ -112,14 +115,14 @@ def delete_job(job_id):
     if job:
         Job.delete_job(job_id)
         flash("Job successfully deleted")
-        return redirect(url_for("main.home"))
+        return redirect(url_for("users.profile", username=session["username"]))
 
     flash("This job does not exist")
     return redirect(url_for("main.home"))
 
 
 # --------------- Apply to job ----------------
-@jobs.route("/job/job_id/apply", methods=["GET", "POST"])
+@jobs.route("/job/<job_id>/apply", methods=["GET", "POST"])
 def apply_to_job(job_id):
     # Check if job exists
     job = Job.find_job_by_id(job_id)

@@ -76,7 +76,7 @@ class LoginForm(FlaskForm):
                                     DataRequired("Data is required!"),
                                     Length(min=5, max=30, message="Password must be between 5 and 30 characters long")
                                 ])
-    submit          = SubmitField("Login")
+    submit          = SubmitField("Sign in")
 
 
     def validate_email(self, email):

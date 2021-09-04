@@ -105,11 +105,7 @@ class UpdateProfileForm(FlaskForm):
                                     DataRequired("Data is required!"),
                                     Length(min=3, max=40, message="Location must be between 3 and 40 characters long")
                                 ])
-    picture			= URLField("Picture URL *",
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!")
-								])
+    picture			= URLField("Profile Picture URL")
     submit          = SubmitField("Update")
 
     def validate_username(self, username):

@@ -39,18 +39,19 @@ def filter_jobs():
 
 
 # --------------- Single Job ----------------
-@jobs.route("/job/<int:job_id>")
+@jobs.route("/job/<job_id>")
 def view_job(job_id):
     job = Job.find_job_by_id(job_id)
-    return render_template("view_jobs.html", job=job)
+    return render_template("view_job.html", job=job)
 
 
 # --------------- Update Job ----------------
-@jobs.route("/job/<int:job_id>/update", methods=["GET", "POST"])
+@jobs.route("/job/job_id/update", methods=["GET", "POST"])
 def update_job(job_id):
-    # Check if job exists in MongoDB
+    # Find job in MongoD by its job id
     job = Job.find_job_by_id(job_id)
 
+    # Check if job exists in MongoDB
     if job:
         # Instantiate the updateprofile form
         form = UpdateJobForm()
@@ -68,6 +69,7 @@ def update_job(job_id):
             contract         = form.contract.data
             level            = form.level.data
 
+            # Register info based on what the user submitted on the form
             updated_info = {
                 "company"          : company,
                 "position"         : position,
@@ -81,11 +83,12 @@ def update_job(job_id):
                 "level"            : level
             }
 
-            # Find job in MongoDB and update its info based on the submitted form
+            # Update job's info using the registered updated info.
             Job.edit_job(job["_id"], updated_info)
             flash("The job has been updated!")
             return redirect(url_for("jobs.view_job", job=job))
 
+        # Populate form data based on existing job info        
         form.company.data          = job["company"].capitalize()
         form.position.data         = job["position"].capitalize()
         form.stack.data            = job["stack"]
@@ -101,7 +104,7 @@ def update_job(job_id):
 
 
 # --------------- Delete Job ----------------
-@jobs.route("/job/<int:job_id>/delete", methods=["POST"])
+@jobs.route("/job/job_id/delete", methods=["POST"])
 def delete_job(job_id):
     # Check if job exists in MongoDB
     job = Job.find_job_by_id(job_id)
@@ -116,7 +119,7 @@ def delete_job(job_id):
 
 
 # --------------- Apply to job ----------------
-@jobs.route("/job/<int:job_id>/apply", methods=["GET", "POST"])
+@jobs.route("/job/job_id/apply", methods=["GET", "POST"])
 def apply_to_job(job_id):
     # Check if job exists
     job = Job.find_job_by_id(job_id)

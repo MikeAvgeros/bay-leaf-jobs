@@ -91,6 +91,7 @@ def profile(username):
     return redirect(url_for("users.register"))
 
 
+# --------------- Log out User ----------------
 @users.route("/logout")
 def logout():
     # Remove user's info from session cookie
@@ -101,11 +102,13 @@ def logout():
     return redirect(url_for("main.home"))
 
 
+# --------------- Update Profile ----------------
 @users.route("/profile/<username>/update", methods=["GET", "POST"])
 def update_profile(username):
     # Find user in MongoDB by their username
     user = User.find_user_by_username(username)
 
+    # Check if user exists in MongoDB
     if user:
         # Check if user is signed in session
         try:

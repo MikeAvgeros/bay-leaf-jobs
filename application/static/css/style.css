@@ -186,5 +186,9 @@ nav .brand-logo {
 }
 
 a:hover {
-    color: var(--red);
+    color: var(--very-dark-blue);
+}
+
+li .footer-text:hover {
+    color: white;
 }

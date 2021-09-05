@@ -6,44 +6,85 @@
     <div class="row">
         <div class="col s12">
           <h2 class="center-align section-heading">Welcome {{ username.capitalize() }}</h2>
-        <div class="col s12 breakline-row"><hr class="breakline" /></div>
+          <div class="col s12 breakline-row"><hr class="breakline" /></div>
         </div>
       </div>
       <div class="row">
+        <div class="col s12 m5 offset-m1">
+          <div class="card">
+            <div class="card-image">
+              <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
+              <span class="card-title">strong {{ username.capitalize() }}</span>
+            </div>
+            <div class="card-content">
+              <p><strong>Role:</strong> {{ session.role }}</p>
+              <br>
+              <p><strong>Email:</strong> {{ session.email }}</p>
+            </div>
+            <div class="card-action">
+              <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
+              class="waves-effect waves-light btn-large">Update</a>
+              <a href="{{ url_for('users.delete_profile', username=session['username']) }}" 
+              class="waves-effect waves-light btn-large">Delete</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m5 offset-m1">
+          {% if session.role == "Developer" %}
+              <p>
+                On your profile page you will find all the jobs you have applied for.
+                You can follow up the progress of your application by contacting the
+                recruiter for the job.
+              </p>
+              <br>
+              <p>
+                You can update your profile details and upload a picture by
+                clicking the update button. 
+                You can delete your profile by clicking the delete button.
+              </p>
+              {% elif session.role == "Recruiter" %}
+              <p>
+                On this page you will find all the jobs you have created
+                as well as make changes to your details and your jobs.
+              </p>
+              {% else %}
+              {% endif %}
+        </div>
+      </div>
+      <!-- <div class="row">
         <div class="col s12">
           <p class="center-align">
               This is your personal {{ session.role }} profile. 
               <br>
-              {% if session.role == "Developer" %}
-                On this page you will find all the jobs you have applied for
-                as well as make changes to your details.
-              {% else %}
-                On this page you will find all the jobs you have created
-                as well as make changes to your details and your jobs.
-              {% endif %}
+              
           </p>
         </div>
-      </div>
+      </div> -->
+      <br>
       <div class="row">
         {% if session.role == "Developer" %}
+        <h3 class="center-align section-heading">Jobs you applied for</h3>
+        <div class="col s12 breakline-row"><hr class="breakline" /></div>
           {% for application in applications if username|lower == application.application_by|lower %}
             {% for job in jobs if job._id|string == application.applied_for|string %}
-            <div class="col s12">
-              <a class="col s6 offset-s3" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
-                <div class="card job-card">
-                    <div class="card-content white-text">
-                      <span class="card-title">
-                          <strong>
-                            {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
-                          </strong>
-                      </span>
-                      <br />
-                      <p>{{ job.description}}</p>
-                      <br />
-                      <p>{{ job.location }} &middot; {{ job.contract }}</p>
-                    </div>
-                </div>
-              </a>
+            <div class="row">
+              <div class="col s12 m5 offset-m1">
+                <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                  <div class="card job-card">
+                      <div class="card-content white-text">
+                        <span class="card-title">
+                            <strong>
+                              {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
+                            </strong>
+                        </span>
+                        <br />
+                        <p>{{ job.description}}</p>
+                        <br />
+                        <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                      </div>
+                  </div>
+                </a>
+              </div>
             </div>
             {% endfor %}
           {% endfor %}

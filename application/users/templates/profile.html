@@ -26,8 +26,8 @@
       </div>
       <div class="row">
         {% if session.role == "Developer" %}
-          {% for application in applications if username|lower == job.developer|lower %}
-            {% for job in jobs if job._id == application.applied_for %}
+          {% for application in applications if username|lower == application.application_by|lower %}
+            {% for job in jobs if job._id|string == application.applied_for|string %}
             <div class="col s12">
               <a class="col s6 offset-s3" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
                 <div class="card job-card">

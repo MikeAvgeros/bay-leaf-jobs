@@ -103,34 +103,5 @@ content %}
       </ul>
     </div>
   </div>
-
-  <!-- Available Jobs Section -->
-  <!-- <div class="row landing-page">
-    <div class="col s12">
-      <h2 class="center-align section-heading">Available jobs</h2>
-      <div class="col s12 breakline-row"><hr class="breakline" /></div>
-    </div>
-    {% if jobs|length > 0 %}
-    <div class="col 12 carousel">
-      {% for job in jobs %}
-      <a class="col s6 carousel-item" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
-          <div class="card job-card">
-              <div class="card-content white-text">
-                <span class="card-title">
-                    <strong>
-                      {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
-                    </strong>
-                </span>
-                <br />
-                <p>{{ job.description}}</p>
-                <br />
-                <p>{{ job.location }} &middot; {{ job.contract }}</p>
-              </div>
-          </div>
-      </a>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </div> -->
 </main>
 {% endblock content %}

@@ -1,14 +1,14 @@
 from flask import (render_template, request, redirect, session, 
                     url_for, flash, Blueprint)
 from application import mongo
-from application.models import Application, User, Job
+from application.models import Application, Job
 from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
 
 
 jobs = Blueprint('jobs', __name__, template_folder="templates")
 
 
-# --------------- All Jobs ----------------
+# --------------- All jobs -----------------
 @jobs.route("/jobs")
 def view_jobs():
     jobs = Job.find_all_jobs()
@@ -38,14 +38,14 @@ def filter_jobs():
     return render_template("view_jobs.html", jobs=jobs)
 
 
-# --------------- Single Job ----------------
+# --------------- Single job ----------------
 @jobs.route("/job/<job_id>")
 def view_job(job_id):
     job = Job.find_job_by_id(job_id)
     return render_template("view_job.html", job=job)
 
 
-# --------------- Update Job ----------------
+# --------------- Update job ----------------
 @jobs.route("/job/<job_id>/update", methods=["GET", "POST"])
 def update_job(job_id):
     # Find job in MongoD by its job id
@@ -106,7 +106,7 @@ def update_job(job_id):
     return redirect(url_for("main.home"))
 
 
-# --------------- Delete Job ----------------
+# --------------- Delete job ----------------
 @jobs.route("/job/<job_id>/delete", methods=["POST"])
 def delete_job(job_id):
     # Check if job exists in MongoDB
@@ -152,7 +152,7 @@ def apply_to_job(job_id):
     return redirect(url_for("main.home"))
 
     
-# --------------- Create New Job ----------------
+# --------------- Create new job ----------------
 @jobs.route("/create_job", methods=["GET", "POST"])
 def create_job():
     form = CreateJobForm()

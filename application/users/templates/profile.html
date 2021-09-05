@@ -32,6 +32,7 @@
           </div>
         </div>
           {% if session.role == "Developer" %}
+            <h4 class="center-align section-heading">Jobs you applied for</h4>
             <div class="row">
               {% for application in applications if username|lower == application.application_by|lower %}
                 {% for job in jobs if job._id|string == application.applied_for|string %}
@@ -52,6 +53,7 @@
               {% endfor %}
             </div>
           {% elif session.role == "Recruiter" %}
+            <h4 class="center-align section-heading">Jobs you posted</h4>
             <div class="row">
               {% for job in jobs if username|lower == job.posted_by|lower %}
                 <div class="col s12 m4 offset-m2">
@@ -72,18 +74,39 @@
           {% else %}
           <h1>Error</h1>
           {% endif %}
+          <div class="row">
+            <div class="col s12 m4">
+              <h4 class="center-align section-heading">Information</h4>
+              {% if session.role == "Developer" %}
+              <p>
+                On your profile page you will find all the jobs you have applied for.
+                You can follow up the progress of your application by contacting the
+                recruiter for the job.
+              </p>
+              <br>
+              <p>
+                You can update your profile details and upload a picture by
+                clicking the update button. 
+                You can delete your profile by clicking the delete button.
+              </p>
+              {% elif session.role == "Recruiter" %}
+              <p>
+                On your profile page you will find all the jobs you have applied for.
+                You can follow up the progress of your application by contacting the
+                recruiter for the job.
+              </p>
+              <br>
+              <p>
+                You can update your profile details and upload a picture by
+                clicking the update button. 
+                You can delete your profile by clicking the delete button.
+              </p>
+              {% else %}
+              <h1>Error</h1>
+              {% endif %}
+            </div>
+          </div>
       </div>
     </div>
 </div>
-<!-- <p>
-    On your profile page you will find all the jobs you have applied for.
-    You can follow up the progress of your application by contacting the
-    recruiter for the job.
-  </p>
-  <br>
-  <p>
-    You can update your profile details and upload a picture by
-    clicking the update button. 
-    You can delete your profile by clicking the delete button.
-</p> -->
 {% endblock content %}

@@ -13,7 +13,11 @@
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
+              {% if user.picture %}
+                <img class="responsive-img" src="{{ user.picture }}">
+              {% else %}
+                <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
+              {% endif %}
               <span class="card-title">{{ username.capitalize() }}</span>
             </div>
             <div class="card-content">
@@ -25,26 +29,25 @@
             </div>
             <div class="card-action">
               <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn-small">Update</a>
+              class="waves-effect waves-light btn">Update</a>
               <a href="{{ url_for('users.delete_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn-small">Delete</a>
+              class="waves-effect waves-light btn">Delete</a>
             </div>
           </div>
         </div>
           {% if session.role == "Developer" %}
-            <h4 class="center-align section-heading">Jobs you applied for</h4>
+            <h4 class="center-align section-subheading">Jobs you applied for</h4>
             <div class="row">
               {% for application in applications if username|lower == application.application_by|lower %}
                 {% for job in jobs if job._id|string == application.applied_for|string %}
                 <div class="col s12 m4 offset-m2">
                   <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
-                    <div class="card job-card">
+                    <div class="card job-card z-depth-3">
                         <div class="card-content white-text">
-                          <p>{{ job.company.capitalize() }}</p>
+                          <p class="card-title">{{ job.position.capitalize() }}</p>
+                          <p class="large-font">{{ job.company.capitalize() }}</p>
                           <br>
-                          <p>{{ job.position.capitalize() }}</p>
-                          <br>
-                          <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                          <p class="large-font">{{ job.location }} &middot; {{ job.contract }}</p>
                         </div>
                     </div>
                   </a>
@@ -53,19 +56,18 @@
               {% endfor %}
             </div>
           {% elif session.role == "Recruiter" %}
-            <h4 class="center-align section-heading">Jobs you posted</h4>
+            <h4 class="center-align section-subheading">Jobs you posted</h4>
             <div class="row">
               {% for job in jobs if username|lower == job.posted_by|lower %}
                 <div class="col s12 m4 offset-m2">
                   <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
-                    <div class="card job-card">
-                        <div class="card-content white-text">
-                          <p>{{ job.company.capitalize() }}</p>
-                          <br>
-                          <p>{{ job.position.capitalize() }}</p>
-                          <br>
-                          <p>{{ job.location }} &middot; {{ job.contract }}</p>
-                        </div>
+                    <div class="card job-card z-depth-3">
+                      <div class="card-content white-text">
+                        <p class="card-title">{{ job.position.capitalize() }}</p>
+                        <p class="large-font">{{ job.company.capitalize() }}</p>
+                        <br>
+                        <p class="large-font">{{ job.location }} &middot; {{ job.contract }}</p>
+                      </div>
                     </div>
                   </a>
                 </div>
@@ -76,7 +78,7 @@
           {% endif %}
           <div class="row">
             <div class="col s12 m4">
-              <h4 class="center-align section-heading">Information</h4>
+              <h4 class="center-align section-subheading">Information</h4>
               {% if session.role == "Developer" %}
               <p>
                 On your profile page you will find all the jobs you have applied for.

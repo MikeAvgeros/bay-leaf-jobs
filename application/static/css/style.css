@@ -22,6 +22,7 @@
 
 body {
     width: 100%;
+    font-size: 18px;
 }
 
 .nav-grid {
@@ -118,6 +119,12 @@ nav .brand-logo {
     font-weight: 700;
 }
 
+.section-subheading {
+    color: var(--very-dark-violet);
+    font-size: 2rem;
+    font-weight: 500;
+}
+
 .breakline-row {
     display: grid;
     place-content: center;
@@ -131,11 +138,6 @@ nav .brand-logo {
     margin-bottom: 2rem;
     display: grid;
     place-self: center;
-}
-
-.job-card {
-    background-color: var(--dark-violet);
-    color: var(--gray);
 }
 
 .fa-bars {
@@ -191,4 +193,10 @@ a:hover {
 
 li .footer-text:hover {
     color: white;
+}
+
+.job-card {
+    background-color: var(--grayish-violet);
+    color: white;
+    border-radius: 8px;
 }

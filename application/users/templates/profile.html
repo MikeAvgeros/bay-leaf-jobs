@@ -10,11 +10,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m5 offset-m1">
+        <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
               <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
-              <span class="card-title">strong {{ username.capitalize() }}</span>
+              <span class="card-title">{{ username.capitalize() }}</span>
             </div>
             <div class="card-content">
               <p><strong>Role:</strong> {{ session.role }}</p>
@@ -23,13 +23,13 @@
             </div>
             <div class="card-action">
               <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn-large">Update</a>
+              class="waves-effect waves-light btn">Update</a>
               <a href="{{ url_for('users.delete_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn-large">Delete</a>
+              class="waves-effect waves-light btn">Delete</a>
             </div>
           </div>
         </div>
-        <div class="col s12 m5 offset-m1">
+        <div class="col s12 m7 offset-m1">
           {% if session.role == "Developer" %}
               <p>
                 On your profile page you will find all the jobs you have applied for.
@@ -51,61 +51,48 @@
               {% endif %}
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col s12">
-          <p class="center-align">
-              This is your personal {{ session.role }} profile. 
-              <br>
-              
-          </p>
-        </div>
-      </div> -->
       <br>
       <div class="row">
         {% if session.role == "Developer" %}
         <h3 class="center-align section-heading">Jobs you applied for</h3>
         <div class="col s12 breakline-row"><hr class="breakline" /></div>
-          {% for application in applications if username|lower == application.application_by|lower %}
-            {% for job in jobs if job._id|string == application.applied_for|string %}
-            <div class="row">
-              <div class="col s12 m5 offset-m1">
-                <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
-                  <div class="card job-card">
-                      <div class="card-content white-text">
-                        <span class="card-title">
-                            <strong>
-                              {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
-                            </strong>
-                        </span>
-                        <br />
-                        <p>{{ job.description}}</p>
-                        <br />
-                        <p>{{ job.location }} &middot; {{ job.contract }}</p>
-                      </div>
-                  </div>
-                </a>
-              </div>
+        {% for application in applications if username|lower == application.application_by|lower %}
+          {% for job in jobs if job._id|string == application.applied_for|string %}
+          <div class="row">
+            <div class="col s12 m4">
+              <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                <div class="card job-card">
+                    <div class="card-content white-text">
+                      <p>{{ job.company.capitalize() }}</p>
+                      <br>
+                      <p>{{ job.position.capitalize() }}</p>
+                      <br>
+                      <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                    </div>
+                </div>
+              </a>
             </div>
-            {% endfor %}
+          </div>
           {% endfor %}
+        {% endfor %}
         {% elif session.role == "Recruiter" %}
+        <h3 class="center-align section-heading">Jobs you posted</h3>
+        <div class="col s12 breakline-row"><hr class="breakline" /></div>
           {% for job in jobs if username|lower == job.posted_by|lower %}
-          <div class="co s12">
-            <a class="col s6 offset-s3" href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
-              <div class="card job-card">
-                  <div class="card-content white-text">
-                    <span class="card-title">
-                        <strong>
-                          {{ job.company.capitalize() }} - {{ job.position.capitalize() }}
-                        </strong>
-                    </span>
-                    <br />
-                    <p>{{ job.description}}</p>
-                    <br />
-                    <p>{{ job.location }} &middot; {{ job.contract }}</p>
-                  </div>
-              </div>
-            </a>
+          <div class="row">
+            <div class="col s12 m4">
+              <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                <div class="card job-card">
+                    <div class="card-content white-text">
+                      <p>{{ job.company.capitalize() }}</p>
+                      <br>
+                      <p>{{ job.position.capitalize() }}</p>
+                      <br>
+                      <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                    </div>
+                </div>
+              </a>
+            </div>
           </div>
           {% endfor %}
         {% else %}

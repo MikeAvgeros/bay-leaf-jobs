@@ -88,7 +88,7 @@ def profile(username):
             jobs = Job.find_all_jobs()
             applications = Application.find_all_applications()
             return render_template("profile.html", username=session["username"], 
-                                    jobs=jobs, applications=applications)
+                                    jobs=jobs, applications=applications, user=user)
 
     flash("Please create an account.")
     return redirect(url_for("users.register"))

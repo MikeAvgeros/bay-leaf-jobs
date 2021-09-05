@@ -22,7 +22,6 @@
 
 body {
     width: 100%;
-    font-size: 18px;
 }
 
 .nav-grid {
@@ -115,7 +114,7 @@ nav .brand-logo {
 
 .section-heading {
     color: var(--very-dark-violet);
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
@@ -184,4 +183,8 @@ nav .brand-logo {
     border: none;
     background: none;
     margin-left: 5rem;
+}
+
+a:hover {
+    color: var(--red);
 }

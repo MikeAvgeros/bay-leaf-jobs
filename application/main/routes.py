@@ -39,3 +39,15 @@ def contact():
 @main.route("/faq")
 def faq():
     return render_template("faq.html")
+
+
+# --------------- Privacy page ----------------
+@main.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+
+# --------------- Terms & Conditions page ----------------
+@main.route("/terms")
+def terms():
+    return render_template("terms.html")

@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
+    --cyan: rgb(43, 208, 208);
     --gray: hsl(0, 0%, 75%);
     --grayish-violet: hsl(257, 7%, 63%);
-    --yellow: #ffee08; 
-    --cyan: rgb(43, 208, 208);
     --dark-violet: rgb(80, 49, 100);
-    --red: hsl(0, 87%, 67%);
-    --very-dark-blue: hsl(255, 11%, 22%);
     --very-dark-violet: rgb(58, 48, 84);
+    --very-dark-blue: hsl(255, 11%, 22%);
     --font: 'Poppins', sans-serif;
 }
 
@@ -80,6 +78,12 @@ nav .brand-logo {
     border-radius: 8px;
 }
 
+.btn {
+    background-color: var(--cyan);
+    font-weight: 500;
+    border-radius: 5px;
+}
+
 .landing-page, .job-page {
     margin: 2rem 0 3rem 0;
 }
@@ -148,21 +152,6 @@ nav .brand-logo {
     margin: 4rem 0 2rem 0;
 }
 
-.page-footer {
-    background-color: var(--very-dark-violet) !important;
-    margin-top: 2rem;
-}
-
-.contact-btn {
-    margin-top: 1rem;
-}
-
-.search-outer {
-    background-color: var(--dark-violet);
-    border-radius: 10px;
-    height: 25%;
-}
-
 .alert {
     display: flex;
     justify-content: center;
@@ -196,7 +185,20 @@ li .footer-text:hover {
 }
 
 .job-card {
-    background-color: var(--grayish-violet);
+    background-color: var(--dark-violet);
     color: white;
     border-radius: 8px;
+}
+
+.job-card:hover {
+    background-color: var(--grayish-violet);
+}
+
+.page-footer {
+    background-color: var(--very-dark-violet) !important;
+    margin-top: 2rem;
+}
+
+.contact-btn {
+    margin-top: 1rem;
 }

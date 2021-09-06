@@ -21,17 +21,17 @@
               <span class="card-title">{{ username.capitalize() }}</span>
             </div>
             <div class="card-content">
-              <p><strong>Role:</strong> {{ user.role }}</p>
+              <p><i class="fas fa-briefcase prefix"></i> {{ user.role }}</p>
               <br>
-              <p><strong>Location:</strong> {{ user.location }}</p>
+              <p><i class="fas fa-map-marked-alt prefix"></i> {{ user.location }}</p>
               <br>
-              <p><strong>Email:</strong> {{ user.email }}</p>
+              <p><i class="fas fa-envelope prefix"></i> {{ user.email }}</p>
             </div>
             <div class="card-action">
               <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
               class="waves-effect waves-light btn">Update</a>
               <a href="{{ url_for('users.delete_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn">Delete</a>
+              class="waves-effect waves-light btn" style="margin-left: 1rem;">Delete</a>
             </div>
           </div>
         </div>
@@ -40,15 +40,32 @@
             <div class="row">
               {% for application in applications if username|lower == application.application_by|lower %}
                 {% for job in jobs if job._id|string == application.applied_for|string %}
-                <div class="col s12 m4 offset-m2">
+                <div class="col s12 m6 offset-m1">
                   <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
                     <div class="card job-card z-depth-3">
-                        <div class="card-content white-text">
-                          <p class="card-title">{{ job.position.capitalize() }}</p>
-                          <p class="large-font">{{ job.company.capitalize() }}</p>
+                      <div class="card-content">
+                        <p class="card-title"><i class="fas fa-user-tie prefix"></i> 
+                          {{ job.position.capitalize() }}
+                        </p>
+                        <br>
+                        <p class="large-font"><i class="fas fa-building prefix"></i> 
+                          {{ job.company.capitalize() }}
+                        </p>
+                        <br>
+                        <p class="large-font"><i class="fas fa-info-circle prefix"></i> 
+                          {{ job.location }} &middot; {{ job.contract }}
+                        </p>
+                        <br>
+                        {% if job.salary %}
+                          <p class="large-font"><i class="fas fa-money-check-alt prefix"></i>
+                              {{ job.salary }}
+                          </p>
                           <br>
-                          <p class="large-font">{{ job.location }} &middot; {{ job.contract }}</p>
-                        </div>
+                        {% endif %}
+                        <p class="truncate"><i class="fas fa-info-circle prefix"></i> 
+                            {{ job.description }}
+                        </p>
+                      </div>
                     </div>
                   </a>
                 </div>
@@ -59,14 +76,31 @@
             <h4 class="center-align section-subheading">Jobs you posted</h4>
             <div class="row">
               {% for job in jobs if username|lower == job.posted_by|lower %}
-                <div class="col s12 m4 offset-m2">
+                <div class="col s12 m6 offset-m1">
                   <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
                     <div class="card job-card z-depth-3">
-                      <div class="card-content white-text">
-                        <p class="card-title">{{ job.position.capitalize() }}</p>
-                        <p class="large-font">{{ job.company.capitalize() }}</p>
+                      <div class="card-content">
+                        <p class="card-title"><i class="fas fa-user-tie prefix"></i> 
+                          {{ job.position.capitalize() }}
+                        </p>
                         <br>
-                        <p class="large-font">{{ job.location }} &middot; {{ job.contract }}</p>
+                        <p class="card-title"><i class="fas fa-building prefix"></i> 
+                          {{ job.company.capitalize() }}
+                        </p>
+                        <br>
+                        <p class="card-title"><i class="fas fa-map-marked-alt prefix"></i>
+                          {{ job.location }} &middot; {{ job.contract }}
+                        </p>
+                        <br>
+                        {% if job.salary %}
+                          <p class="card-title"><i class="fas fa-money-check-alt prefix"></i>
+                              {{ job.salary }}
+                          </p>
+                          <br>
+                        {% endif %}
+                        <p class="truncate"><i class="fas fa-info-circle fa-lg prefix"></i> 
+                            {{ job.description }}
+                        </p>
                       </div>
                     </div>
                   </a>

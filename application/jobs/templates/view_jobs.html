@@ -25,26 +25,30 @@
             </div>
             <div class="row">
                 {% for job in jobs %}
-                    <div class="col s12 m4">
+                    <div class="col s12 m5">
                         <div class="card job-card z-depth-4">
                             <div class="card-content">
-                                <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
+                                <img class="responsive-img" src="{{ url_for('static', filename='images/empty-office.jpg')}}">
                                 <br>
-                                <p class="card-title">
+                                <p class="card-title"><i class="fas fa-user-tie prefix"></i> 
                                     {{ job.position }}
                                 </p>
-                                <p class="large-font">
+                                <br>
+                                <p class="card-title"><i class="fas fa-building prefix"></i>
                                     {{ job.company }}
                                 </p>
-                                <p class="large-font">
+                                <br>
+                                <p class="card-title"><i class="fas fa-map-marked-alt prefix"></i>
                                     {{ job.location }} &middot; {{ job.contract }}
                                 </p>
                                 <br>
                                 {% if job.salary %}
-                                    <p class="large-font"> {{ job.salary }}</p>
+                                    <p class="card-title"><i class="fas fa-money-check-alt prefix"></i>
+                                        {{ job.salary }}
+                                    </p>
                                     <br>
                                 {% endif %}
-                                <p class="truncate">
+                                <p class="truncate"><i class="fas fa-info-circle fa-lg prefix"></i> 
                                     {{ job.description }}
                                 </p>
                             </div>

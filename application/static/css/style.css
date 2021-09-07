@@ -185,7 +185,8 @@ nav .brand-logo {
     margin-left: 5rem;
 }
 
-a:hover {
+a:hover,
+input[type=submit]:hover {
     color: var(--very-dark-blue);
 }
 

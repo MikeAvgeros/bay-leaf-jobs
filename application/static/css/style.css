@@ -72,7 +72,7 @@ nav .brand-logo {
     margin-left: 2rem;
 }
 
-.btn-large {
+.btn-large, input[type=submit] {
     background-color: var(--cyan);
     font-weight: 500;
     border-radius: 8px;
@@ -81,6 +81,11 @@ nav .brand-logo {
 .btn {
     background-color: var(--cyan);
     font-weight: 500;
+    border-radius: 5px;
+}
+
+.btn-small {
+    background-color: var(--cyan);
     border-radius: 5px;
 }
 
@@ -192,10 +197,15 @@ li .footer-text:hover {
     background-color: var(--dark-violet);
     color: white;
     border-radius: 8px;
+    font-size: 16px;
 }
 
 .job-card:hover {
     background-color: var(--very-dark-violet);
+}
+
+.profile-content {
+    font-size: 16px;
 }
 
 .page-footer {

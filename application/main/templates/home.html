@@ -38,7 +38,14 @@
       <h2 class="center-align section-heading">About us</h2>
       <div class="col s12 breakline-row"><hr class="breakline" /></div>
     </div>
-    <div class="row">
+    <div class="col s12 m5">
+      <img
+        class="responsive-img"
+        src="{{ url_for('static', filename='images/about-tag.png')}}"
+        alt="illustration of a group of people around a computer"
+      />
+    </div>
+    <div class="col s12 m7 justify-text">
       <br />
       <p>
         Welcome to <span class="large-font">bayleafjobs</span>. Since our launch in 2021, our focus has been on
@@ -47,8 +54,6 @@
         irritating advertising banners, Google Ads, or any other distractions.
         We are also offering our services, free of charge to both candidates and recruiters.
       </p>
-    </div>
-    <div class="row">
       <br />
       <p>
         As a result, our website attracts many impressive advertisers – recruiters 
@@ -67,8 +72,7 @@
       <h2 class="center-align section-heading">How it works</h2>
       <div class="col s12 breakline-row"><hr class="breakline" /></div>
     </div>
-    <div class="row">
-      <br />
+    <div class="col s12 m7">
       <h4 class="small-heading">As a developer</h4>
       <ul class="fa-ul">
         <li class="list-item">
@@ -85,8 +89,6 @@
           the jobs you have applied for so you can follow up
         </li>
       </ul>
-    </div>
-    <div class="row">
       <br />
       <h4 class="small-heading">As a recruiter</h4>
       <ul class="fa-ul">
@@ -103,6 +105,13 @@
           a notification when a developer applies to your job post
         </li>
       </ul>
+    </div>
+    <div class="col s12 m5">
+      <img
+        class="responsive-img"
+        src="{{ url_for('static', filename='images/checkbox-list.png')}}"
+        alt="illustration of a group of people around a computer"
+      />
     </div>
   </div>
 </main>

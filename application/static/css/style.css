@@ -144,6 +144,10 @@ nav .brand-logo {
     place-self: center;
 }
 
+.justify-text {
+    text-align: justify;
+}
+
 .fa-bars {
     color: var(--very-dark-violet);
 }
@@ -191,7 +195,7 @@ li .footer-text:hover {
 }
 
 .job-card:hover {
-    background-color: var(--grayish-violet);
+    background-color: var(--very-dark-violet);
 }
 
 .page-footer {

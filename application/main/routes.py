@@ -1,6 +1,9 @@
+import os
 from flask import render_template, Blueprint, flash, redirect, url_for
 from application.main.forms import ContactForm
 from application.models import Job, Contact
+from application import mail
+from flask_mail import Message
 
 
 main = Blueprint('main', __name__, template_folder="templates")
@@ -23,11 +26,38 @@ def contact():
     if form.validate_on_submit():
         name        = form.name.data.lower()
         email       = form.email.data.lower()
-        message     = form.message.data
-        user_id     = form.user_id.data
+        body        = form.body.data
 
-        contact = Contact(name, email, message, user_id)
+        contact = Contact(name, email, body)
         contact.insert_into_database()
+
+        sender_email = os.environ.get('MAIL_DEFAULT_SENDER')
+        recipients = [sender_email, email]
+        with mail.connect() as conn:
+            for recipient in recipients:
+                if recipient == sender_email:
+                    message = (f"<h3>Hello</h3>"
+                               "<p>Message from the website:</p>"
+                               f"<p><b>Name:</b> {name}</p> "
+                               f"<p><b>Email:</b> {email}</p> "
+                               f"<p><b>Message:</b> {body} </p>")
+                    subject = f"New query from: {name}"
+
+                elif recipient == email:
+                    message = (f"<h3>Hello {name},</h3>"
+                               "<p>We have received your message and aim"
+                               " to respond within the next 3 working days."
+                               "</p>"
+                               "<p>All the best,</p>"
+                               "<p>The team at bayleafjobs</p>"
+                               )
+                    subject = 'Thank your for getting in touch!'
+
+                msg = Message(recipients=[recipient],
+                              html=message,
+                              subject=subject)
+
+                conn.send(msg)
 
         flash("Request submitted successfully")
         return redirect(url_for("main.home"))

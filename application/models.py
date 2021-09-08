@@ -276,14 +276,13 @@ class Contact():
     """
     Class representing a contact message from a user
     """
-    def __init__(self, name, email, message, user_id):
+    def __init__(self, name, email, body):
         """
         Initialize contact message attributes
         """
         self.name      = name
         self.email     = email
-        self.message   = message
-        self.user_id   = user_id
+        self.body      = body
 
 
     def get_contact_info(self):
@@ -292,8 +291,7 @@ class Contact():
         """
         info = {"name"     : self.name.lower(),
                 "email"    : self.email.lower(),
-                "message"  : self.message,
-                "user_id"  : self.user_id}
+                "body"     : self.body}
         return info
 
 
@@ -302,12 +300,3 @@ class Contact():
         Add contact message in MongoDB
         """
         mongo.db.contact.insert_one(self.get_contact_info())
-
-
-    @staticmethod
-    def find_contact_by_user(user_id):
-        """
-        Find and return a user's Id in MongoDB by their username
-        """
-        contact = mongo.db.contact.find_one({"_id": ObjectId(user_id)})
-        return contact

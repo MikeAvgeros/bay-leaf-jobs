@@ -16,7 +16,7 @@ class ContactForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
 								])
-    description = TextAreaField("Message *",
+    body		= TextAreaField("Message *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),

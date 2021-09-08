@@ -3,6 +3,8 @@ from flask import (
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
+from application import mail
+from flask_mail import Message
 from functools import wraps
 from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 
@@ -29,27 +31,30 @@ def register():
     # Instantiate the registration form
     form = RegistrationForm()
 
-    # Check if user has submitted the form and all inputs are valid
-    if form.validate_on_submit():
-        username    = form.username.data.lower()
-        email       = form.email.data.lower()
-        password    = form.password.data
-        location    = form.location.data
-        role        = form.role.data
+    if "username" not in session:
+        # Check if user has submitted the form and all inputs are valid
+        if form.validate_on_submit():
+            username    = form.username.data.lower()
+            email       = form.email.data.lower()
+            password    = form.password.data
+            location    = form.location.data
+            role        = form.role.data
 
-        # Check if username exists
-        existing_user = User.find_user_by_username(username)
-        if existing_user:
-            flash("Username already exists.")
-            return redirect(url_for("users.register"))
+            # Check if username exists
+            existing_user = User.find_user_by_username(username)
+            if existing_user:
+                flash("Username already exists.")
+                return redirect(url_for("users.register"))
 
-        # Create an instance of User with the info the user submitter on the form
-        user = User(username, email, password, location, role)
-        user.insert_into_database()
-        flash("You are registered successfully. You can now sign in.")
-        return redirect(url_for("users.login"))
+            # Create an instance of User with the info the user submitter on the form
+            user = User(username, email, password, location, role)
+            user.insert_into_database()
+            flash("You are registered successfully. You can now sign in.")
+            return redirect(url_for("users.login"))
 
-    return render_template("register.html", form=form)
+        return render_template("register.html", form=form)
+
+    return redirect(url_for("users.profile", username=session["username"]))
 
 
 # --------------- Log in user ----------------
@@ -58,30 +63,33 @@ def login():
     # Instantiate the login form
     form = LoginForm()
 
-    # Check if user has submitted the form and all inputs are valid
-    if form.validate_on_submit():
-        email    = form.email.data.lower()
-        password = form.password.data
+    if "username" not in session:
+        # Check if user has submitted the form and all inputs are valid
+        if form.validate_on_submit():
+            email    = form.email.data.lower()
+            password = form.password.data
 
-        # Check if user exists in MongoDB using their email
-        user = User.find_user_by_email(email)
+            # Check if user exists in MongoDB using their email
+            user = User.find_user_by_email(email)
 
-        if user:
-            # Check if password is correct
-            correct_password = user["password"]
-            if check_password_hash(correct_password, password):
-                # Put user's info in session
-                session["email"] = user["email"]
-                session["role"] = user["role"]
-                session["username"] = user["username"]
-                return redirect(url_for("users.profile", username=session["username"]))
+            if user:
+                # Check if password is correct
+                correct_password = user["password"]
+                if check_password_hash(correct_password, password):
+                    # Put user's info in session
+                    session["email"] = user["email"]
+                    session["role"] = user["role"]
+                    session["username"] = user["username"]
+                    return redirect(url_for("users.profile", username=session["username"]))
+                else:
+                    form.password.errors.append("Incorrect password")
             else:
-                form.password.errors.append("Incorrect password")
-        else:
-            flash("Incorrect email and/or password")
-            return redirect(url_for("users.login"))
+                flash("Incorrect email and/or password")
+                return redirect(url_for("users.login"))
 
-    return render_template("login.html", form=form)
+        return render_template("login.html", form=form)
+
+    return redirect(url_for("users.profile", username=session["username"]))
 
 
 # --------------- Log out user ----------------

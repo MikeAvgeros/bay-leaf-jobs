@@ -112,7 +112,7 @@ class Application():
     Class representing a job application
     """
     def __init__(self, notice_period, current_salary, desired_salary, 
-                resume, cover_letter, applied_for, developer):
+                resume, cover_letter, job, applicant, email):
         """
         Initialize application attributes
         """
@@ -121,8 +121,9 @@ class Application():
         self.desired_salary = desired_salary
         self.resume         = resume
         self.cover_letter   = cover_letter
-        self.applied_for    = applied_for
-        self.developer      = developer
+        self.job            = job
+        self.applicant      = applicant
+        self.email          = email
 
 
     def get_application_info(self):
@@ -134,8 +135,9 @@ class Application():
                 "desired_salary" : self.desired_salary,
                 "resume url"     : self.resume,
                 "cover_letter"   : self.cover_letter,
-                "applied_for"    : self.applied_for,
-                "application_by" : self.developer}
+                "job_id"         : self.job,
+                "applicant"      : self.applicant,
+                "email"          : self.email}
         return info
 
 

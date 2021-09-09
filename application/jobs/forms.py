@@ -110,10 +110,5 @@ class ApplicationForm(FlaskForm):
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!")
 								])
-	cover_letter	= TextAreaField("Cover Letter *",
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!"),
-									Length(min=100, max=500, message="Cover letter must be between 100 and 500 characters long")
-								])
+	cover_letter	= URLField("Cover Letter URL")
 	submit 			= SubmitField("Apply")

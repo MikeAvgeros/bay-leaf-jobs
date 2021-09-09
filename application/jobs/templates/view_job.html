@@ -37,6 +37,10 @@
                     class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
                     Delete
                 </a>
+                <a href="{{ url_for('jobs.view_applicants', job_id=job['_id']) }}" 
+                    class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
+                    Applicants
+                </a>
                 {% else %}
                 {% endif %}
             </div>

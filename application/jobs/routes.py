@@ -138,11 +138,12 @@ def apply_to_job(job_id):
             desired_salary  = form.desired_salary.data
             resume          = form.resume.data
             cover_letter    = form.cover_letter.data
-            applied_for     = job_id
-            developer       = session["username"]
+            job             = job_id
+            applicant       = session["username"]
+            email           = session["email"]
 
             application = Application(notice_period, current_salary, desired_salary, 
-                                    resume, cover_letter, applied_for, developer)
+                                    resume, cover_letter, job, applicant, email)
             application.insert_into_database()
             flash("Congratulations! You have applied to the job.")
             return redirect(url_for("main.home"))
@@ -179,3 +180,12 @@ def create_job():
         return redirect(url_for("main.home"))
 
     return render_template("create_job.html", form=form)
+
+
+# --------------- View Applicants -----------------
+@jobs.route("/<job_id>/applicants", methods=["GET", "POST"])
+def view_applicants(job_id):
+    # Check if job exists
+    job = Job.find_job_by_id(job_id)
+    applications = Application.find_all_applications()
+    return render_template("view_applicants.html", job=job, applications=applications)

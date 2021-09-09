@@ -35,6 +35,7 @@ body {
     display: grid;
     grid-area: logo;
     margin-top: .5rem;
+    margin-left: .5rem;
 }
 
 .main-links {

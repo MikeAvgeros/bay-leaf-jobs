@@ -272,33 +272,3 @@ class User():
         Delete a user in MongoDB
         """
         mongo.db.users.delete_one({"_id": ObjectId(user_id)})
-
-
-class Contact():
-    """
-    Class representing a contact message from a user
-    """
-    def __init__(self, name, email, body):
-        """
-        Initialize contact message attributes
-        """
-        self.name      = name
-        self.email     = email
-        self.body      = body
-
-
-    def get_contact_info(self):
-        """
-        Creates dictionary with the contact message information
-        """
-        info = {"name"     : self.name.lower(),
-                "email"    : self.email.lower(),
-                "body"     : self.body}
-        return info
-
-
-    def insert_into_database(self):
-        """
-        Add contact message in MongoDB
-        """
-        mongo.db.contact.insert_one(self.get_contact_info())

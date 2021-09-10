@@ -11,21 +11,36 @@
       </a>
 
       <ul class="hide-on-med-and-down main-links">
-        <li><a href="{{ url_for('main.home') }}">Home</a></li>
-        <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('main.home') }}" 
+          aria-label="Go to home page">Home</a>
+        </li>
+        <li><a href="{{ url_for('main.contact') }}" 
+          aria-label="Go to contact page">Contact</a>
+        </li>
       </ul>
       <ul class="hide-on-med-and-down user-links">
         {% if session.email %}
-          <li><a href="{{ url_for('users.profile', username=session['username']) }}">Profile</a></li>
+          <li><a href="{{ url_for('users.profile', username=session['username']) }}"
+            aria-label="Go to profile page">Profile</a>
+          </li>
           {% if session.role == "Developer" %}
-            <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
+            <li><a href="{{ url_for('jobs.view_jobs') }}"
+              aria-label="Go to jobs page">View Jobs</a>
+            </li>
           {% elif session.role == "Recruiter" %}
-            <li><a href="{{ url_for('jobs.create_job') }}">Create Job</a></li>
+            <li><a href="{{ url_for('jobs.create_job') }}"
+              aria-label="Create a job post">Create Job</a></li>
           {% endif %}
-          <li><a href="{{ url_for('users.logout') }}">Sign Out</a></li>
+          <li><a href="{{ url_for('users.logout') }}"
+            aria-label="Log out from your account">Sign Out</a>
+          </li>
         {% else %}
-          <li><a href="{{ url_for('users.login') }}">Sign In</a></li>
-          <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
+          <li><a href="{{ url_for('users.login') }}"
+            aria-label="Sign in to your account">Sign In</a>
+          </li>
+          <li><a class="btn-large" href="{{ url_for('users.register') }}"
+            aria-label="Create an account">Register</a>
+          </li>
         {% endif %}
       </ul>
     </div>
@@ -33,19 +48,30 @@
 
   <!-- Mobile Sidenav -->
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="{{ url_for('main.home') }}">Home</a></li>
-    <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+    <li><a href="{{ url_for('main.home') }}"
+      aria-label="Got to home page">Home</a>
+    </li>
+    <li><a href="{{ url_for('main.contact') }}"
+      aria-label="Go to contact page">Contact</a>
+    </li>
     {% if session.email %}
-      <li><a href="{{ url_for('users.profile', username=session['username']) }}">Profile</a></li>
+      <li><a href="{{ url_for('users.profile', username=session['username']) }}"
+        aria-label="Go to profile page">Profile</a></li>
       {% if session.role == "Developer" %}
-        <li><a href="{{ url_for('jobs.view_jobs') }}">View Jobs</a></li>
+        <li><a href="{{ url_for('jobs.view_jobs') }}"
+          aria-label="Go to jobs page">View Jobs</a>
+        </li>
       {% elif session.role == "Recruiter" %}
-        <li><a href="{{ url_for('jobs.create_job') }}">Create Job</a></li>
+        <li><a href="{{ url_for('jobs.create_job') }}"
+          aria-label="Create a job post">Create Job</a></li>
       {% endif %}
-      <li><a href="{{ url_for('users.logout') }}">Sign Out</a></li>
+      <li><a href="{{ url_for('users.logout') }}"
+        aria-label="Log out from your account">Sign Out</a></li>
     {% else %}
-      <li><a href="{{ url_for('users.login') }}">Sign In</a></li>
-      <li><a class="btn-large" href="{{ url_for('users.register') }}">Register</a></li>
+      <li><a href="{{ url_for('users.login') }}"
+        aria-label="Sign in to your account">Sign In</a></li>
+      <li><a class="btn-large" href="{{ url_for('users.register') }}"
+        aria-label="Create an account">Register</a></li>
     {% endif %}
   </ul>
 </header>

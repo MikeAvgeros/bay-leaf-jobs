@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, TextAreaField
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired, DataRequired, Length
 
 
@@ -10,7 +11,7 @@ class ContactForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Company must be between 5 and 50 characters long")
 								])
-    email		= StringField("Email *",
+    email		= EmailField("Email *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),

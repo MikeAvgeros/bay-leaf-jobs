@@ -26,35 +26,36 @@ def contact():
         email       = form.email.data.lower()
         body        = form.body.data
 
-        sender_email = os.environ.get('MAIL_DEFAULT_SENDER')
-        recipients = [sender_email, email]
-        for recipient in recipients:
-            if recipient == sender_email:
-                message = (f"<h3>Hello</h3>"
-                            "<p>Message from the website:</p>"
-                            f"<p><b>Name:</b> {name}</p> "
-                            f"<p><b>Email:</b> {email}</p> "
-                            f"<p><b>Message:</b> {body} </p>")
-                subject = f"New query from: {name}"
+        admin_mail = os.environ.get('MAIL_DEFAULT_SENDER')
+        recipients = [admin_mail, email]
+        with mail.connect() as conn:
+            for recipient in recipients:
+                if recipient == admin_mail:
+                    message = (f"<h3>Hello</h3>"
+                                "<p>Message from the website:</p>"
+                                f"<p><b>Name:</b> {name}</p> "
+                                f"<p><b>Email:</b> {email}</p> "
+                                f"<p><b>Message:</b> {body} </p>")
+                    subject = f"New query from: {name}"
 
-            elif recipient == email:
-                message = (f"<h3>Hello {name},</h3>"
-                            "<p>We have received your message and aim"
-                            " to respond within the next 3 working days."
-                            "</p>"
-                            "<p>All the best,</p>"
-                            "<p>The team at bayleafjobs</p>"
-                            )
-                subject = 'Thank your for getting in touch!'
+                elif recipient == email:
+                    message = (f"<h3>Hello {name},</h3>"
+                                "<p>We have received your message and aim"
+                                " to respond within the next 3 working days."
+                                "</p>"
+                                "<p>All the best,</p>"
+                                "<p>The team at bayleafjobs</p>"
+                                )
+                    subject = 'Thank your for getting in touch!'
 
-            msg = Message(recipients=[recipient],
-                        html=message,
-                        subject=subject)
+                msg = Message(recipients=[recipient],
+                            html=message,
+                            subject=subject)
 
-            mail.send(msg)
+                conn.send(msg)
 
-        flash("Request submitted successfully")
-        return redirect(url_for("main.home"))
+            flash("Request submitted successfully")
+            return redirect(url_for("main.home"))
 
     return render_template("contact.html", form=form)
 

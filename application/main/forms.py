@@ -9,13 +9,13 @@ class ContactForm(FlaskForm):
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
-									Length(min=5, max=50, message="Company must be between 5 and 50 characters long")
+									Length(min=2, max=30, message="Name must be between 2 and 30 characters long")
 								])
     email		= EmailField("Email *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
-									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
+									Length(min=5, max=50, message="Email must be between 5 and 50 characters long")
 								])
     body		= TextAreaField("Message *",
 								validators=[

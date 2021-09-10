@@ -1,7 +1,6 @@
 import os
 from flask import render_template, Blueprint, flash, redirect, url_for
 from application.main.forms import ContactForm
-from application.models import Job
 from application import mail
 from flask_mail import Message
 

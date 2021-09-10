@@ -2,6 +2,7 @@ from flask import (render_template, request, redirect, session,
                     url_for, flash, Blueprint)
 from application import mongo, mail
 from flask_mail import Message
+from functools import wraps
 from application.models import Application, Job
 from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
 
@@ -9,8 +10,23 @@ from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
 jobs = Blueprint('jobs', __name__, template_folder="templates")
 
 
+# ---------- Login required security -----------
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        # Checks if email is in session to verify is user has signed in
+        if "email" in session:
+            return f(*args, **kwargs)
+        else:
+            flash("You must sign in to access this page!")
+            return redirect(url_for("users.login"))
+    return wrap
+
+
 # --------------- All jobs -----------------
+
 @jobs.route("/jobs")
+@login_required
 def view_jobs():
     jobs = Job.find_all_jobs()
     return render_template("view_jobs.html", jobs=jobs)
@@ -18,6 +34,7 @@ def view_jobs():
 
 # --------------- Filter jobs ----------------
 @jobs.route("/jobs/search", methods=["GET", "POST"])
+@login_required
 def filter_jobs():
     if request.method == "POST":
         query = request.form.get("search").lower()
@@ -41,6 +58,7 @@ def filter_jobs():
 
 # --------------- Single job ----------------
 @jobs.route("/job/<job_id>")
+@login_required
 def view_job(job_id):
     job = Job.find_job_by_id(job_id)
     return render_template("view_job.html", job=job)
@@ -48,16 +66,134 @@ def view_job(job_id):
 
 # --------------- Update job ----------------
 @jobs.route("/job/<job_id>/update", methods=["GET", "POST"])
+@login_required
 def update_job(job_id):
     # Find job in MongoD by its job id
     job = Job.find_job_by_id(job_id)
 
-    # Check if job exists in MongoDB
-    if job:
-        # Instantiate the updateprofile form
-        form = UpdateJobForm()
+    if session["role"] == "Recruiter":
+        # Check if job exists in MongoDB
+        if job:
+            # Instantiate the updateprofile form
+            form = UpdateJobForm()
 
-        # Check if user has submitted the form and all inputs are valid
+            # Check if user has submitted the form and all inputs are valid
+            if form.validate_on_submit():
+                company          = form.company.data
+                position	     = form.position.data
+                stack            = form.stack.data
+                description      = form.description.data
+                responsibilities = form.responsibilities.data
+                requirements     = form.requirements.data
+                salary		     = form.salary.data
+                location	     = form.location.data
+                contract         = form.contract.data
+                level            = form.level.data
+
+                # Register info based on what the user submitted on the form
+                updated_info = {
+                    "company"          : company,
+                    "position"         : position,
+                    "stack"            : stack,
+                    "description"      : description,
+                    "responsibilities" : responsibilities,
+                    "requirements"     : requirements,
+                    "salary"           : salary,
+                    "location"         : location,
+                    "contract"         : contract,
+                    "level"            : level
+                }
+
+                # Update job's info using the registered updated info.
+                Job.edit_job(job["_id"], updated_info)
+                flash("The job has been updated!")
+                return redirect(url_for("users.profile", username=session["username"]))
+
+            # Populate form data based on existing job info        
+            form.company.data          = job["company"].capitalize()
+            form.position.data         = job["position"].capitalize()
+            form.stack.data            = job["stack"]
+            form.description.data      = job["description"]
+            form.responsibilities.data = job["responsibilities"]
+            form.requirements.data     = job["requirements"]
+            form.salary.data           = job["salary"]
+            form.location.data         = job["location"]
+            form.contract.data         = job["contract"]
+            form.level.data            = job["level"]
+
+            return render_template("update_job.html", form=form)
+
+        flash("This job does not exist.")
+        return redirect(url_for("main.home"))
+
+    flash("This page can only be accessed by recruiters.")
+    return redirect(url_for("main.home"))
+
+
+# --------------- Delete job ----------------
+@jobs.route("/job/<job_id>/delete", methods=["POST"])
+@login_required
+def delete_job(job_id):
+    # Check if job exists in MongoDB
+    job = Job.find_job_by_id(job_id)
+
+    if session["role"] == "Recruiter":
+        if job:
+            Job.delete_job(job_id)
+            flash("Job successfully deleted")
+            return redirect(url_for("users.profile", username=session["username"]))
+
+        flash("This job does not exist")
+        return redirect(url_for("main.home"))
+
+    flash("This page can only be accessed by recruiters.")
+    return redirect(url_for("main.home"))
+
+
+# --------------- Apply to job ----------------
+@jobs.route("/job/<job_id>/apply", methods=["GET", "POST"])
+@login_required
+def apply_to_job(job_id):
+    # Check if job exists
+    job = Job.find_job_by_id(job_id)
+
+    if session["role"] == "Developer":
+        if job:
+            # Instantiate the Application form
+            form = ApplicationForm()
+
+            if form.validate_on_submit():
+                notice_period   = form.notice_period.data
+                current_salary  = form.current_salary.data
+                desired_salary  = form.desired_salary.data
+                resume          = form.resume.data
+                cover_letter    = form.cover_letter.data
+                job             = job_id
+                applicant       = session["username"]
+                email           = session["email"]
+
+                application = Application(notice_period, current_salary, desired_salary, 
+                                        resume, cover_letter, job, applicant, email)
+                application.insert_into_database()
+                flash("Congratulations! You have applied to the job.")
+                return redirect(url_for("main.home"))
+
+            return render_template("job_application.html", form=form)
+
+        flash("Job does not longer exist")
+        return redirect(url_for("main.home"))
+
+    flash("This page can only be accessed by recruiters.")
+    return redirect(url_for("main.home"))
+
+    
+# --------------- Create new job ----------------
+@jobs.route("/create_job", methods=["GET", "POST"])
+@login_required
+def create_job():
+    form = CreateJobForm()
+
+    if session["role"] == "Recruiter":
         if form.validate_on_submit():
             company          = form.company.data
             position	     = form.position.data
@@ -69,123 +205,30 @@ def update_job(job_id):
             location	     = form.location.data
             contract         = form.contract.data
             level            = form.level.data
+            posted_by        = session["username"]
 
-            # Register info based on what the user submitted on the form
-            updated_info = {
-                "company"          : company,
-                "position"         : position,
-                "stack"            : stack,
-                "description"      : description,
-                "responsibilities" : responsibilities,
-                "requirements"     : requirements,
-                "salary"           : salary,
-                "location"         : location,
-                "contract"         : contract,
-                "level"            : level
-            }
+            job = Job(company, position, stack, description, responsibilities,
+            requirements, salary, location, contract, level, posted_by)
+            job.insert_into_database()
 
-            # Update job's info using the registered updated info.
-            Job.edit_job(job["_id"], updated_info)
-            flash("The job has been updated!")
-            return redirect(url_for("users.profile", username=session["username"]))
-
-        # Populate form data based on existing job info        
-        form.company.data          = job["company"].capitalize()
-        form.position.data         = job["position"].capitalize()
-        form.stack.data            = job["stack"]
-        form.description.data      = job["description"]
-        form.responsibilities.data = job["responsibilities"]
-        form.requirements.data     = job["requirements"]
-        form.salary.data           = job["salary"]
-        form.location.data         = job["location"]
-        form.contract.data         = job["contract"]
-        form.level.data            = job["level"]
-
-        return render_template("update_job.html", form=form)
-
-    flash("This job does not exist")
-    return redirect(url_for("main.home"))
-
-
-# --------------- Delete job ----------------
-@jobs.route("/job/<job_id>/delete", methods=["POST"])
-def delete_job(job_id):
-    # Check if job exists in MongoDB
-    job = Job.find_job_by_id(job_id)
-
-    if job:
-        Job.delete_job(job_id)
-        flash("Job successfully deleted")
-        return redirect(url_for("users.profile", username=session["username"]))
-
-    flash("This job does not exist")
-    return redirect(url_for("main.home"))
-
-
-# --------------- Apply to job ----------------
-@jobs.route("/job/<job_id>/apply", methods=["GET", "POST"])
-def apply_to_job(job_id):
-    # Check if job exists
-    job = Job.find_job_by_id(job_id)
-
-    if job:
-        # Instantiate the Application form
-        form = ApplicationForm()
-
-        if form.validate_on_submit():
-            notice_period   = form.notice_period.data
-            current_salary  = form.current_salary.data
-            desired_salary  = form.desired_salary.data
-            resume          = form.resume.data
-            cover_letter    = form.cover_letter.data
-            job             = job_id
-            applicant       = session["username"]
-            email           = session["email"]
-
-            application = Application(notice_period, current_salary, desired_salary, 
-                                    resume, cover_letter, job, applicant, email)
-            application.insert_into_database()
-            flash("Congratulations! You have applied to the job.")
+            flash("Congratulations! You have created a new job.")
             return redirect(url_for("main.home"))
 
-        return render_template("job_application.html", form=form)
+        return render_template("create_job.html", form=form)
 
-    flash("Job does not longer exist")
+    flash("This page can only be accessed by recruiters.")
     return redirect(url_for("main.home"))
-
-    
-# --------------- Create new job ----------------
-@jobs.route("/create_job", methods=["GET", "POST"])
-def create_job():
-    form = CreateJobForm()
-    
-    if form.validate_on_submit():
-        company          = form.company.data
-        position	     = form.position.data
-        stack            = form.stack.data
-        description      = form.description.data
-        responsibilities = form.responsibilities.data
-        requirements     = form.requirements.data
-        salary		     = form.salary.data
-        location	     = form.location.data
-        contract         = form.contract.data
-        level            = form.level.data
-        posted_by        = session["username"]
-
-        job = Job(company, position, stack, description, responsibilities,
-        requirements, salary, location, contract, level, posted_by)
-        job.insert_into_database()
-
-        flash("Congratulations! You have created a new job.")
-        return redirect(url_for("main.home"))
-
-    return render_template("create_job.html", form=form)
 
 
 # --------------- View Applicants -----------------
 @jobs.route("/<job_id>/applicants", methods=["GET", "POST"])
+@login_required
 def view_applicants(job_id):
-    # Check if job exists
-    job = Job.find_job_by_id(job_id)
-    applications = Application.find_all_applications()
-    return render_template("view_applicants.html", job=job, applications=applications)
+    if session["role"] == "Recruiter":
+        # Check if job exists
+        job = Job.find_job_by_id(job_id)
+        applications = Application.find_all_applications()
+        return render_template("view_applicants.html", job=job, applications=applications)
+
+    flash("This page can only be accessed by recruiters.")
+    return redirect(url_for("main.home"))

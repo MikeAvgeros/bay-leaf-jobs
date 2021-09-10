@@ -133,7 +133,7 @@ class Application():
         info = {"notice_period"  : self.notice_period,
                 "current_salary" : self.current_salary,
                 "desired_salary" : self.desired_salary,
-                "resume url"     : self.resume,
+                "resume"         : self.resume,
                 "cover_letter"   : self.cover_letter,
                 "job_id"         : self.job,
                 "applicant"      : self.applicant,

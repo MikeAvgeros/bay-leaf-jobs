@@ -29,19 +29,20 @@
             </div>
             <div class="card-action">
               <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn-small">Update</a>
+              aria-label="Update Profile" class="waves-effect waves-light btn-small">Update</a>
               <a href="{{ url_for('users.delete_profile', username=session['username']) }}" 
-              class="waves-effect waves-light btn-small" style="margin-left: 1rem;">Delete</a>
+              aria-label="Delete Profile" class="waves-effect waves-light btn-small" 
+              style="margin-left: 1rem;">Delete</a>
             </div>
           </div>
         </div>
           {% if session.role == "Developer" %}
             <h4 class="center-align section-subheading">Jobs you applied for</h4>
             <div class="row">
-              {% for application in applications if username|lower == application.application_by|lower %}
-                {% for job in jobs if job._id|string == application.applied_for|string %}
+              {% for application in applications if username|lower == application.applicant|lower %}
+                {% for job in jobs if job._id|string == application.job_id|string %}
                 <div class="col s12 m6 offset-m1">
-                  <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                  <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View jobs you applied">
                     <div class="card job-card z-depth-3">
                       <div class="card-content">
                         <p class="card-title"><i class="fas fa-user-tie prefix"></i> 
@@ -77,7 +78,7 @@
             <div class="row">
               {% for job in jobs if username|lower == job.posted_by|lower %}
                 <div class="col s12 m6 offset-m1">
-                  <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}">
+                  <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View jobs you posted">
                     <div class="card job-card z-depth-3">
                       <div class="card-content">
                         <p class="card-title"><i class="fas fa-user-tie prefix"></i> 

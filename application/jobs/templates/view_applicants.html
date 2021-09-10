@@ -7,11 +7,10 @@
         <h2 class="center-align section-heading">View Applicants</h2>
         <div class="col s12 breakline-row"><hr class="breakline" /></div>
         <div class="row">
-            {% for application in applications if application.job|string == job._id|string %}
+            {% for application in applications if application.job_id|string == job._id|string %}
                 <div class="col s12 m5">
                     <div class="card job-card z-depth-4">
                         <div class="card-content">
-                            <img class="responsive-img" src="{{ url_for('static', filename='images/empty-office.jpg')}}">
                             <br>
                             <p>Applicant's Name:
                                 {{ application.applicant.capitalize() }}
@@ -33,11 +32,15 @@
                                 {{ application.desired_salary }}
                             </p>
                             <br>
-                            <a href="{{ url_for(application.resume) }}">Resume</a>
+                            <a class="white-text" href="{{ application.resume }}" 
+                            aria-label="View Resume" target="_blank" rel="noopener">Resume
+                            </a>
+                            <br>
                             {% if application.cover_letter %}
                                 <br>
-                                <a href="{{ url_for(application.cover_letter) }}">Cover Letter</a>
-                                <br>
+                                <a class="white-text" href="{{ application.cover_letter }}" 
+                                aria-label="View Cover Letter" target="_blank" rel="noopener">Cover Letter
+                                </a>
                             {% endif %}
                         </div>
                     </div>

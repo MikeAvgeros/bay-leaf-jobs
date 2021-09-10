@@ -14,8 +14,7 @@ main = Blueprint('main', __name__, template_folder="templates")
 @main.route("/home")
 @main.route("/index")
 def home():
-    jobs = Job.find_all_jobs()
-    return render_template("home.html", jobs=jobs)
+    return render_template("home.html")
 
 
 # --------------- Contact page ----------------

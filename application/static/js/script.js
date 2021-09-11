@@ -3,3 +3,8 @@ $(document).ready(function(){
     $(".tooltipped").tooltip();
     $('select').formSelect();
 });
+
+function delete_flash() {
+    const flash = document.querySelector('.flash-message');
+    flash.remove();
+}

@@ -165,16 +165,15 @@ nav .brand-logo {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    border: 1px solid var(--gray);
+    border: 1px solid var(--very-dark-blue);
     border-radius: 5px;
     background-color: var(--cyan);
     width: 50%;
-    height: 10%;
 }
 
 .message {
     display: flex;
-    padding-left: 1rem;
+    padding-left: 12.5vw;
 }
 
 .close {
@@ -182,7 +181,11 @@ nav .brand-logo {
     display: flex;
     border: none;
     background: none;
-    margin-left: 5rem;
+    margin-left: 12.5vw;
+}
+
+.close:hover {
+    color: white;
 }
 
 a:hover,

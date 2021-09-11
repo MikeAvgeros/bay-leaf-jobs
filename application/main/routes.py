@@ -1,3 +1,4 @@
+from config import Config
 import os
 from flask import render_template, Blueprint, flash, redirect, url_for
 from application.main.forms import ContactForm
@@ -25,8 +26,8 @@ def contact():
         email       = form.email.data
         body        = form.body.data
 
-        sender_mail = os.environ.get('MAIL_USERNAME')
-        password = os.environ.get('MAIL_PASSWORD')
+        sender_mail = Config.MAIL_USERNAME
+        password = Config.MAIL_PASSWORD
         recipients = [sender_mail, email]
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()

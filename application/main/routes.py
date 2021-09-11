@@ -1,5 +1,4 @@
 from config import Config
-import os
 from flask import render_template, Blueprint, flash, redirect, url_for
 from application.main.forms import ContactForm
 import smtplib
@@ -30,6 +29,7 @@ def contact():
         password = Config.MAIL_PASSWORD
         recipients = [sender_mail, email]
         server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.ehlo()
         server.starttls()
         server.login(sender_mail, password)
         for recipient in recipients:

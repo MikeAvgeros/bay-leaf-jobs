@@ -3,8 +3,6 @@ from flask import (
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
-from application import mail
-from flask_mail import Message
 from functools import wraps
 from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 

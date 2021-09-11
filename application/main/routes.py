@@ -1,8 +1,7 @@
 import os
 from flask import render_template, Blueprint, flash, redirect, url_for
 from application.main.forms import ContactForm
-from application import mail
-from flask_mail import Message
+import smtplib
 
 
 main = Blueprint('main', __name__, template_folder="templates")
@@ -22,40 +21,36 @@ def contact():
     form = ContactForm()
 
     if form.validate_on_submit():
-        name        = form.name.data.lower()
-        email       = form.email.data.lower()
+        name        = form.name.data
+        email       = form.email.data
         body        = form.body.data
 
-        admin_mail = os.environ.get('MAIL_DEFAULT_SENDER')
-        recipients = [admin_mail, email]
-        with mail.connect() as conn:
-            for recipient in recipients:
-                if recipient == admin_mail:
-                    message = (f"<h3>Hello</h3>"
-                                "<p>Message from the website:</p>"
-                                f"<p><b>Name:</b> {name}</p> "
-                                f"<p><b>Email:</b> {email}</p> "
-                                f"<p><b>Message:</b> {body} </p>")
-                    subject = f"New query from: {name}"
+        sender_mail = os.environ.get('MAIL_USERNAME')
+        password = os.environ.get('MAIL_PASSWORD')
+        recipients = [sender_mail, email]
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_mail, password)
+        for recipient in recipients:
+            if recipient == sender_mail:
+                message = f"""
+                You have a new message from the website.
+                Name: {name}
+                Email: {email}
+                Message: {body}
+                """
+                server.sendmail(sender_mail, recipient, message)
 
-                elif recipient == email:
-                    message = (f"<h3>Hello {name},</h3>"
-                                "<p>We have received your message and aim"
-                                " to respond within the next 3 working days."
-                                "</p>"
-                                "<p>All the best,</p>"
-                                "<p>The team at bayleafjobs</p>"
-                                )
-                    subject = 'Thank your for getting in touch!'
+            elif recipient == email:
+                message = f"""
+                Hello {name}.
+                Thank you for getting in touch with bayleafjobs.
+                We'll aim to reply within the next 2 working days.
+                """
+                server.sendmail(sender_mail, recipient, message)
 
-                msg = Message(recipients=[recipient],
-                            html=message,
-                            subject=subject)
-
-                conn.send(msg)
-
-            flash("Request submitted successfully")
-            return redirect(url_for("main.home"))
+        flash("Your message was submitted successfully")
+        return redirect(url_for("main.home"))
 
     return render_template("contact.html", form=form)
 

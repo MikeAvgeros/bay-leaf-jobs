@@ -1,7 +1,6 @@
 from flask import (render_template, request, redirect, session, 
                     url_for, flash, Blueprint)
-from application import mongo, mail
-from flask_mail import Message
+from application import mongo
 from functools import wraps
 from application.models import Application, Job
 from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm

@@ -36,8 +36,11 @@ def contact():
             if recipient == sender_mail:
                 message = f"""
                 You have a new message from the website.
+
                 Name: {name}
+
                 Email: {email}
+
                 Message: {body}
                 """
                 server.sendmail(sender_mail, recipient, message)
@@ -45,7 +48,9 @@ def contact():
             elif recipient == email:
                 message = f"""
                 Hello {name}.
+
                 Thank you for getting in touch with bayleafjobs.
+                
                 We'll aim to reply within the next 2 working days.
                 """
                 server.sendmail(sender_mail, recipient, message)

@@ -4,6 +4,8 @@ from flask import (
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
 from functools import wraps
+import smtplib
+from config import Config
 from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 
 
@@ -47,6 +49,39 @@ def register():
             # Create an instance of User with the info the user submitter on the form
             user = User(username, email, password, location, role)
             user.insert_into_database()
+            sender_mail = Config.MAIL_USERNAME
+            password = Config.MAIL_PASSWORD
+            recipients = [sender_mail, email]
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.ehlo()
+            server.starttls()
+            server.login(sender_mail, password)
+            for recipient in recipients:
+                if recipient == sender_mail:
+                    message = f"""
+                    A new user has registered on the website.
+
+                    Name: {username.capitalize()}
+
+                    Email: {email}
+
+                    Location: {location}
+
+                    Role: {role}
+                    """
+                    server.sendmail(sender_mail, recipient, message)
+
+                elif recipient == email:
+                    message = f"""
+                    Hello {username}.
+                    
+                    Thank you for registering with bayleafjobs.
+
+                    We are excited to have you join us and hope you have success in finding your perfect job!
+
+                    The Team at bayleafjobs!
+                    """
+                    server.sendmail(sender_mail, recipient, message)
             flash("You are registered successfully. You can now sign in.")
             return redirect(url_for("users.login"))
 

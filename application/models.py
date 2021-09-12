@@ -160,7 +160,7 @@ class User():
     Class representing a user 
     """
     
-    def __init__(self, username, email, password, location, role):
+    def __init__(self, username, email, password, location, role, picture):
         """
         Initialize user attributes
         """
@@ -169,6 +169,7 @@ class User():
         self.password      = generate_password_hash(password)
         self.location      = location
         self.role          = role
+        self.picture       = picture
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -182,7 +183,8 @@ class User():
                 "email"    : self.email.lower(),
                 "password" : self.password,
                 "location" : self.location,
-                "role"     : self.role}
+                "role"     : self.role,
+                "picture"  : self.picture}
         return info
 
     

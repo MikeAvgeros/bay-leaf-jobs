@@ -41,6 +41,7 @@ def register():
             password    = form.password.data
             location    = form.location.data
             role        = form.role.data
+            picture     = ""
 
             # Find user in MongoDB by their username
             existing_user = User.find_user_by_username(username)
@@ -51,7 +52,7 @@ def register():
                 return redirect(url_for("users.register"))
 
             # Create an instance of User with the info the user submitter on the form
-            user = User(username, email, password, location, role)
+            user = User(username, email, password, location, role, picture)
             # Add user to MongoDB
             user.insert_into_database()
 
@@ -207,6 +208,7 @@ def update_profile(username):
         form.username.data  = user["username"]
         form.email.data     = user["email"]
         form.location.data  = user["location"]
+        form.picture.data  = user["picture"]
 
         return render_template("update_profile.html", form=form)
 

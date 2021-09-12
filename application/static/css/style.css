@@ -173,7 +173,7 @@ nav .brand-logo {
 
 .message {
     display: flex;
-    padding-left: 12.5vw;
+    margin-left: 15vw;
 }
 
 .close {
@@ -181,7 +181,8 @@ nav .brand-logo {
     display: flex;
     border: none;
     background: none;
-    margin-left: 12.5vw;
+    margin-left: 15vw;
+    font-size: larger;
 }
 
 .close:hover {

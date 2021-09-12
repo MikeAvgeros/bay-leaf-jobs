@@ -39,25 +39,31 @@
     <div class="col s12 m6 l6 offset-l1">
       <h4 class="center-align section-subheading">Information</h4>
       {% if session.role == "Developer" %}
-      <p class="justify-text">
-        On your profile page you will find all the jobs you have applied for.
+      <p>
+        Hello {{ username }}. On your profile page you will be able to find 
+        all the jobs you have applied for.
         You can follow up the progress of your application by contacting the
-        recruiter for the job.
+        recruiter. You can view the email of the recruiter upon opening the full
+        job description by clicking on the card below. 
+        Please allow at least a week before following up. This is 
+        to avoid overwhelming the recruiters so that they can reply to all the 
+        successful candidates as fast as possible.
       </p>
       <br>
-      <p class="justify-text">
-        You can update your profile details and upload a picture by
+      <p>
+        You can update your profile details and upload a profile picture by
         clicking the update button. 
-        You can delete your profile by clicking the delete button.
+        You can also delete your profile by clicking the delete button if you no 
+        longer wish to use our services.
       </p>
       {% elif session.role == "Recruiter" %}
-      <p class="justify-text">
+      <p>
         On your profile page you will find all the jobs you have applied for.
         You can follow up the progress of your application by contacting the
         recruiter for the job.
       </p>
       <br>
-      <p class="justify-text">
+      <p>
         You can update your profile details and upload a picture by
         clicking the update button. 
         You can delete your profile by clicking the delete button.
@@ -77,29 +83,29 @@
             <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View jobs you applied">
               <div class="card job-card z-depth-3">
                 <div class="card-content">
-                  <p class="card-title"><i class="fas fa-user-tie prefix"></i> 
+                  <p><i class="fas fa-user-tie prefix white-text"></i> 
                     {{ job.position.capitalize() }}
                   </p>
                   <br>
-                  <p><i class="fas fa-building prefix"></i> 
+                  <p><i class="fas fa-building prefix white-text"></i> 
                     {{ job.company.capitalize() }}
                   </p>
                   <br>
-                  <p><i class="fas fa-info-circle prefix"></i> 
+                  <p><i class="fas fa-info-circle prefix white-text"></i> 
                     {{ job.location.capitalize() }} &middot; {{ job.contract.capitalize() }}
                   </p>
                   <br>
-                  <p><i class="fas fa-laptop-code prefix"></i>
+                  <p><i class="fas fa-laptop-code prefix white-text"></i>
                     {{ job.level.capitalize() }} &middot; {{ job.stack.capitalize() }}
                   </p>
                   <br>
                   {% if job.salary %}
-                    <p><i class="fas fa-money-check-alt prefix"></i>
+                    <p><i class="fas fa-money-check-alt prefix white-text"></i>
                         {{ job.salary }}
                     </p>
                     <br>
                   {% endif %}
-                  <p class="truncate"><i class="fas fa-info-circle prefix"></i> 
+                  <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
                       {{ job.description }}
                   </p>
                 </div>
@@ -117,29 +123,29 @@
             <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View jobs you posted">
               <div class="card job-card z-depth-3">
                 <div class="card-content">
-                  <p class="card-title"><i class="fas fa-user-tie prefix"></i> 
+                  <p><i class="fas fa-user-tie prefix white-text"></i> 
                     {{ job.position.capitalize() }}
                   </p>
                   <br>
-                  <p><i class="fas fa-building prefix"></i> 
+                  <p><i class="fas fa-building prefix white-text"></i> 
                     {{ job.company.capitalize() }}
                   </p>
                   <br>
-                  <p><i class="fas fa-map-marked-alt prefix"></i>
+                  <p><i class="fas fa-map-marked-alt prefix white-text"></i>
                     {{ job.location.capitalize() }} &middot; {{ job.contract.capitalize() }}
                   </p>
                   <br>
-                  <p><i class="fas fa-laptop-code prefix"></i>
+                  <p><i class="fas fa-laptop-code prefix white-text"></i>
                     {{ job.level.capitalize() }} &middot; {{ job.stack.capitalize() }}
                   </p>
                   <br>
                   {% if job.salary %}
-                    <p><i class="fas fa-money-check-alt prefix"></i>
+                    <p><i class="fas fa-money-check-alt prefix white-text"></i>
                         {{ job.salary }}
                     </p>
                     <br>
                   {% endif %}
-                  <p class="truncate"><i class="fas fa-info-circle prefix"></i> 
+                  <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
                       {{ job.description }}
                   </p>
                 </div>

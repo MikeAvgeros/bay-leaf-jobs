@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h2 class="center-align section-heading">Welcome {{ username.capitalize() }}</h2>
+      <h2 class="center-align section-heading">Welcome {{ username }}</h2>
       <div class="col s12 breakline-row"><hr class="breakline" /></div>
     </div>
   </div>
@@ -18,7 +18,7 @@
           {% else %}
             <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
           {% endif %}
-          <span class="card-title">{{ username.capitalize() }}</span>
+          <span class="card-title">{{ username }}</span>
         </div>
         <div class="card-content profile-content">
           <p><i class="fas fa-briefcase prefix"></i> {{ user.role }}</p>

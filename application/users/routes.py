@@ -4,9 +4,9 @@ from flask import (
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
 from functools import wraps
-import smtplib
-from config import Config
 from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
+from config import Config
+import smtplib
 
 
 users = Blueprint('users', __name__, template_folder="templates")
@@ -37,7 +37,7 @@ def register():
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
             username    = form.username.data
-            email       = form.email.data.lower()
+            email       = form.email.data
             password    = form.password.data
             location    = form.location.data
             role        = form.role.data
@@ -68,7 +68,7 @@ def register():
                     message = f"""
                     A new user has registered on the website.
 
-                    Name: {username.capitalize()}
+                    Name: {username}
 
                     Email: {email}
 
@@ -108,7 +108,7 @@ def login():
     if "username" not in session:
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            email    = form.email.data.lower()
+            email    = form.email.data
             password = form.password.data
 
             # Find user in MongoDB by their email
@@ -181,7 +181,7 @@ def update_profile(username):
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
             username    = form.username.data
-            email       = form.email.data.lower()
+            email       = form.email.data
             location    = form.location.data
             picture     = form.picture.data
 
@@ -204,9 +204,9 @@ def update_profile(username):
             return redirect(url_for("users.profile", username=session["username"]))
             
         # Populate form data based on existing user info
-        form.username.data  = user["username"].capitalize()
+        form.username.data  = user["username"]
         form.email.data     = user["email"]
-        form.location.data  = user["location"].capitalize()
+        form.location.data  = user["location"]
 
         return render_template("update_profile.html", form=form)
 

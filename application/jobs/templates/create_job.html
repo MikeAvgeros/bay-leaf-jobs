@@ -27,15 +27,6 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-laptop-code prefix"></i>
-                        {{ form.stack.label }}
-                        {{ form.stack(class="validate") }}
-                        {{ field_error_messages(form.stack) }}
-                        <label>Stack *</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
                         <i class="fas fa-map-marked-alt prefix"></i>
                         {{ form.location.label }}
                         {{ form.location(class="validate") }}
@@ -52,20 +43,29 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-calendar-alt prefix"></i>
-                        {{ form.contract.label }}
-                        {{ form.contract(class="validate") }}
-                        {{ field_error_messages(form.contract) }}
-                        <label>Contract *</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
                         <i class="fas fa-layer-group prefix"></i>
                         {{ form.level.label }}
                         {{ form.level(class="validate") }}
                         {{ field_error_messages(form.level) }}
                         <label>Level *</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-laptop-code prefix"></i>
+                        {{ form.stack.label }}
+                        {{ form.stack(class="validate") }}
+                        {{ field_error_messages(form.stack) }}
+                        <label>Stack *</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-calendar-alt prefix"></i>
+                        {{ form.contract.label }}
+                        {{ form.contract(class="validate") }}
+                        {{ field_error_messages(form.contract) }}
+                        <label>Contract *</label>
                     </div>
                 </div>
                 <div class="row">

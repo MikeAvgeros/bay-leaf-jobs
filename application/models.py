@@ -7,24 +7,25 @@ class Job():
     """
     Class representing a job post
     """
-    def __init__(self, company, position, stack, description, 
+    def __init__(self, company, position, description, 
                 responsibilities, requirements, salary, location, 
-                contract, level, posted_by, email):
+                level, stack, contract, posted_by, email, date_posted):
         """
         Initialize job attributes
         """
         self.company           = company
         self.position          = position
-        self.stack             = stack
         self.description       = description
         self.responsibilities  = responsibilities
         self.requirements      = requirements
         self.salary            = salary
         self.location          = location
-        self.contract          = contract
         self.level             = level
+        self.stack             = stack
+        self.contract          = contract
         self.posted_by         = posted_by
         self.email             = email
+        self.date_posted       = date_posted
     
 
     def __repr__(self):
@@ -37,16 +38,17 @@ class Job():
         """
         info = {"company"          : self.company.lower(),
                 "position"         : self.position.lower(),
-                "stack"            : self.stack,
                 "description"      : self.description,
                 "responsibilities" : self.responsibilities,
                 "requirements"     : self.requirements,
                 "salary"           : self.salary,
                 "location"         : self.location,
-                "contract"         : self.contract,
                 "level"            : self.level,
+                "stack"            : self.stack,
+                "contract"         : self.contract,
                 "posted_by"        : self.posted_by,
-                "email"            : self.email}
+                "email"            : self.email,
+                "date_posted"      : self.date_posted}
         return info
 
     
@@ -76,6 +78,15 @@ class Job():
 
 
     @staticmethod
+    def filter_jobs(query):
+        """
+        Search index for events in MongoDB by query
+        """
+        jobs = list(mongo.db.jobs.find({"$text": {"$search": query}}))
+        return jobs
+
+
+    @staticmethod
     def edit_job(job_id, info):
         """
         Update a job in MongoDB
@@ -89,7 +100,7 @@ class Job():
         """
         Delete a job in MongoDB
         """
-        mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
+        mongo.db.jobs.remove({"_id": ObjectId(job_id)})
 
 
 class Application():
@@ -97,7 +108,7 @@ class Application():
     Class representing a job application
     """
     def __init__(self, notice_period, current_salary, desired_salary, 
-                resume, cover_letter, job_id, applicant, email):
+                resume, cover_letter, job_id, applicant, email, date_applied):
         """
         Initialize application attributes
         """
@@ -109,6 +120,7 @@ class Application():
         self.job_id         = job_id
         self.applicant      = applicant
         self.email          = email
+        self.date_applied   = date_applied
 
 
     def get_application_info(self):
@@ -122,7 +134,8 @@ class Application():
                 "cover_letter"   : self.cover_letter,
                 "job_id"         : self.job_id,
                 "applicant"      : self.applicant,
-                "email"          : self.email}
+                "email"          : self.email,
+                "date_applied"   : self.date_applied}
         return info
 
 
@@ -140,14 +153,6 @@ class Application():
         """
         applications = list(mongo.db.applications.find())
         return applications
-
-
-    @staticmethod
-    def delete_application(job_id):
-        """
-        Delete a job application in MongoDB (recruiters only)
-        """
-        mongo.db.applications.delete_one({"_id": ObjectId(job_id)})
 
 
 class User():
@@ -229,4 +234,4 @@ class User():
         """
         Delete a user in MongoDB
         """
-        mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+        mongo.db.users.remove({"_id": ObjectId(user_id)})

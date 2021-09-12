@@ -1,11 +1,11 @@
 from flask import (render_template, request, redirect, session, 
                     url_for, flash, Blueprint)
-from application import mongo
 from functools import wraps
 from application.models import Application, Job
 from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
-import smtplib
 from config import Config
+from datetime import datetime
+import smtplib
 
 
 jobs = Blueprint('jobs', __name__, template_folder="templates")
@@ -27,7 +27,6 @@ def login_required(f):
 
 
 # --------------- All jobs -----------------
-
 @jobs.route("/jobs")
 @login_required
 def view_jobs():
@@ -52,22 +51,8 @@ def filter_jobs():
     # Check if user submitted the form
     if request.method == "POST":
         # Get the input from the form and search in MongoDB
-        query = request.form.get("search").lower()
-        jobs = mongo.db.jobs.find({
-            "$or": [{
-                "company"  : query
-            }, {
-                "position" : query
-            }, {
-                "stack"    : query
-            }, {
-                "level"    : query
-            }, {
-                "contract" : query
-            }, {
-                "location" : query
-            }]
-        })
+        query = request.form.get("search")
+        jobs = Job.filter_jobs(query)
 
     return render_template("view_jobs.html", jobs=jobs)
 
@@ -88,29 +73,29 @@ def update_job(job_id):
 
             # Check if user has submitted the form and all inputs are valid
             if form.validate_on_submit():
-                company          = form.company.data.lower()
-                position	     = form.position.data.lower()
-                stack            = form.stack.data.lower()
+                company          = form.company.data
+                position	     = form.position.data
                 description      = form.description.data
                 responsibilities = form.responsibilities.data
                 requirements     = form.requirements.data
                 salary		     = form.salary.data
-                location	     = form.location.data.lower()
-                contract         = form.contract.data.lower()
-                level            = form.level.data.lower()
+                location	     = form.location.data                
+                level            = form.level.data
+                stack            = form.stack.data
+                contract         = form.contract.data
 
                 # Register info based on what the user submitted on the form
                 updated_info = {
                     "company"          : company,
                     "position"         : position,
-                    "stack"            : stack,
                     "description"      : description,
                     "responsibilities" : responsibilities,
                     "requirements"     : requirements,
                     "salary"           : salary,
                     "location"         : location,
-                    "contract"         : contract,
                     "level"            : level,
+                    "stack"            : stack,
+                    "contract"         : contract,
                     "posted_by"        : session["username"],
                     "email"            : session["email"]
                 }
@@ -121,16 +106,16 @@ def update_job(job_id):
                 return redirect(url_for("users.profile", username=session["username"]))
 
             # Populate form data based on existing job info        
-            form.company.data          = job["company"].capitalize()
-            form.position.data         = job["position"].capitalize()
-            form.stack.data            = job["stack"].capitalize()
+            form.company.data          = job["company"]
+            form.position.data         = job["position"]
             form.description.data      = job["description"]
             form.responsibilities.data = job["responsibilities"]
             form.requirements.data     = job["requirements"]
             form.salary.data           = job["salary"]
-            form.location.data         = job["location"].capitalize()
-            form.contract.data         = job["contract"].capitalize()
-            form.level.data            = job["level"].capitalize()
+            form.location.data         = job["location"]
+            form.level.data            = job["level"]
+            form.stack.data            = job["stack"]
+            form.contract.data         = job["contract"]
 
             return render_template("update_job.html", form=form)
 
@@ -187,11 +172,12 @@ def apply_to_job(job_id):
                 cover_letter    = form.cover_letter.data
                 applicant       = session["username"]
                 email           = session["email"]
+                date_applied    = datetime.today().strftime('%Y-%m-%d')
 
                 # Create an instance of Application with the info the user submitter on the form
                 application = Application(notice_period, current_salary, 
                                         desired_salary, resume, cover_letter, 
-                                        job_id, applicant, email)
+                                        job_id, applicant, email, date_applied)
                 # Add application to MongoDB
                 application.insert_into_database()
 
@@ -233,22 +219,24 @@ def create_job():
     if session["role"] == "Recruiter":
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            company          = form.company.data.lower()
-            position	     = form.position.data.lower()
-            stack            = form.stack.data.lower()
+            company          = form.company.data
+            position	     = form.position.data
             description      = form.description.data
             responsibilities = form.responsibilities.data
             requirements     = form.requirements.data
             salary		     = form.salary.data
-            location	     = form.location.data.lower()
-            contract         = form.contract.data.lower()
-            level            = form.level.data.lower()
+            location	     = form.location.data
+            level            = form.level.data
+            stack            = form.stack.data
+            contract         = form.contract.data
             posted_by        = session["username"]
             email            = session["email"]
+            date_posted      = datetime.today().strftime('%Y-%m-%d')
 
             # Create an job instance using the form and insert into MongoDB
-            job = Job(company, position, stack, description, responsibilities,
-            requirements, salary, location, contract, level, posted_by, email)
+            job = Job(company, position, description, responsibilities,
+            requirements, salary, location, level, stack, contract,
+            posted_by, email, date_posted)
             job.insert_into_database()
 
             flash("Congratulations! You have created a new job.")

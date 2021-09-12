@@ -86,7 +86,7 @@
                   </p>
                   <br>
                   <p><i class="fas fa-info-circle prefix"></i> 
-                    {{ job.location }} &middot; {{ job.contract }}
+                    {{ job.location.capitalize() }} &middot; {{ job.contract.capitalize() }}
                   </p>
                   <br>
                   <p><i class="fas fa-laptop-code prefix"></i>
@@ -126,7 +126,11 @@
                   </p>
                   <br>
                   <p><i class="fas fa-map-marked-alt prefix"></i>
-                    {{ job.location }} &middot; {{ job.contract }}
+                    {{ job.location.capitalize() }} &middot; {{ job.contract.capitalize() }}
+                  </p>
+                  <br>
+                  <p><i class="fas fa-laptop-code prefix"></i>
+                    {{ job.level.capitalize() }} &middot; {{ job.stack.capitalize() }}
                   </p>
                   <br>
                   {% if job.salary %}

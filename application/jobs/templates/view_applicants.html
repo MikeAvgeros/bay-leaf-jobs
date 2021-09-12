@@ -33,13 +33,17 @@
                             </p>
                             <br>
                             <a class="white-text" href="{{ application.resume }}" 
-                            aria-label="View Resume" target="_blank" rel="noopener">Resume
+                                aria-label="View Resume" target="_blank" rel="noopener">
+                                <object data="{{ application.resume }}" width="100%" height="100%">
+                                </object>Resume
                             </a>
                             <br>
                             {% if application.cover_letter %}
                                 <br>
                                 <a class="white-text" href="{{ application.cover_letter }}" 
-                                aria-label="View Cover Letter" target="_blank" rel="noopener">Cover Letter
+                                aria-label="View Cover Letter" target="_blank" rel="noopener">
+                                <object data="{{ application.cover_letter }}" width="100%" height="100%">
+                                </object>Cover Letter
                                 </a>
                             {% endif %}
                         </div>

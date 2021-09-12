@@ -20,7 +20,6 @@ def login_required(f):
         if "email" in session:
             return f(*args, **kwargs)
         else:
-
             flash("You must sign in to access this page!")
             return redirect(url_for("users.login"))
             

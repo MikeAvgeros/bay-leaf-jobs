@@ -82,7 +82,7 @@ def update_job(job_id):
     # Check if job exists in MongoDB
     if job:
         # Check if job was posted by this user
-        if job.posted_by == session["username"]:
+        if job["posted_by"] == session["username"]:
             # Instantiate the update profile form
             form = UpdateJobForm()
 
@@ -110,7 +110,9 @@ def update_job(job_id):
                     "salary"           : salary,
                     "location"         : location,
                     "contract"         : contract,
-                    "level"            : level
+                    "level"            : level,
+                    "posted_by"        : session["username"],
+                    "email"            : session["email"]
                 }
 
                 # Update job's info using the registered updated info.
@@ -128,7 +130,7 @@ def update_job(job_id):
             form.salary.data           = job["salary"]
             form.location.data         = job["location"].capitalize()
             form.contract.data         = job["contract"].capitalize()
-            form.level.data            = job["level"].capitalizze()
+            form.level.data            = job["level"].capitalize()
 
             return render_template("update_job.html", form=form)
 
@@ -149,7 +151,7 @@ def delete_job(job_id):
     # Check if the job exists
     if job:
         # Check if job was posted by this user
-        if job.posted_by == session["username"]:
+        if job["posted_by"] == session["username"]:
             # Delete job from MongoDB
             Job.delete_job(job_id)
             flash("Job successfully deleted")
@@ -268,7 +270,7 @@ def view_applicants(job_id):
     # Check if job exists
     if job:
         # Check if job was posted by this user
-        if job.posted_by == session["username"]:
+        if job["posted_by"] == session["username"]:
             #Find all applications in Mongo DB
             applications = Application.find_all_applications()
             return render_template("view_applicants.html", job=job, applications=applications)

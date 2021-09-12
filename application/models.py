@@ -67,24 +67,6 @@ class Job():
 
 
     @staticmethod
-    def find_job_by_company(company):
-        """
-        Find and return a job in MongoDB by its company
-        """
-        job = mongo.db.jobs.find_one({"company": company})
-        return job
-
-
-    @staticmethod
-    def find_job_by_position(position):
-        """
-        Find and return a job in MongoDB by its position
-        """
-        job = mongo.db.jobs.find_one({"position": position})
-        return job
-
-
-    @staticmethod
     def find_job_by_id(job_id):
         """
         Find and return a job in MongoDB by its id
@@ -225,39 +207,12 @@ class User():
 
 
     @staticmethod
-    def find_username_by_id(user_id):
-        """
-        Find and return a user's name in MongoDB by their id
-        """
-        username = mongo.db.users.find_one({"_id": ObjectId(user_id)})["username"]
-        return username
-
-
-    @staticmethod
     def find_all_users():
         """
         Find and return all users in MongoDB
         """
         users = list(mongo.db.users.find())
         return users
-
-
-    @staticmethod
-    def get_user_id(email):
-        """
-        Find and return a user's Id in MongoDB using their email
-        """
-        user_id = mongo.db.users.find_one({"email": email.lower()})["_id"]
-        return user_id
-
-
-    @staticmethod
-    def get_user_role(email):
-        """
-        Find and return a user's role in MongoDB using the user's email
-        """
-        user_role = mongo.db.users.find_one({"email": email.lower()})["role"]
-        return user_role
 
 
     @staticmethod

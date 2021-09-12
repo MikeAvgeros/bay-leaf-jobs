@@ -36,8 +36,8 @@ class Job():
         """
         Creates dictionary with the job information
         """
-        info = {"company"          : self.company.lower(),
-                "position"         : self.position.lower(),
+        info = {"company"          : self.company,
+                "position"         : self.position,
                 "description"      : self.description,
                 "responsibilities" : self.responsibilities,
                 "requirements"     : self.requirements,
@@ -179,8 +179,8 @@ class User():
         """
         Creates dictionary with the user information
         """
-        info = {"username" : self.username.lower(),
-                "email"    : self.email.lower(),
+        info = {"username" : self.username,
+                "email"    : self.email,
                 "password" : self.password,
                 "location" : self.location,
                 "role"     : self.role,

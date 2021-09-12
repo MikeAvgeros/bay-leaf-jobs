@@ -14,9 +14,10 @@
       <div class="card">
         <div class="card-image">
           {% if user.picture %}
-            <img class="responsive-img" src="{{ user.picture }}">
+            <img class="responsive-img" src="{{ user.picture }}" alt="profile picture">
           {% else %}
-            <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}">
+            <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}" 
+            alt="default profile picture">
           {% endif %}
           <span class="card-title">{{ username }}</span>
         </div>

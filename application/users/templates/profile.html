@@ -41,32 +41,37 @@
       {% if session.role == "Developer" %}
       <p>
         Hello {{ username }}. On your profile page you will be able to find 
-        all the jobs you have applied for.
+        a list with all the jobs you have applied for.
         You can follow up the progress of your application by contacting the
         recruiter. You can view the email of the recruiter upon opening the full
-        job description by clicking on the card below. 
-        Please allow at least a week before following up. This is 
+        job description by clicking on the cards below. 
+        Please allow at least 2 weeks before following up. This is 
         to avoid overwhelming the recruiters so that they can reply to all the 
         successful candidates as fast as possible.
       </p>
       <br>
       <p>
         You can update your profile details and upload a profile picture by
-        clicking the update button. 
-        You can also delete your profile by clicking the delete button if you no 
+        clicking the 'Update' button. 
+        You can also delete your profile by clicking the 'Delete' button if you no 
         longer wish to use our services.
       </p>
       {% elif session.role == "Recruiter" %}
       <p>
-        On your profile page you will find all the jobs you have applied for.
-        You can follow up the progress of your application by contacting the
-        recruiter for the job.
+        Hello {{ username }}. On your profile page you will find a list with 
+        all the jobs you have created on this page.
+        You can view the applicants' details for each job by opening the full 
+        job description on the cards below and clicking on 'Applicants'. We ask
+        that you try to contact all applicants to update them on their application progress.
+        This way, it can help us attract more talent which in turn will mean that you can 
+        find the best developers for your clients.
       </p>
       <br>
       <p>
-        You can update your profile details and upload a picture by
-        clicking the update button. 
-        You can delete your profile by clicking the delete button.
+        You can update your profile details and upload a profile picture by
+        clicking the 'Update' button. 
+        You can also delete your profile by clicking the 'Delete' button if you no 
+        longer wish to use our services.
       </p>
       {% else %}
       <h1>Error</h1>
@@ -159,4 +164,5 @@
     {% endif %}
   </div>
 </div>
+
 {% endblock content %}

@@ -7,8 +7,9 @@ class Job():
     """
     Class representing a job post
     """
-    def __init__(self, company, position, stack, description, responsibilities, 
-                requirements, salary, location, contract, level, posted_by):
+    def __init__(self, company, position, stack, description, 
+                responsibilities, requirements, salary, location, 
+                contract, level, posted_by, email):
         """
         Initialize job attributes
         """
@@ -23,6 +24,7 @@ class Job():
         self.contract          = contract
         self.level             = level
         self.posted_by         = posted_by
+        self.email             = email
     
 
     def __repr__(self):
@@ -43,7 +45,8 @@ class Job():
                 "location"         : self.location,
                 "contract"         : self.contract,
                 "level"            : self.level,
-                "posted_by"        : self.posted_by}
+                "posted_by"        : self.posted_by,
+                "email"            : self.email}
         return info
 
     
@@ -112,7 +115,7 @@ class Application():
     Class representing a job application
     """
     def __init__(self, notice_period, current_salary, desired_salary, 
-                resume, cover_letter, job, applicant, email):
+                resume, cover_letter, job_id, applicant, email):
         """
         Initialize application attributes
         """
@@ -121,7 +124,7 @@ class Application():
         self.desired_salary = desired_salary
         self.resume         = resume
         self.cover_letter   = cover_letter
-        self.job            = job
+        self.job_id         = job_id
         self.applicant      = applicant
         self.email          = email
 
@@ -135,7 +138,7 @@ class Application():
                 "desired_salary" : self.desired_salary,
                 "resume"         : self.resume,
                 "cover_letter"   : self.cover_letter,
-                "job_id"         : self.job,
+                "job_id"         : self.job_id,
                 "applicant"      : self.applicant,
                 "email"          : self.email}
         return info

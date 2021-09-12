@@ -18,13 +18,16 @@ def home():
 # --------------- Contact page ----------------
 @main.route("/contact", methods=["GET", "POST"])
 def contact():
+    # Instantiate the contact form
     form = ContactForm()
 
+    # Check if user has submitted the form and all inputs are valid
     if form.validate_on_submit():
         name        = form.name.data
         email       = form.email.data
         body        = form.body.data
 
+        # Send email to the website owner and email receipt confirmation to user
         sender_mail = Config.MAIL_USERNAME
         password = Config.MAIL_PASSWORD
         recipients = [sender_mail, email]

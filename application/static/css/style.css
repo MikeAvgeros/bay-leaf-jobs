@@ -210,6 +210,7 @@ li .footer-text:hover {
 
 .profile-content {
     font-size: 16px;
+    overflow: hidden;
 }
 
 .page-footer {

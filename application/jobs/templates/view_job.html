@@ -19,7 +19,9 @@
                 <h4>Requirements</h4>
                 <p>{{ job.requirements}}</p>
                 <br>
-                <p>{{ job.location }} &middot; {{ job.contract }}</p>
+                <p>{{ job.location.capitalize() }} &middot; {{ job.contract.capitalize() }}</p>
+                <br>
+                <p>{{ job.level.capitalize() }} &middot; {{ job.stack.capitalize() }}</p>
                 <br>
                 <p class="large-font">{{ job.salary }}</p>
                 <br>

@@ -20,8 +20,10 @@ def login_required(f):
         if "email" in session:
             return f(*args, **kwargs)
         else:
+
             flash("You must sign in to access this page!")
             return redirect(url_for("users.login"))
+            
     return wrap
 
 
@@ -31,24 +33,30 @@ def register():
     # Instantiate the registration form
     form = RegistrationForm()
 
+    # Check if user hasn't already signed in
     if "username" not in session:
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            username    = form.username.data.lower()
+            username    = form.username.data
             email       = form.email.data.lower()
             password    = form.password.data
             location    = form.location.data
             role        = form.role.data
 
-            # Check if username exists
+            # Find user in MongoDB by their username
             existing_user = User.find_user_by_username(username)
+
+            # Check if username exists
             if existing_user:
                 flash("Username already exists.")
                 return redirect(url_for("users.register"))
 
             # Create an instance of User with the info the user submitter on the form
             user = User(username, email, password, location, role)
+            # Add user to MongoDB
             user.insert_into_database()
+
+            # Send welcome email to user and notification to website owner
             sender_mail = Config.MAIL_USERNAME
             password = Config.MAIL_PASSWORD
             recipients = [sender_mail, email]
@@ -82,6 +90,7 @@ def register():
                     The Team at bayleafjobs!
                     """
                     server.sendmail(sender_mail, recipient, message)
+
             flash("You are registered successfully. You can now sign in.")
             return redirect(url_for("users.login"))
 
@@ -96,20 +105,22 @@ def login():
     # Instantiate the login form
     form = LoginForm()
 
+    # Check if user hasn't already signed in
     if "username" not in session:
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
             email    = form.email.data.lower()
             password = form.password.data
 
-            # Check if user exists in MongoDB using their email
+            # Find user in MongoDB by their email
             user = User.find_user_by_email(email)
 
+            # Check if user exists in MongoDB 
             if user:
                 # Check if password is correct
                 correct_password = user["password"]
                 if check_password_hash(correct_password, password):
-                    # Put user's info in session
+                    # Put user's info in session to be easily accessed
                     session["email"] = user["email"]
                     session["role"] = user["role"]
                     session["username"] = user["username"]
@@ -144,6 +155,7 @@ def profile(username):
     # Find user in MongoDB by their username
     user = User.find_user_by_username(username)
 
+    # Check if user exists
     if user:
         # Find all jobs and applications and pass them to the profile page
         jobs = Job.find_all_jobs()
@@ -164,12 +176,12 @@ def update_profile(username):
 
     # Check if user exists in MongoDB
     if user:
-        # Instantiate the updateprofile form
+        # Instantiate the update profile form
         form = UpdateProfileForm()
 
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            username    = form.username.data.lower()
+            username    = form.username.data
             email       = form.email.data.lower()
             location    = form.location.data
             picture     = form.picture.data
@@ -207,9 +219,10 @@ def update_profile(username):
 @users.route("/profile/<username>/delete", methods=["GET", "POST"])
 @login_required
 def delete_profile(username):
-    # Check if job exists in MongoDB
+    # Find user in MongoDB by their username
     user = User.find_user_by_username(username)
-
+    
+    # Check if user exists
     if user:
         # Delete user from MongoDB and remove info from session
         user_id = user["_id"]
@@ -222,4 +235,3 @@ def delete_profile(username):
 
     flash("This user does not exist")
     return redirect(url_for("main.home"))
-

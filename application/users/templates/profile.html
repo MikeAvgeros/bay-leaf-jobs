@@ -30,7 +30,8 @@
         <div class="card-action">
           <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
           aria-label="Update Profile" class="waves-effect waves-light btn-small ">Update</a>
-          <a href="{{ url_for('users.delete_profile', username=session['username']) }}" 
+          <a onclick="return confirm('Are you sure you want to delete your profile?');"
+          href="{{ url_for('users.delete_profile', username=session['username']) }}" 
           aria-label="Delete Profile" class="waves-effect waves-light btn-small " 
           style="margin-left: 1rem;">Delete</a>
         </div>

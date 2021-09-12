@@ -9,46 +9,46 @@
         <div class="row card-panel grey lighten-5">
             <form class="col s12 m8 offset-m2" method="POST" action="#">
                 {{ form.csrf_token }}
-                    <!-- username -->
-                    <div class="row lower">
-                        <div class="input-field col s12">
-                            <i class="fas fa-user-plus prefix"></i>
-                            {{ form.username.label }}
-                            {{ form.username(class="validate") }}
-                            {{ field_error_messages(form.username) }}
-                        </div>
+                <!-- username -->
+                <div class="row lower">
+                    <div class="input-field col s12">
+                        <i class="fas fa-user-plus prefix"></i>
+                        {{ form.username.label }}
+                        {{ form.username(class="validate") }}
+                        {{ field_error_messages(form.username) }}
                     </div>
-                    <!-- email -->
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="fas fa-envelope prefix"></i>
-                            {{ form.email.label }}
-                            {{ form.email(class="validate") }}
-                            {{ field_error_messages(form.email) }}
-                        </div>
+                </div>
+                <!-- email -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-envelope prefix"></i>
+                        {{ form.email.label }}
+                        {{ form.email(class="validate") }}
+                        {{ field_error_messages(form.email) }}
                     </div>
-                    <!-- location -->
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="fas fa-map-marked-alt prefix"></i>
-                            {{ form.location.label }}
-                            {{ form.location(class="validate") }}
-                            {{ field_error_messages(form.location) }}
-                        </div>
+                </div>
+                <!-- location -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-map-marked-alt prefix"></i>
+                        {{ form.location.label }}
+                        {{ form.location(class="validate") }}
+                        {{ field_error_messages(form.location) }}
                     </div>
-                    <!-- picture -->
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="far fa-image prefix"></i>
-                            {{ form.picture.label }}
-                            {{ form.picture(class="validate") }}
-                            {{ field_error_messages(form.picture) }}
-                        </div>
+                </div>
+                <!-- picture -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="far fa-image prefix"></i>
+                        {{ form.picture.label }}
+                        {{ form.picture(class="validate") }}
+                        {{ field_error_messages(form.picture) }}
                     </div>
-                    <!-- submit -->
-                    <div class="row">
-                        {{ form.submit(class="col s12 waves-effect waves-light btn-large")}}
-                    </div>
+                </div>
+                <!-- submit -->
+                <div class="row">
+                    {{ form.submit(class="col s12 waves-effect waves-light btn-large")}}
+                </div>
             </form>
         </div>
     </main>

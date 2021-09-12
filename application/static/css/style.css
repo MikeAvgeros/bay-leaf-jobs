@@ -89,7 +89,7 @@ nav .brand-logo {
     border-radius: 5px;
 }
 
-.landing-page, .job-page {
+.landing-page, .job-page, .error-page {
     margin: 2rem 0 3rem 0;
 }
 
@@ -153,7 +153,7 @@ nav .brand-logo {
     text-align: justify;
 }
 
-.fa-bars {
+.fas {
     color: var(--very-dark-violet);
 }
 
@@ -188,8 +188,7 @@ nav .brand-logo {
     color: white;
 }
 
-a:hover,
-input[type=submit]:hover {
+a:hover {
     color: var(--very-dark-blue);
 }
 

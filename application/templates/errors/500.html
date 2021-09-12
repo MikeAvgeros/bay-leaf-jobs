@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Page 404{% endblock %}
+{% block title %}Page 500{% endblock %}
 {% block content %}
 
 <main class="container">
@@ -9,9 +9,9 @@
                 alt="Image for page 404">
         </div>
         <div class="col s12 l5 center-align">
-            <h1 class="center-align large-font">Oops! Page Not Found</h1>
+            <h1 class="center-align large-font">Oops! An internal server error occurred.</h1>
             <hr class="breakline">
-            <p class="large-font">The page you were looking for does not exist.</p>
+            <p class="large-font">Something went wrong!</p>
             <a class="btn contact-btn" href="{{ url_for('main.home') }}">Go back home</a>
         </div>
     </div>

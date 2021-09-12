@@ -17,6 +17,14 @@
                         {{ field_error_messages(form.company) }}
                     </div>
                 </div>
+                <div class="row lower">
+                    <div class="input-field col s12">
+                        <i class="fas fa-image prefix"></i>
+                        {{ form.company_logo.label }}
+                        {{ form.company_logo(class="validate") }}
+                        {{ field_error_messages(form.company_logo) }}
+                    </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-user-tie prefix"></i>

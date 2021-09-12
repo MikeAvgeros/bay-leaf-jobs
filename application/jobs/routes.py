@@ -74,6 +74,7 @@ def update_job(job_id):
             # Check if user has submitted the form and all inputs are valid
             if form.validate_on_submit():
                 company          = form.company.data
+                company_logo     = form.company_logo.data
                 position	     = form.position.data
                 description      = form.description.data
                 responsibilities = form.responsibilities.data
@@ -87,6 +88,7 @@ def update_job(job_id):
                 # Register info based on what the user submitted on the form
                 updated_info = {
                     "company"          : company,
+                    "company_logo"     : company_logo,
                     "position"         : position,
                     "description"      : description,
                     "responsibilities" : responsibilities,
@@ -107,6 +109,7 @@ def update_job(job_id):
 
             # Populate form data based on existing job info        
             form.company.data          = job["company"]
+            form.company_logo.data     = job["company_logo"]
             form.position.data         = job["position"]
             form.description.data      = job["description"]
             form.responsibilities.data = job["responsibilities"]
@@ -127,7 +130,7 @@ def update_job(job_id):
 
 
 # --------------- Delete job ----------------
-@jobs.route("/job/<job_id>/delete", methods=["POST"])
+@jobs.route("/job/<job_id>/delete", methods=["GET", "POST"])
 @login_required
 def delete_job(job_id):
     # Find job in MongoDB by its id
@@ -220,6 +223,7 @@ def create_job():
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
             company          = form.company.data
+            company_logo     = form.company_logo.data
             position	     = form.position.data
             description      = form.description.data
             responsibilities = form.responsibilities.data
@@ -234,9 +238,9 @@ def create_job():
             date_posted      = datetime.today().strftime('%Y-%m-%d')
 
             # Create an job instance using the form and insert into MongoDB
-            job = Job(company, position, description, responsibilities,
-            requirements, salary, location, level, stack, contract,
-            posted_by, email, date_posted)
+            job = Job(company, company_logo, position, description, 
+            responsibilities, requirements, salary, location, level, 
+            stack, contract, posted_by, email, date_posted)
             job.insert_into_database()
 
             flash("Congratulations! You have created a new job.")

@@ -11,6 +11,7 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Company must be between 5 and 50 characters long")
 								])
+	company_logo	= URLField("Company Logo")
 	position		= StringField("Position *",
 								validators=[
 									InputRequired("Input is required!"),
@@ -80,10 +81,6 @@ class CreateJobForm(JobForm):
 
 class UpdateJobForm(JobForm):
 	submit 		= SubmitField("Update job")
-
-
-class DeleteJob(JobForm):
-	submit 		= SubmitField("Delete job")
 
 
 class ApplicationForm(FlaskForm):

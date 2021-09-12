@@ -7,13 +7,14 @@ class Job():
     """
     Class representing a job post
     """
-    def __init__(self, company, position, description, 
+    def __init__(self, company, company_logo, position, description, 
                 responsibilities, requirements, salary, location, 
                 level, stack, contract, posted_by, email, date_posted):
         """
         Initialize job attributes
         """
         self.company           = company
+        self.company_logo      = company_logo
         self.position          = position
         self.description       = description
         self.responsibilities  = responsibilities
@@ -37,6 +38,7 @@ class Job():
         Creates dictionary with the job information
         """
         info = {"company"          : self.company,
+                "company_logo"     : self.company_logo,
                 "position"         : self.position,
                 "description"      : self.description,
                 "responsibilities" : self.responsibilities,

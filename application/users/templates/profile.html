@@ -87,7 +87,7 @@
         {% for application in applications if username|lower == application.applicant|lower %}
           {% for job in jobs if job._id|string == application.job_id|string %}
           <div class="col s12 m6 l4">
-            <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View jobs you applied">
+            <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View job you applied to">
               <div class="card job-card z-depth-3">
                 <div class="card-content">
                   {% if job.company_logo %}
@@ -133,7 +133,7 @@
       <div class="row">
         {% for job in jobs if username|lower == job.posted_by|lower %}
           <div class="col s12 m6 l4">
-            <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View jobs you posted">
+            <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View job you created">
               <div class="card job-card z-depth-3">
                 <div class="card-content">
                   {% if job.company_logo %}

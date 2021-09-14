@@ -18,16 +18,6 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
 								])
-	stack			= SelectField("",
-								choices=[
-									("      ", "      "),
-									("Front End", "Front End"), 
-									("Back End", "Back End"), 
-									("Full Stack", "Full Stack")],
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!")
-								])
 	description 	= TextAreaField("Description *",
 								validators=[
 									InputRequired("Input is required!"),
@@ -53,26 +43,21 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=3, max=40, message="Location must be between 3 and 40 characters long")
 								])
-	contract		= SelectField("",
-								choices=[
-									("         ", "         "),
-									("Full Time", "Full Time"), 
-									("Part Time", "Part Time"), 
-									("Freelance", "Freelance")],
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!")
-								])
 	level			= SelectField("",
 								choices=[
-									("      ", "      "),
 									("Senior", "Senior"), 
 									("Midweight", "Midweigth"), 
-									("Associate", "Associate")],
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!")
-								])
+									("Associate", "Associate")])
+	stack			= SelectField("",
+								choices=[
+									("Front End", "Front End"), 
+									("Back End", "Back End"), 
+									("Full Stack", "Full Stack")])
+	contract		= SelectField("",
+								choices=[
+									("Full Time", "Full Time"), 
+									("Part Time", "Part Time"), 
+									("Freelance", "Freelance")])
 
 
 class CreateJobForm(JobForm):

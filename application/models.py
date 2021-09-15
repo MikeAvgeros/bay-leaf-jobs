@@ -7,23 +7,21 @@ class Job():
     """
     Class representing a job post
     """
-    def __init__(self, company, company_logo, position, description, 
-                responsibilities, requirements, salary, location, 
-                level, stack, contract, posted_by, email, date_posted):
+    def __init__(self, company, company_logo, position, 
+                location, salary, level, stack, contract,
+                description, posted_by, email, date_posted):
         """
         Initialize job attributes
         """
         self.company           = company
         self.company_logo      = company_logo
         self.position          = position
-        self.description       = description
-        self.responsibilities  = responsibilities
-        self.requirements      = requirements
-        self.salary            = salary
         self.location          = location
+        self.salary            = salary
         self.level             = level
         self.stack             = stack
         self.contract          = contract
+        self.description       = description
         self.posted_by         = posted_by
         self.email             = email
         self.date_posted       = date_posted
@@ -40,14 +38,12 @@ class Job():
         info = {"company"          : self.company,
                 "company_logo"     : self.company_logo,
                 "position"         : self.position,
-                "description"      : self.description,
-                "responsibilities" : self.responsibilities,
-                "requirements"     : self.requirements,
-                "salary"           : self.salary,
                 "location"         : self.location,
+                "salary"           : self.salary,
                 "level"            : self.level,
                 "stack"            : self.stack,
                 "contract"         : self.contract,
+                "description"      : self.description,
                 "posted_by"        : self.posted_by,
                 "email"            : self.email,
                 "date_posted"      : self.date_posted}

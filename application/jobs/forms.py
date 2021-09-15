@@ -18,36 +18,18 @@ class JobForm(FlaskForm):
 									DataRequired("Data is required!"),
 									Length(min=5, max=50, message="Position must be between 5 and 50 characters long")
 								])
-	description 	= TextAreaField("Description *",
-								validators=[
-									InputRequired("Input is required!"),
-									DataRequired("Data is required!"),
-									Length(min=10, max=500, message="Description must be between 10 and 500 characters long")
-								])
-	responsibilities 	= TextAreaField("Responsibilities *",
-									validators=[
-										InputRequired("Input is required!"),
-										DataRequired("Data is required!"),
-										Length(min=10, max=500, message="Responsibilities must be between 10 and 500 characters long")
-									])
-	requirements 	= TextAreaField("Requirements *",
-									validators=[
-										InputRequired("Input is required!"),
-										DataRequired("Data is required!"),
-										Length(min=10, max=500, message="Requirements must be between 10 and 500 characters long")
-									])
-	salary			= StringField("Salary")
 	location		= StringField("Location *",
 								validators=[
 									InputRequired("Input is required!"),
 									DataRequired("Data is required!"),
 									Length(min=3, max=40, message="Location must be between 3 and 40 characters long")
 								])
+	salary			= StringField("Salary")
 	level			= SelectField("",
 								choices=[
 									("Senior", "Senior"), 
 									("Midweight", "Midweigth"), 
-									("Associate", "Associate")])
+									("Junior", "Junior")])
 	stack			= SelectField("",
 								choices=[
 									("Front End", "Front End"), 
@@ -58,6 +40,12 @@ class JobForm(FlaskForm):
 									("Full Time", "Full Time"), 
 									("Part Time", "Part Time"), 
 									("Freelance", "Freelance")])
+	description 	= TextAreaField("Description *",
+								validators=[
+									InputRequired("Input is required!"),
+									DataRequired("Data is required!"),
+									Length(min=10, max=500, message="Description must be between 10 and 500 characters long")
+								])
 
 
 class CreateJobForm(JobForm):

@@ -55,7 +55,7 @@
                         {{ form.level.label }}
                         {{ form.level(class="validate") }}
                         {{ field_error_messages(form.level) }}
-                        <label for="level">Level *</label>
+                        <label for="level">Level</label>
                     </div>
                 </div>
                 <div class="row">
@@ -64,7 +64,7 @@
                         {{ form.stack.label }}
                         {{ form.stack(class="validate") }}
                         {{ field_error_messages(form.stack) }}
-                        <label for="stack">Stack *</label>
+                        <label for="stack">Stack</label>
                     </div>
                 </div>
                 <div class="row">
@@ -73,31 +73,15 @@
                         {{ form.contract.label }}
                         {{ form.contract(class="validate") }}
                         {{ field_error_messages(form.contract) }}
-                        <label for="contract">Contract *</label>
+                        <label for="contract">Contract</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-info-circle prefix"></i>
                         {{ form.description.label }}
-                        {{ form.description(class="validate materialize-textarea") }}
+                        {{ form.description(class="validate materialize-textarea", rows="8") }}
                         {{ field_error_messages(form.description) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-info-circle prefix"></i>
-                        {{ form.responsibilities.label }}
-                        {{ form.responsibilities(class="validate materialize-textarea") }}
-                        {{ field_error_messages(form.responsibilities) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-info-circle prefix"></i>
-                        {{ form.requirements.label }}
-                        {{ form.requirements(class="validate materialize-textarea") }}
-                        {{ field_error_messages(form.requirements) }}
                     </div>
                 </div>
                 <div class="row">

@@ -68,8 +68,10 @@ def create_job():
 
             # Create an job instance using the form and insert into MongoDB
             job = Job(company, company_logo, position, 
-            salary, location, level, stack, contract, 
+            location, salary, level, stack, contract, 
             description, posted_by, email, date_posted)
+
+            # Add job in MongoDB
             job.insert_into_database()
 
             flash("Congratulations! You have created a new job.")
@@ -199,7 +201,8 @@ def apply_to_job(job_id):
                 application = Application(notice_period, current_salary, 
                                         desired_salary, resume, cover_letter, 
                                         job_id, applicant, email, date_applied)
-                # Add application to MongoDB
+
+                # Add application in MongoDB
                 application.insert_into_database()
 
                 # Send confirmation email

@@ -15,13 +15,12 @@
             </h2>
             <div class="col s12 breakline-row"><hr class="breakline" /></div>
             <div class="card-content">
-                <h3>{{ job.location }} &middot; {{ job.contract }}</p>
+                <p class="card-title">{{ job.location }} &middot; {{ job.contract }}</p>
                 <br>
-                <h3>{{ job.level }} &middot; {{ job.stack}}</h3>
+                <p class="card-title">{{ job.level }} &middot; {{ job.stack }}</p>
                 <br>
+                <p class="card-title">{{ job.salary }}</p>
                 <br>
-                <h3 class="large-font">{{ job.salary }}</p>
-                <h3>Description</h3>
                 <p>{{ job.description}}</p>
                 <br>
                 {% if session.role == "Developer" %}

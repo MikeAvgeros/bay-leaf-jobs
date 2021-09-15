@@ -3,27 +3,13 @@ from flask import (
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
-from functools import wraps
+from application.security import login_required
 from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 from config import Config
 import smtplib
 
 
 users = Blueprint('users', __name__, template_folder="templates")
-
-
-# ---------- Login required security -----------
-def login_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        # Checks if email is in session to verify is user has signed in
-        if "email" in session:
-            return f(*args, **kwargs)
-        else:
-            flash("You must sign in to access this page!")
-            return redirect(url_for("users.login"))
-            
-    return wrap
 
 
 # --------------- Register user ----------------

@@ -1,7 +1,7 @@
 from flask import (render_template, request, redirect, session, 
                     url_for, flash, Blueprint)
-from functools import wraps
 from application.models import Application, Job
+from application.security import login_required
 from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
 from config import Config
 from datetime import datetime
@@ -9,21 +9,6 @@ import smtplib
 
 
 jobs = Blueprint('jobs', __name__, template_folder="templates")
-
-
-# ---------- Login required security -----------
-def login_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        # Checks if email is in session to verify is user has signed in
-        if "email" in session:
-            return f(*args, **kwargs)
-
-        else:
-            flash("You must sign in to access this page!")
-            return redirect(url_for("users.login"))
-
-    return wrap
 
 
 # --------------- All jobs -----------------

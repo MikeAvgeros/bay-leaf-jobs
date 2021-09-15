@@ -3,43 +3,43 @@
 {% from "_error_messages.html" import field_error_messages %}
 {% block content %}
 
-    <main class="container">
-        <h2 class="center-align section-heading">Get in touch!</h2>
-        <div class="col s12 breakline-row"><hr class="breakline" /></div>
-        <div class="row card-panel grey lighten-5">
-            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('main.contact') }}">
-                {{ form.csrf_token }}
-                <div class="row lower">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-alt prefix"></i>
-                        {{ form.name.label }}
-                        {{ form.name(class="validate") }}
-                        {{ field_error_messages(form.name) }}
-                    </div>
+<main class="container">
+    <h2 class="center-align section-heading">Get in touch!</h2>
+    <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('main.contact') }}">
+            {{ form.csrf_token }}
+            <div class="row lower">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-alt prefix"></i>
+                    {{ form.name.label }}
+                    {{ form.name(class="validate") }}
+                    {{ field_error_messages(form.name) }}
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-envelope prefix"></i>
-                        {{ form.email.label }}
-                        {{ form.email(class="validate") }}
-                        {{ field_error_messages(form.email) }}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-envelope prefix"></i>
+                    {{ form.email.label }}
+                    {{ form.email(class="validate") }}
+                    {{ field_error_messages(form.email) }}
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-comment-dots prefix"></i>
-                        {{ form.body.label }}
-                        {{ form.body(class="validate materialize-textarea") }}
-                        {{ field_error_messages(form.body) }}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-comment-dots prefix"></i>
+                    {{ form.body.label }}
+                    {{ form.body(class="validate materialize-textarea") }}
+                    {{ field_error_messages(form.body) }}
                 </div>
-                <div class="row">
-                    <div class="col s12 center-align">
-                        {{ form.submit(class="col s12 btn-large text-shadow")}}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    {{ form.submit(class="col s12 btn-large text-shadow")}}
                 </div>
-            </form>
-        </div>
-    </main>
+            </div>
+        </form>
+    </div>
+</main>
     
 {% endblock content %}

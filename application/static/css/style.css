@@ -212,6 +212,12 @@ li .footer-text:hover {
     background-color: var(--very-dark-violet);
 }
 
+.card-title {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
 .profile-content {
     font-size: 16px;
     overflow: hidden;
@@ -224,4 +230,12 @@ li .footer-text:hover {
 
 .contact-btn {
     margin-top: 1rem;
+}
+
+@media (max-width: 510px) {
+    .btn-large {
+        padding: 0 1rem;
+        margin-left: 0 !important;
+        margin-top: .5rem !important;
+    }
 }

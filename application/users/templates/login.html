@@ -1,47 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock title %}
 {% from "_error_messages.html" import field_error_messages %}
-
 {% block content %}
-    <main class="container">
-        <h2 class="center-align section-heading">Sign in</h2>
-        <div class="col s12 breakline-row"><hr class="breakline" /></div>
-        <div class="row card-panel grey lighten-5">
-            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.login') }}">
-                {{ form.csrf_token }}
-                <!-- email -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-envelope prefix"></i>
-                        {{ form.email.label }}
-                        {{ form.email(class="validate") }}
-                        {{ field_error_messages(form.email) }}
-                    </div>
+
+<main class="container">
+    <h2 class="center-align section-heading">Sign in</h2>
+    <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.login') }}">
+            {{ form.csrf_token }}
+            <!-- email -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-envelope prefix"></i>
+                    {{ form.email.label }}
+                    {{ form.email(class="validate") }}
+                    {{ field_error_messages(form.email) }}
                 </div>
-                <!-- password -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-lock prefix"></i>
-                        {{ form.password.label }}
-                        {{ form.password(class="validate") }}
-                        {{ field_error_messages(form.password) }}
-                    </div>
-                </div>
-                <!-- login -->
-                <div class="row">
-                    {{ form.submit(class="col s12 btn-large")}}
-                </div>
-            </form>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col s12">
-                <p class="center-align">
-                    New Here?
-                    <a href="{{ url_for('users.register') }}" class="light-blue-text text-darken-4">Create an Account</a>
-                </p>
             </div>
+            <!-- password -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-lock prefix"></i>
+                    {{ form.password.label }}
+                    {{ form.password(class="validate") }}
+                    {{ field_error_messages(form.password) }}
+                </div>
+            </div>
+            <!-- login -->
+            <div class="row">
+                {{ form.submit(class="col s12 btn-large")}}
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col s12">
+            <p class="center-align">
+                New Here?
+                <a href="{{ url_for('users.register') }}" class="light-blue-text text-darken-4">Create an Account</a>
+            </p>
         </div>
-    </main>
+    </div>
+</main>
     
 {% endblock content %}

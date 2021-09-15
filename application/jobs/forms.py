@@ -43,8 +43,7 @@ class JobForm(FlaskForm):
 	description 	= TextAreaField("Description *",
 								validators=[
 									InputRequired("Input is required!"),
-									DataRequired("Data is required!"),
-									Length(min=10, max=500, message="Description must be between 10 and 500 characters long")
+									DataRequired("Data is required!")
 								])
 
 

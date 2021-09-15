@@ -21,7 +21,7 @@
                 <br>
                 <p class="card-title">{{ job.salary }}</p>
                 <br>
-                <p>{{ job.description}}</p>
+                <p class="card-title">{{ job.description}}</p>
                 <br>
                 {% if session.role == "Developer" %}
                 <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" 

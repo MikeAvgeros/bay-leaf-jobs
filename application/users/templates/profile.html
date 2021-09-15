@@ -143,19 +143,19 @@
                   {% endif %}
                   <br>
                   <p><i class="fas fa-user-tie prefix white-text"></i> 
-                    {{ job.position.capitalize() }}
+                    {{ job.position }}
                   </p>
                   <br>
                   <p><i class="fas fa-building prefix white-text"></i> 
-                    {{ job.company.capitalize() }}
+                    {{ job.company }}
                   </p>
                   <br>
                   <p><i class="fas fa-map-marked-alt prefix white-text"></i>
-                    {{ job.location.capitalize() }} &middot; {{ job.contract.capitalize() }}
+                    {{ job.location }} &middot; {{ job.contract }}
                   </p>
                   <br>
                   <p><i class="fas fa-laptop-code prefix white-text"></i>
-                    {{ job.level.capitalize() }} &middot; {{ job.stack.capitalize() }}
+                    {{ job.level }} &middot; {{ job.stack }}
                   </p>
                   <br>
                   {% if job.salary %}

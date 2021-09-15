@@ -15,20 +15,14 @@
             </h2>
             <div class="col s12 breakline-row"><hr class="breakline" /></div>
             <div class="card-content">
-                <h4>Description</h4>
+                <h3>{{ job.location }} &middot; {{ job.contract }}</p>
+                <br>
+                <h3>{{ job.level }} &middot; {{ job.stack}}</h3>
+                <br>
+                <br>
+                <h3 class="large-font">{{ job.salary }}</p>
+                <h3>Description</h3>
                 <p>{{ job.description}}</p>
-                <br>
-                <h4>Responsibilities</h4>
-                <p>{{ job.responsibilities}}</p>
-                <br>
-                <h4>Requirements</h4>
-                <p>{{ job.requirements}}</p>
-                <br>
-                <p>{{ job.location }} &middot; {{ job.contract }}</p>
-                <br>
-                <p>{{ job.level }} &middot; {{ job.stack}}</p>
-                <br>
-                <p class="large-font">{{ job.salary }}</p>
                 <br>
                 {% if session.role == "Developer" %}
                 <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" 

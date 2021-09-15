@@ -2,8 +2,8 @@
 
 :root {
     --cyan: rgb(43, 208, 208);
-    --gray: hsl(0, 0%, 75%);
-    --grayish-violet: hsl(257, 7%, 63%);
+    --gray: hsl(0, 0%, 80%);
+    --grayish-violet: hsl(257, 7%, 50%);
     --dark-violet: rgb(80, 49, 100);
     --very-dark-violet: rgb(58, 48, 84);
     --very-dark-blue: hsl(255, 11%, 22%);
@@ -191,6 +191,10 @@ nav .brand-logo {
 
 a:hover {
     color: var(--very-dark-blue);
+}
+
+li .footer-text {
+    color: var(--gray);
 }
 
 li .footer-text:hover {

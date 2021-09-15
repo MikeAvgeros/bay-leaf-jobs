@@ -55,9 +55,9 @@ def create_job():
         if form.validate_on_submit():
             company          = form.company.data
             company_logo     = form.company_logo.data
-            position	     = form.position.data
-            location	     = form.location.data
-            salary		     = form.salary.data
+            position	       = form.position.data
+            location	       = form.location.data
+            salary		       = form.salary.data
             level            = form.level.data
             stack            = form.stack.data
             contract         = form.contract.data
@@ -101,9 +101,9 @@ def update_job(job_id):
             if form.validate_on_submit():
                 company          = form.company.data
                 company_logo     = form.company_logo.data
-                position	     = form.position.data
-                location	     = form.location.data 
-                salary		     = form.salary.data             
+                position	       = form.position.data
+                location	       = form.location.data 
+                salary		       = form.salary.data             
                 level            = form.level.data
                 stack            = form.stack.data
                 contract         = form.contract.data

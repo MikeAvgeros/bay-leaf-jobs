@@ -64,7 +64,7 @@ def create_job():
             description      = form.description.data
             posted_by        = session["username"]
             email            = session["email"]
-            date_posted      = datetime.today().strftime('%Y-%m-%d')
+            date_posted      = datetime.today().strftime('%d-%m-%Y')
 
             # Create an job instance using the form and insert into MongoDB
             job = Job(company, company_logo, position, 

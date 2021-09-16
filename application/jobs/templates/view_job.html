@@ -19,26 +19,40 @@
             <br>
             <p class="card-title">{{ job.level }} &middot; {{ job.stack }}</p>
             <br>
-            <p class="card-title">{{ job.salary }}</p>
+            <p class="card-title"> <strong>{{ job.salary }}</strong></p>
             <br>
             <p class="card-title">{{ job.description}}</p>
             <br>
+            <p class="card-title">Posted by: {{ job.posted_by}}</p>
+            <br>
+            <p class="card-title">Date Posted: {{ job.date_posted}}</p>
+            <br>
             {% if session.role == "Developer" %}
             <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" 
+                aria-label="Opens job application" 
                 class="waves-effect waves-light btn-large">
                 Apply
             </a>
+            <a href="mailto:{{ job.email }}" 
+                aria-label="Opens recruiter's email address" 
+                target="_blank" rel="noopener"
+                class="waves-effect waves-light btn-large">
+                Contact
+            </a>
             {% elif session.role == "Recruiter" %}
             <a href="{{ url_for('jobs.update_job', job_id=job['_id']) }}" 
+                aria-label="Opens a page to update job information" 
                 class="waves-effect waves-light btn-large">
                 Update
             </a>
             <a onclick="return confirm('Are you sure you want to delete this job?');"
                 href="{{ url_for('jobs.delete_job', job_id=job['_id']) }}" 
+                aria-label="Deletes the job" 
                 class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
                 Delete
             </a>
             <a href="{{ url_for('jobs.view_applicants', job_id=job['_id']) }}" 
+                aria-label="Opens a page to view applicants for this job" 
                 class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
                 Applicants
             </a>

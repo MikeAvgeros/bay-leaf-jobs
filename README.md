@@ -61,7 +61,7 @@ The purpose of this project is to create a website that allows users to create, 
 
     - As a User (Developer), I want to be able to view when a job was posted and other info so I can decide if I should apply.
 
-    - As a User (Developer), I want to be notified that my application was sent successfully.
+    - As a User (Developer), I want to be notified that my application was sent successfully and view all the jobs I applied to on my profile.
 
     - As a User (Developer), I want to be able to contact the recruiter in case I have questions about a job or simply want to follow up on my progress.
 
@@ -71,7 +71,7 @@ The purpose of this project is to create a website that allows users to create, 
 
     - As a User (Recruiter), I want to be able to update the job description as per my client's request or delete them if the position is no longer open.
 
-    - As a User (Recruiter), I want to be notified when a developer has applied to my job post.
+    - As a User (Recruiter), I want to be notified when a developer has applied to my job post and view all applicants quickly on my profile.
 
 ## Scope
 
@@ -325,75 +325,115 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Requirement**
 
-    As a User, I want to be presented with a well-structured game, where I can easily find all the information that I need.
+    As a User, I want to be presented with a well-structured website, where I can easily navigate and find all the information that I need.
 
 -   **Implementation**
 
-    This was achieved by creating a one-page website with an easy to view layout. All buttons are quickly accessible to the player. Text has large enough font size and colour contrast to be easily read. Relevant icons were used to signify what each button and action is meant to do.
+    
 
 -   **Requirement**
 
-    As a User, I want to be able to easily view information on how to play the game.
+    As a User, I want to be able to easily view information on how to use the website as well as the website's terms of service.
 
 -   **Implementation**
 
-    This was achieved by starting the game with a tutorial scene thoroughly explaining the functionality of the game.
+    
 
 -   **Requirement**
 
-    As a User, I want to be able to name my character similar to RPG games.
+    As a User, I want to be able to contact the website owner in order to ask questions or send feedback.
 
 -   **Implementation**
 
-    The game allows the player to name his character before starting the game. In addition to that the story calls the character by his chosen name, which adds to the quality of the game.
+    
 
 -   **Requirement**
 
-    As a User, I want to be able to understand and enjoy the presented story.
+    As a User, I want the UI and design to be consistent throughout the website, so it will be visually appealing and easy to navigate.
 
 -   **Implementation**
 
-    The story is carefully structured and tested. Each option displays a different outcome. Some option may lead to a gameover so there's the added tension of choosing the right action.
+    
 
 -   **Requirement**
 
-    As a User, I want the displayed images to convey the emotion and aesthetic of the story.
+    As a User, I want to be able to update or delete my profile as well as add a profile picture.
 
 -   **Implementation**
 
-    Images for both the scene and the enemies are displayed on screen together with a name. This adds more realism to the game and makes the players more engaged.
+    
 
 -   **Requirement**
 
-    As a User, I want to be able to view my character's stats and inventory.
+    As a User (Developer), I want to easily view all the available jobs, see the description and quickly apply.
 
 -   **Implementation**
 
-    Players can view their character's name and stats by clicking on the info icon. The tutorial scene explains that functionality.
+    
 
 -   **Requirement**
 
-    As a User, I want to be able to update my character's stats and use weapons to help me beat the enemies.
+    As a User (Developer), I want to be able to filter the jobs in order to find the ones that are more suitable for me.
 
 -   **Implementation**
 
-    The code currently has functionality to updates the player's stats although since the story is short, we do not have many weapons. The only case in the current game of a special item updating the character's stats is when you use the special spray to update your health.
+    
 
 -   **Requirement**
 
-    As a User, I want the UI to be consistent throughout the game, so it will be visually appealing and easy to play.
+    As a User (Developer), I want to be able to view when a job was posted and other info so I can decide if I should apply.
 
 -   **Implementation**
 
-    The UI is consinstent with the cybepunk vibe of the game. The UI is consistent across multiple screen sizes and devices. The UI has been thoroughly tested and does not have any glitches or bugs.
+    
 
 -   **Requirement**
 
-    As a User, I want my actions to show different results to make the game more interactive and fun to play again and again.
+    As a User (Developer), I want to be notified that my application was sent successfully and view all the jobs I applied to on my profile.
 
 -   **Implementation**
 
-    Each choice in the game leads to a different outcome. Some choices may lead players to play more or less chapters which creates an excitement for players when they play the game for a second time and see an entire new scene which they never played before.
+
+    
+-   **Requirement**
+
+    As a User (Developer), I want to be able to contact the recruiter in case I have questions about a job or simply want to follow up on my progress.
+
+-   **Implementation**
+
+
+
+-   **Requirement**
+
+    As a User (Recruiter), I want to easily create jobs and add role and company information that can help me find the best talent. 
+
+-   **Implementation**
+
+
+
+-   **Requirement**
+
+    As a User (Recruiter), I want to be able to see who has applied to my job posts as well as if the applicants meet my client's criteria.
+
+-   **Implementation**
+
+
+
+-   **Requirement**
+
+    As a User (Recruiter), I want to be able to update the job description as per my client's request or delete them if the position is no longer open.
+
+-   **Implementation**
+
+
+    
+-   **Requirement**
+
+    As a User (Recruiter), I want to be notified when a developer has applied to my job post and view all applicants quickly on my profile.
+
+-   **Implementation**
+
+    
 
 ## Browser Compatibility
 

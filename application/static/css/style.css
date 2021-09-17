@@ -238,4 +238,8 @@ li .footer-text:hover {
         margin-left: 0 !important;
         margin-top: .5rem !important;
     }
+
+    .alert {
+        width: 75%;
+    }
 }

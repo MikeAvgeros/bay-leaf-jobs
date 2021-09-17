@@ -219,6 +219,11 @@ li .footer-text:hover {
     hyphens: auto;
 }
 
+pre {
+    white-space:pre-wrap;
+    font-family: var(--font);
+}
+
 .profile-content {
     font-size: 16px;
     overflow: hidden;

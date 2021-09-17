@@ -10,22 +10,22 @@
                 <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
             </div>
         {% endif %}
-        <h2 class="center-align section-heading">
+        <h2 class="center-align section-subheading">
             {{ job.company }} - {{ job.position }}
         </h2>
         <div class="col s12 breakline-row"><hr class="breakline" /></div>
         <div class="card-content">
-            <p class="card-title">{{ job.location }} &middot; {{ job.contract }}</p>
+            <p>{{ job.location }} &middot; {{ job.contract }}</p>
             <br>
-            <p class="card-title">{{ job.level }} &middot; {{ job.stack }}</p>
+            <p>{{ job.level }} &middot; {{ job.stack }}</p>
             <br>
-            <p class="card-title"> <strong>{{ job.salary }}</strong></p>
+            <p> <strong>{{ job.salary }}</strong></p>
             <br>
-            <pre class="card-title">{{ job.description}}</pre>
+            <pre>{{ job.description}}</pre>
             <br>
-            <p class="card-title">Posted by: {{ job.posted_by}}</p>
+            <p>Posted by: {{ job.posted_by}}</p>
             <br>
-            <p class="card-title">Date Posted: {{ job.date_posted}}</p>
+            <p>Date Posted: {{ job.date_posted}}</p>
             <br>
             {% if session.role == "Developer" %}
             <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" 

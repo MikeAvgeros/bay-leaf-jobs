@@ -18,6 +18,7 @@ Required Technologies : HTML, CSS, JavaScript, Python, Flask, MongoDB.
   - [Scope](#scope)
   - [Structure & Skeleton](#structure--skeleton)
   - [Surface](#surface)
+- [Database Design](#database-design)
 - [Technologies Used](#technologies-used)
   - [Languages](#languages)
   - [Tools & Resources](#tools--resources)   

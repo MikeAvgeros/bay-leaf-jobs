@@ -159,6 +159,46 @@ I have designed the structure and layout of the website using Materialize and CS
     -   CSS grid was also used to help position elements on the page including sticking the footer to the bottom and position the list elements of the navbar.
 
 
+# Database Design
+
+The database consist of three collections. Created and hosted using [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
+
+-   ### users
+
+    -   _id
+    -   username
+    -   email
+    -   password
+    -   location
+    -   role
+    -   picture
+
+-   ### jobs
+
+    -   _id
+    -   company
+    -   company_logo
+    -   position
+    -   location
+    -   salary
+    -   level
+    -   stack
+    -   contract
+    -   description
+    -   posted_by
+    -   date_posted
+    -   contact_email
+
+-   ### applications
+
+    -   _id
+    -   notice_period
+    -   current_salary
+    -   desired_salary
+    -   resume
+    -   cover_letter
+    -   applicant_username
+
 # Technologies Used
 
 ## Languages

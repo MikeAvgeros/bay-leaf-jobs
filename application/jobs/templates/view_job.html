@@ -37,7 +37,7 @@
                 aria-label="Opens recruiter's email address" 
                 target="_blank" rel="noopener"
                 class="waves-effect waves-light btn-large">
-                Contact
+                Email
             </a>
             {% elif session.role == "Recruiter" %}
             <a href="{{ url_for('jobs.update_job', job_id=job['_id']) }}" 

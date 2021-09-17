@@ -144,6 +144,8 @@ I have designed the structure and layout of the website using Materialize and CS
 
     -   Sans Serif is used as the fallback font in case Poppins is not being imported into the site correctly.
 
+    -   The default font size was increased to 18px to add to the fun and relaxed design of the website.
+
 -   ### Images
 
     -   I have used [Pixabay](https://pixabay.com/) to source all the images of the website. You can find more information on the Credit section.

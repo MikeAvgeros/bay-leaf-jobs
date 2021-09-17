@@ -2,7 +2,7 @@
 {% block title %}Profile{% endblock title %}
 {% block content %}
 
-<div class="container">
+<main class="container">
   <div class="row">
     <div class="col s12">
       <h2 class="center-align section-heading">Welcome {{ username }}</h2>
@@ -41,90 +41,89 @@
     <div class="col s12 m6 l6 offset-l1">
       <h4 class="center-align section-subheading">Information</h4>
       {% if session.role == "Developer" %}
-      <p>
-        Hello {{ username }}. On your profile page you will be able to find 
-        a list with all the jobs you have applied for.
-        You can follow up the progress of your application by contacting the
-        recruiter. You can view the email of the recruiter upon opening the full
-        job description by clicking on the cards below. 
-        Please allow at least 2 weeks before following up. This is 
-        to avoid overwhelming the recruiters so that they can reply to all the 
-        successful candidates as fast as possible.
-      </p>
-      <br>
-      <p>
-        You can update your profile details and upload a profile picture by
-        clicking the 'Update' button. 
-        You can also delete your profile by clicking the 'Delete' button if you no 
-        longer wish to use our services.
-      </p>
+        <p>
+          Hello {{ username }}. On your profile page you will be able to find 
+          a list with all the jobs you have applied for.
+          You can follow up the progress of your application by contacting the
+          recruiter. You can view the email of the recruiter upon opening the full
+          job description by clicking on the cards below. 
+          Please allow at least 2 weeks before following up. This is 
+          to avoid overwhelming the recruiters so that they can reply to all the 
+          successful candidates as fast as possible.
+        </p>
+        <br>
+        <p>
+          You can update your profile details and upload a profile picture by
+          clicking the 'Update' button. 
+          You can also delete your profile by clicking the 'Delete' button if you no 
+          longer wish to use our services.
+        </p>
       {% elif session.role == "Recruiter" %}
-      <p>
-        Hello {{ username }}. On your profile page you will find a list with 
-        all the jobs you have created on this page.
-        You can view the applicants' details for each job by opening the full 
-        job description on the cards below and clicking on 'Applicants'. We ask
-        that you try to contact all applicants to update them on their application progress.
-        This way, it can help us attract more talent which in turn will mean that you can 
-        find the best developers for your clients.
-      </p>
-      <br>
-      <p>
-        You can update your profile details and upload a profile picture by
-        clicking the 'Update' button. 
-        You can also delete your profile by clicking the 'Delete' button if you no 
-        longer wish to use our services.
-      </p>
+        <p>
+          Hello {{ username }}. On your profile page you will find a list with 
+          all the jobs you have created on this page.
+          You can view the applicants' details for each job by opening the full 
+          job description on the cards below and clicking on 'Applicants'. We ask
+          that you try to contact all applicants to update them on their application progress.
+          This way, it can help us attract more talent which in turn will mean that you can 
+          find the best developers for your clients.
+        </p>
+        <br>
+        <p>
+          You can update your profile details and upload a profile picture by
+          clicking the 'Update' button. 
+          You can also delete your profile by clicking the 'Delete' button if you no 
+          longer wish to use our services.
+        </p>
       {% else %}
-      <h1>Error</h1>
       {% endif %}
     </div>
   </div>
   <div class="row">
     {% if session.role == "Developer" %}
-      <h4 class="center-align section-subheading">Jobs you applied for</h4>
+      <h4 class="center-align section-subheading">Jobs applications</h4>
       <div class="row">
         {% for application in applications if username|lower == application.applicant|lower %}
           {% for job in jobs if job._id|string == application.job_id|string %}
-          <div class="col s12 m6 l4">
-            <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View job you applied to">
-              <div class="card job-card z-depth-3">
-                <div class="card-content">
-                  {% if job.company_logo %}
-                    <div class="center-align">
-                      <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
-                    </div>
-                  {% endif %}
-                  <br>
-                  <p><i class="fas fa-user-tie prefix white-text"></i> 
-                    {{ job.position }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-building prefix white-text"></i> 
-                    {{ job.company }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-info-circle prefix white-text"></i> 
-                    {{ job.location }} &middot; {{ job.contract }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-laptop-code prefix white-text"></i>
-                    {{ job.level }} &middot; {{ job.stack }}
-                  </p>
-                  <br>
-                  {% if job.salary %}
-                    <p><i class="fas fa-money-check-alt prefix white-text"></i>
-                        {{ job.salary }}
+            <div class="col s12 m6 l4">
+              <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" aria-label="View job you applied to">
+                <div class="card job-card z-depth-3">
+                  <div class="card-content">
+                    {% if job.company_logo %}
+                      <div class="center-align">
+                        <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
+                      </div>
+                    {% endif %}
+                    <br>
+                    <p><i class="fas fa-user-tie prefix white-text"></i> 
+                      {{ job.position }}
                     </p>
                     <br>
-                  {% endif %}
-                  <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
-                      {{ job.description }}
-                  </p>
+                    <p><i class="fas fa-building prefix white-text"></i> 
+                      {{ job.company }}
+                    </p>
+                    <br>
+                    <p><i class="fas fa-info-circle prefix white-text"></i> 
+                      {{ job.location }} &middot; {{ job.contract }}
+                    </p>
+                    <br>
+                    <p><i class="fas fa-laptop-code prefix white-text"></i>
+                      {{ job.level }} &middot; {{ job.stack }}
+                    </p>
+                    <br>
+                    {% if job.salary %}
+                      <p><i class="fas fa-money-check-alt prefix white-text"></i>
+                          {{ job.salary }}
+                      </p>
+                      <br>
+                    {% endif %}
+                    <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
+                        {{ job.description }}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          </div>
+              </a>
+            </div>
           {% endfor %}
         {% endfor %}
       </div>
@@ -174,9 +173,8 @@
         {% endfor %}
       </div>
     {% else %}
-    <h1>Error</h1>
     {% endif %}
   </div>
-</div>
+</main>
 
 {% endblock content %}

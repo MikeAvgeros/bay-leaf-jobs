@@ -7,13 +7,6 @@
         <h2 class="center-align section-heading">View Applicants</h2>
         <div class="col s12 breakline-row"><hr class="breakline" /></div>
         <div class="row">
-            {% if application|length == 0 %}
-            <div class="col s12">
-                <h3 class="center-align section-subheading">
-                    There are no applicants for this job
-                </h3>
-            </div>
-            {% endif %}
             {% for application in applications if application.job_id|string == job._id|string %}
                 <div class="col s12 m5">
                     <div class="card job-card z-depth-4">

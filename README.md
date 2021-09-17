@@ -48,63 +48,67 @@ The purpose of this project is to create a website that allows users to create, 
 
     - As a User, I want to be able to easily view information on how to use the website as well as the website's terms of service.
 
-    - As a User, I want to be able to update or delete my profile.
-
-    - As a User (Developer), I want to easily view all the available jobs, find out if they are suitable for me and quickly apply to them.
-
-    - As a User (Developer), I want to be able to view when a job was posted so I can decide if I should apply.
-
-    - As a User (Developer), I want to be able to contact the recruiter in case I have questions about a job or simply want to follow up on my progress.
-
-    - As a User (Recruiter), I want to easily create jobs and see who has applied to them as well as if the applicants meet my client's criteria.
-
-    - As a User (Recruiter), I want to be able to update the job description as per my client's request or delete them if the position is no longer open.
-
     - As a User, I want to be able to contact the website owner in order to ask questions or send feedback.
 
     - As a User, I want the UI and design to be consistent throughout the website, so it will be visually appealing and easy to navigate.
 
+    - As a User, I want to be able to update or delete my profile as well as add a profile picture.
+
+    - As a User (Developer), I want to easily view all the available jobs, see the description and quickly apply.
+
+    - As a User (Developer), I want to be able to filter the jobs in order to find the ones that are more suitable for me.
+
+    - As a User (Developer), I want to be able to view when a job was posted and other info so I can decide if I should apply.
+
+    - As a User (Developer), I want to be notified that my application was sent successfully.
+
+    - As a User (Developer), I want to be able to contact the recruiter in case I have questions about a job or simply want to follow up on my progress.
+
+    - As a User (Recruiter), I want to easily create jobs and add role and company information that can help me find the best talent. 
+
+    - As a User (Recruiter), I want to be able to see who has applied to my job posts as well as if the applicants meet my client's criteria.
+
+    - As a User (Recruiter), I want to be able to update the job description as per my client's request or delete them if the position is no longer open.
+
+    - As a User (Recruiter), I want to be notified when a developer has applied to my job post.
+
 ## Scope
 
-This project is developed as a Minimal Viable Product. There will be room for future improvements and releases incorporating additional pages and features.
+This project is developed as a Minimal Viable Product. There will be room for future improvements and releases incorporating additional pages and features as well as improved design.
 
 - ### Current Features
 
-	- Players can name their character.
+	- Users can create and sign in to their account and get a welcoming email from the website.
 
-    - Players can view their character's stats and inventory.
+    - Users can customize their profile, add a picture as well as delete it if they wish.
 
-    - Images of each level and enemy are displayed on screen for increased realism.
+    - Users can contact the website owner.
 
-    - Players can view a live displayer of their health in the form of a health bar to check if they are about to die.
+    - Users can find information on how to use the website.
 
-    - Players can view the remaining health points of each enemy so that they know if they can beat them.
+    - Users (Developer) can view and filter jobs based on keywords to find the ones they like.
 
-    - Players can contact the developer with questions and story suggestions as well as view their social media and github accounts.
+    - Users (Developer) can apply to their dream jobs and get notifications that their application was received.
 
-    - Animations are added when displaying the text and buttons.
+    - Users (Developer) can email the recruiter directly to ask questions or check their application progress.
 
-    - Players can choose to skip the text animation in order to play faster.
+    - Users (Recruiter) can create a job, add a detailed description and company info.
 
-    - Players can choose to view a tutorial which explains the functionality of the game or start playing right away.
+    - Users (Recruiter) can edit the job description if necessary without having to re-create the post.
 
-    - A video plays on a loop in the background which adds more movement and realism to the game.
+    - Users (Recruiter) can view everyone who applied to their job posts and find the most suitable candidate.
+
+    - Users (Recruiter) get emails once a developer has applied to their job posts.
 
 - ### Future Features
 
-    - I would like to complete the story and present players with more than 2 options each time in order to create a more complex narrative with different endings.
+    - I would like to allow users to update their password in case they forget it.
 
-    - I would like to use session storage to save the state of the game so that you do not start from the beginning. This was not currently implemented due to time constraints and because the story is short.
-
-    - Since the functionality to pick weapons which update the player's stats exists, I would like to create more weapons and special items for the player.
-
-    - I would like to add icons next to the items in the inventory similar to RPG games.
-
-    - Add the entire story, levels, items and characters into a JSON file, which can be replaced so that anyone can mod the game and add their own story, characters and items.
+    - I would like to add a recaptcha when registering, contacting website owner and applying to jobs to avoid bots and spam.
 
 ## Structure & Skeleton
 
-I have designed the structure and layout of my game based on the CSS grid system. I have created low fidelity wireframes for desktop and mobile using Miro in order to guide me in designing the game. The design and layout of the game has evolved from the original Miro wireframes. You can view the original low fidelity wireframes below.
+I have designed the structure and layout of the website using Materialize and CSS Grid. I have created low fidelity wireframes for desktop and mobile using Balsamiq in order to guide me in designing the pages. The design and layout of the website has evolved from the original Balsamiq wireframes. You can view the original low fidelity wireframes below.
 
 -  ### Wireframes
  
@@ -120,39 +124,39 @@ I have designed the structure and layout of my game based on the CSS grid system
 
 -   ### Colour Scheme
 
-    -   The main colours used are black, yellow, cyan and red. The reason I chose these colours is because it adds a cyberpunk feel to the UI, which is the main concept of the game.
+    -   The main colours used are cyan, gray, dark violet and dark blue. 
 
-    -   Black is used for the background together with the video.
+    -   Dark Blue is used for the headings, icons and when hovering the job cards.
 
-    -   Yellow is used for the borders of my HTML elements and some of the icons. 
+    -   Dark violet is used for the job cards and the footer.
 
-    -   Cyan is used for all the text and some of the icons.
+    -   Cyan is used on the background of all the buttons.
 
-    -   Red is used for the main headings and hover effects of the buttons.
+    -   Gray is used for secondary text and navigation.
+
+    -   Black is used for normal paragraphs.
 
 -   ### Typography
 
     -   I have used [Google Fonts](https://fonts.google.com/) to import the fonts for the website.
 
-    -   The font that I imported is Tomorrow and the weight is 400 (Regular). I have used this font as it makes the design look more futuristic and cyberpunk which is the main concept of the game.
+    -   The font that I imported is Poppins and the weights are 500, 700, 900. I have used this font as it makes the design look fun and relaxed, which works well with the landing page images.
 
-    -   Sans Serif is used as the fallback font in case Tomorrow is not being imported into the site correctly.
-
-    -   I am using fluid font sizes that grow together with the viewport width. This is achieved by using the clamp attribute and setting a fixed min and max size and a fluid desired size with the help of the viewport width unit (vw).
+    -   Sans Serif is used as the fallback font in case Poppins is not being imported into the site correctly.
 
 -   ### Images
 
-    -   I have used [Unsplash](https://unsplash.com/) to source all the images of the game. You can find more information on the Credit section.
+    -   I have used [Pixabay](https://pixabay.com/) to source all the images of the website. You can find more information on the Credit section.
     
 -   ### Icons
 
-    -   I have used [fontawesome](https://fontawesome.com/) to source all the icons used in the game.
+    -   I have used [fontawesome](https://fontawesome.com/) to source all the icons used in the website.
 
 -   ### Structure & Layout
 
-    -   Due to the simplicity and nature of the project, I decided to create a single-page game as it created a smoother user-experience with an easier and more effective layout.
+    -   Materialize was used to structure the navbar, profile, forms and landing page.
 
-    -   CSS grid was used to structure the game as it allowed me to easily place all the elements in the page and make them fully responsive without the use of bootstrap.
+    -   CSS grid was also used to help position elements on the page including sticking the footer to the bottom and position the list elements of the navbar.
 
 
 # Technologies Used
@@ -164,6 +168,12 @@ I have designed the structure and layout of my game based on the CSS grid system
 -   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 
 -   [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+
+-   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+-   [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
+
+-   [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
 
 ## Tools & Resources
 
@@ -185,11 +195,11 @@ I have designed the structure and layout of my game based on the CSS grid system
 6. [GitHub](https://github.com/)
     -   GitHub was used to store and manage the Git repository.
 
-7. [Miro](https://miro.com/app/dashboard/)
-    -   Miro was used to create the [wireframes](https://miro.com/app/board/o9J_lG5rLBo=/) during the design and prototyping process.
+7. [Balsamiq](https://balsamiq.com/)
+    -   Balsamiq was used to create the wireframes during the design and prototyping process.
 
 8. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
-    -   Chrome DevTools helped me debug issues that I've had during development. In addition to that, by using the inspection mode, I could see how responsive my game was.
+    -   Chrome DevTools helped me debug issues that I've had during development. In addition to that, by using the inspection mode, I could see how responsive all the pages are.
 
 9. [W3C Validation Services](https://validator.w3.org/)
     -   W3C Validation Services were used to help me check if my HTML and CSS code has any errors and that it adheres to the web standards. More details in the Testing section.
@@ -198,24 +208,27 @@ I have designed the structure and layout of my game based on the CSS grid system
     -   JS Hint used to help me check if my Javascript code has any errors and that it adheres to the web standards. More details in the Testing section.
 
 11. [Am I Responsive](http://ami.responsivedesign.is/)
-    -   Am I Responsive was used during my testing phase to check the responsiveness and look of my game.
+    -   Am I Responsive was used during my testing phase to check the responsiveness and look of all the pages.
 
 12. [Techsini Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)
-    -   Techsini Multi Device Mockup Generator was used during my testing phase to check the responsiveness and look of my game.
+    -   Techsini Multi Device Mockup Generator was used during my testing phase to check the responsiveness and look of all the pages.
 
 13. [CSS Minifier](https://cssminifier.com/)
-    -   CSS Minifier was used to minify my CSS file in order to improve loading speed and performance.
+    -   CSS Minifier was used to minify the CSS file in order to improve loading speed and performance.
 
 14. [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/)
     -   WAVE Accessibility Evaluation Tool was used to help me make my content more accessible to users with disabilities.
 
-15. [Email JS](https://www.emailjs.com/)
-    -   Email JS was used to enable users to send emails to the developer.
+15. [Flask Mail](https://pythonhosted.org/Flask-Mail/)
+    -   Flask Mail was used to enable users to send emails to the website owner as well as receive notifications from the website.
 
-16. [Autoprefixer CSS](https://autoprefixer.github.io/)
+16. [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
+    -   WTForms was used to help me create and validate all the forms on the website.
+
+17. [Autoprefixer CSS](https://autoprefixer.github.io/)
     -   Autoprefixer CSS was used to help me add suitable vendor prefixes for better cross-browser compatibility.
 
-16. [Canva](https://www.canva.com/)
+18. [Canva](https://www.canva.com/)
     -   Canva was used to design the favicon of the page.
 
 # Testing

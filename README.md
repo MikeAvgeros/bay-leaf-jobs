@@ -113,13 +113,58 @@ I have designed the structure and layout of the website using Materialize and CS
 
 -  ### Wireframes
  
-	**Desktop**
+	**Home Page**
     
-    ![Desktop](documentation/wireframes/wireframe-desktop.png)
+    ![Home Page](documentation/wireframes/home.png)
 
-    **Mobile**
+    **Contact Page**
+    
+    ![Contact Page](documentation/wireframes/contact.png)
 
-    ![Desktop](documentation/wireframes/wireframe-mobile.png)
+    **Sign In Page**
+    
+    ![Sign In Page](documentation/wireframes/signin.png)
+
+    **Register Page**
+    
+    ![Register Page](documentation/wireframes/register.png)
+
+    **Profile Page**
+    
+    ![Profile Page](documentation/wireframes/profile.png)
+
+    **Update Profile Page**
+    
+    ![Update Profile Page](documentation/wireframes/update_profile.png)
+
+    **View Jobs Page**
+    
+    ![View Jobs Page](documentation/wireframes/view_jobs.png)
+
+    **Single Job Page**
+    
+    ![Single Job Page](documentation/wireframes/single_job.png)
+
+    **Create Job Page**
+    
+    ![Create Job Page](documentation/wireframes/create_job.png)
+
+    **Update Job Page**
+    
+    ![Update Job Page](documentation/wireframes/update_job.png)
+
+    **Privacy Page**
+    
+    ![Privacy Page](documentation/wireframes/privacy.png)
+
+    **F.A.Q. Page**
+    
+    ![F.A.Q. Page](documentation/wireframes/faq.png)
+
+    **Terms & Conditions Page**
+    
+    ![Terms & Conditions Page](documentation/wireframes/terms.png)
+
 
 ## Surface
 

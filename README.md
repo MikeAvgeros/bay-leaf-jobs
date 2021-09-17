@@ -437,35 +437,33 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 ## Browser Compatibility
 
--   The game is compatible with most modern web browsers. For the best viewing experience, I recommend using Chrome, Firefox, Edge or Safari. 
+-   The website is compatible with most modern web browsers. For the best viewing experience, I recommend using Chrome, Firefox, Edge or Safari. 
 
 -   The worst viewing experience is on Internet Explorer. I decided to not include any vendor prefixes for IE or make any changes to my code as IE is no longer supported. 
 
 ## Responsiveness
 
-Since I haven't used Bootstrap, I have been constantly testing how responsive my website is by using [Google Development Tools](https://developers.google.com/web/tools), [Am I Responsive](http://ami.responsivedesign.is/) and [Techsini Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)
+I have been constantly testing how responsive my website is by using [Google Development Tools](https://developers.google.com/web/tools), [Am I Responsive](http://ami.responsivedesign.is/) and [Techsini Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)
 
 -   ### Google Development Tools
 
-    Throughout the development process, I have been consistently testing that my game and all the popups work well on different screen sizes and devices. 
+    Throughout the development process, I have been consistently testing that all the pages work well on different screen sizes and devices. 
 
-    -   This has helped me adjust the values on my font sizes so that my fonts are responsive and work well with all screen sizes.
-
-    -   This has helped me adjust the grid column and row parameters so that all the nested elements respond and adapt to the screen size of the viewport.
+    -   This has helped me adjust the values on my font sizes so that my fonts are responsive and work well on all screen sizes.
 
     -   This has helped me adjust the width and height of all my images.
 
     -   This has helped me adjust the width and height of my buttons as their size is responsive depending on the screen width.
 
-    -   Overall, most of the elements on the website are responsive based on the screen size so being able to view how the game adapts depending on the screen has helped me make suitable decisions, which have improved the UX of the game.
+    -   Overall, most of the elements on the website are responsive based on the screen size so being able to view how the website adapts depending on the screen has helped me make suitable decisions, which have improved the User Experience.
 
-    -   During the testing phase, I have used Lighthouse to generate reports for both Desktop and Mobile. The reports showed better practices and syntantical fixes on my HTML and CSS, which in turn helped boost the performance, accessibility and UX of the game. You can view the final results below.
+    -   During the testing phase, I have used Lighthouse to generate reports for both Desktop and Mobile. The reports showed better practices and syntantical fixes on my HTML and CSS, which in turn helped boost the performance, accessibility and UX of the website. You can view the final results below.
         
         **Desktop**
-        ![Desktop](documentation/testing/lighthouse-desktop.png)
+        ![Desktop](documentation/testing/lighthouse_desktop.png)
 
         **Mobile**
-        ![Mobile](documentation/testing/lighthouse-mobile.png)
+        ![Mobile](documentation/testing/lighthouse_mobile.png)
 
 -   ### Am I Responsive?
 

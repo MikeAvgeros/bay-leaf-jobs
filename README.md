@@ -549,12 +549,6 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_upload)
 
 ![JavaScript Validation Results](documentation/testing/validator_js.png)
 
-## Accessibility
-
-The [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) was used to test the accessibility of my website. It identified missing ARIA-related attributes (especially in my navigation menu icon) that helped me improve the accessibility of the site for Users with disabilities. The final results, which you can view below indicate no errors.
-
-![WAVE Results](documentation/testing/wave-evaluation.png)
-
 ## Form Validation
 
 -   I made sure to validate my forms and ran suitable tests using different input scenarios. I can confirm that all of them behaved as expected. 
@@ -644,11 +638,20 @@ The Github repository was cloned and stored locally on my machine using the foll
 
 # Credits
 
+The design of the landing page has been inspired by a frontend challenge from [FrontEnd Mentor](https://www.frontendmentor.io/challenges).
+
+The challenge that the landing page was inspired by was the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
+
 
 ## Images
 
 I have used the following images from [Pixabay](https://pixabay.com/).
 
+    - [PanJoyCZ](https://pixabay.com/illustrations/businessman-cartoons-training-607831/)
+
+    - [GraphicMama-team](https://pixabay.com/vectors/business-man-businessman-cartoon-5258645/)
+
+I have also used the image from the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
 
 
 # Acknowledgements

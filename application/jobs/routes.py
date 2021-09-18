@@ -205,22 +205,36 @@ def apply_to_job(job_id):
                 # Add application in MongoDB
                 application.insert_into_database()
 
-                # Send confirmation email
+                # Send confirmation to developer and notification to recruiter
                 sender_mail = Config.MAIL_USERNAME
                 password = Config.MAIL_PASSWORD
+                recruiter = job["email"]
+                recipients = [recruiter, email]
                 server = smtplib.SMTP("smtp.gmail.com", 587)
                 server.ehlo()
                 server.starttls()
                 server.login(sender_mail, password)
-                message = f"""
-                Hello {applicant},
+                for recipient in recipients:
+                    if recipient == recruiter:
+                        message = f"""
+                        Hello {job["posted_by"]},
 
-                We have received your application for the position of {job["position"]} at {job["company"]}.
-                
-                Your details have been forwarded to the recruiter and they will be in touch should you meet their criteria.
-                """
-                server.sendmail(sender_mail, email, message)
-                flash("Congratulations! You have applied to the job.")
+                        You have received a new application for the position of {job["position"]} at {job["company"]} by {applicant}.
+
+                        You can view the applicant's detail on your profile page.
+                        """
+                        server.sendmail(sender_mail, recipient, message)
+
+                    elif recipient == email:
+                        message = f"""
+                        Hello {applicant},
+
+                        We have received your application for the position of {job["position"]} at {job["company"]}.
+                        
+                        Your details have been forwarded to the recruiter and they will be in touch should you meet their criteria.
+                        """
+                        server.sendmail(sender_mail, email, message)
+                flash("Congratulations! Your application was sent successfully.")
                 return redirect(url_for("main.home"))
 
             return render_template("job_application.html", form=form)
@@ -252,3 +266,4 @@ def view_applicants(job_id):
 
     flash("This job does not exist.")
     return redirect(url_for("main.home"))
+

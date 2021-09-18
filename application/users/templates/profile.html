@@ -83,100 +83,110 @@
     {% if session.role == "Developer" %}
       <h4 class="center-align section-subheading">Job applications</h4>
       <div class="row">
-        {% for application in applications if username|lower == application.applicant|lower %}
-          {% for job in jobs if job._id|string == application.job_id|string %}
+        {% if applied_jobs %}
+          {% for applied_job in applied_jobs %}
             <div class="col s12 m6 l4">
               <div class="card job-card z-depth-3">
                 <div class="card-content">
-                  {% if job.company_logo %}
+                  {% if applied_job.company_logo %}
                     <div class="center-align">
-                      <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
+                      <img class="responsive-img" src="{{ applied_job.company_logo }}" alt="company logo">
                     </div>
                   {% endif %}
                   <br>
                   <p><i class="fas fa-user-tie prefix white-text"></i> 
-                    {{ job.position }}
+                    {{ applied_job.position }}
                   </p>
                   <br>
                   <p><i class="fas fa-building prefix white-text"></i> 
-                    {{ job.company }}
+                    {{ applied_job.company }}
                   </p>
                   <br>
                   <p><i class="fas fa-info-circle prefix white-text"></i> 
-                    {{ job.location }} &middot; {{ job.contract }}
+                    {{ applied_job.location }} &middot; {{ applied_job.contract }}
                   </p>
                   <br>
                   <p><i class="fas fa-laptop-code prefix white-text"></i>
-                    {{ job.level }} &middot; {{ job.stack }}
+                    {{ applied_job.level }} &middot; {{ applied_job.stack }}
                   </p>
                   <br>
-                  {% if job.salary %}
+                  {% if applied_job.salary %}
                     <p><i class="fas fa-money-check-alt prefix white-text"></i>
-                        {{ job.salary }}
+                        {{ applied_job.salary }}
                     </p>
                     <br>
                   {% endif %}
                   <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
-                      {{ job.description }}
+                      {{ applied_job.description }}
                   </p>
                 </div>
                 <div class="card-action">
-                  <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}" 
+                  <a href="{{ url_for('jobs.view_job', job_id=applied_job['_id']) }}" 
                   aria-label="Open full job description"
                   class="waves-effect waves-light btn">More info</a>
                 </div>
               </div>
             </div>
           {% endfor %}
-        {% endfor %}
+        {% else %}
+          <p class="center-align">
+            You haven't applied to any jobs yet
+          </p>
+        {% endif %}
       </div>
     {% elif session.role == "Recruiter" %}
       <h4 class="center-align section-subheading">Jobs you posted</h4>
       <div class="row">
-        {% for job in jobs if username|lower == job.posted_by|lower %}
-          <div class="col s12 m6 l4">
-            <div class="card job-card z-depth-3">
-              <div class="card-content">
-                {% if job.company_logo %}
-                  <div class="center-align">
-                    <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
-                  </div>
-                {% endif %}
-                <br>
-                <p><i class="fas fa-user-tie prefix white-text"></i> 
-                  {{ job.position }}
-                </p>
-                <br>
-                <p><i class="fas fa-building prefix white-text"></i> 
-                  {{ job.company }}
-                </p>
-                <br>
-                <p><i class="fas fa-map-marked-alt prefix white-text"></i>
-                  {{ job.location }} &middot; {{ job.contract }}
-                </p>
-                <br>
-                <p><i class="fas fa-laptop-code prefix white-text"></i>
-                  {{ job.level }} &middot; {{ job.stack }}
-                </p>
-                <br>
-                {% if job.salary %}
-                  <p><i class="fas fa-money-check-alt prefix white-text"></i>
-                      {{ job.salary }}
+        {% if posted_jobs %}
+          {% for posted_job in posted_jobs %}
+            <div class="col s12 m6 l4">
+              <div class="card job-card z-depth-3">
+                <div class="card-content">
+                  {% if posted_job.company_logo %}
+                    <div class="center-align">
+                      <img class="responsive-img" src="{{ posted_job.company_logo }}" alt="company logo">
+                    </div>
+                  {% endif %}
+                  <br>
+                  <p><i class="fas fa-user-tie prefix white-text"></i> 
+                    {{ posted_job.position }}
                   </p>
                   <br>
-                {% endif %}
-                <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
-                    {{ job.description }}
-                </p>
-              </div>
-              <div class="card-action">
-                <a href="{{ url_for('jobs.view_job', job_id=job['_id']) }}"
-                aria-label="Open full job description"
-                class="waves-effect waves-light btn">More info</a>
+                  <p><i class="fas fa-building prefix white-text"></i> 
+                    {{ posted_job.company }}
+                  </p>
+                  <br>
+                  <p><i class="fas fa-map-marked-alt prefix white-text"></i>
+                    {{ posted_job.location }} &middot; {{ posted_job.contract }}
+                  </p>
+                  <br>
+                  <p><i class="fas fa-laptop-code prefix white-text"></i>
+                    {{ posted_job.level }} &middot; {{ posted_job.stack }}
+                  </p>
+                  <br>
+                  {% if posted_job.salary %}
+                    <p><i class="fas fa-money-check-alt prefix white-text"></i>
+                        {{ posted_job.salary }}
+                    </p>
+                    <br>
+                  {% endif %}
+                  <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
+                      {{ posted_job.description }}
+                  </p>
+                </div>
+                <div class="card-action">
+                  <a href="{{ url_for('jobs.view_job', job_id=posted_job['_id']) }}"
+                  aria-label="Open full job description"
+                  class="waves-effect waves-light btn">More info</a>
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        {% else %} 
+          <p class="center-align">
+            You haven't posted any jobs yet
+          </p>
+        {% endif %}
       </div>
     {% else %}
     {% endif %}

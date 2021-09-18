@@ -67,6 +67,35 @@ class Job():
 
 
     @staticmethod
+    def find_applied_jobs(username):
+        """
+        Find and return jobs that a user has applied to in MongoDB
+        """
+        applications = list(mongo.db.applications.find())
+        jobs = list(mongo.db.jobs.find())
+        applied_jobs = []
+        for application in applications:
+            if application["applicant"] == username:
+                for job in jobs:
+                    if str(job["_id"]) == str(application["job_id"]):
+                        applied_jobs.append(job)
+        return applied_jobs
+
+
+    @staticmethod
+    def find_posted_jobs(username):
+        """
+        Find and return jobs that a user has posted in MongoDB
+        """
+        jobs = list(mongo.db.jobs.find())
+        posted_jobs = []
+        for job in jobs:
+            if username == job["posted_by"]:
+                posted_jobs.append(job)
+        return posted_jobs
+
+
+    @staticmethod
     def find_job_by_id(job_id):
         """
         Find and return a job in MongoDB by its id

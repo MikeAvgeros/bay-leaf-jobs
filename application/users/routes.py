@@ -139,10 +139,10 @@ def profile(username):
     # Check if user exists
     if user:
         # Find all jobs and applications and pass them to the profile page
-        jobs = Job.find_all_jobs()
-        applications = Application.find_all_applications()
+        posted_jobs = Job.find_posted_jobs(session["username"])
+        applied_jobs = Job.find_applied_jobs(session["username"])
         return render_template("profile.html", username=session["username"], 
-                            user=user, jobs=jobs, applications=applications)
+                            user=user, posted_jobs=posted_jobs, applied_jobs=applied_jobs)
 
     flash("Please create an account.")
     return redirect(url_for("users.register"))

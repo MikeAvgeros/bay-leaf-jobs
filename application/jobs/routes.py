@@ -2,10 +2,9 @@ from flask import (render_template, request, redirect, session,
                     url_for, flash, Blueprint)
 from application.models import Application, Job
 from application.security import login_required
+from application.email import send_email
 from application.jobs.forms import CreateJobForm, UpdateJobForm, ApplicationForm
-from config import Config
 from datetime import datetime
-import smtplib
 
 
 jobs = Blueprint('jobs', __name__, template_folder="templates")
@@ -206,14 +205,8 @@ def apply_to_job(job_id):
                 application.insert_into_database()
 
                 # Send confirmation to developer and notification to recruiter
-                sender_mail = Config.MAIL_USERNAME
-                password = Config.MAIL_PASSWORD
                 recruiter = job["email"]
                 recipients = [recruiter, email]
-                server = smtplib.SMTP("smtp.gmail.com", 587)
-                server.ehlo()
-                server.starttls()
-                server.login(sender_mail, password)
                 for recipient in recipients:
                     if recipient == recruiter:
                         message = f"""
@@ -223,8 +216,8 @@ def apply_to_job(job_id):
 
                         You can view the applicant's detail on your profile page.
                         """
-                        server.sendmail(sender_mail, recipient, message)
-
+                        send_email(recipient, message)
+                        
                     elif recipient == email:
                         message = f"""
                         Hello {applicant},
@@ -233,7 +226,7 @@ def apply_to_job(job_id):
                         
                         Your details have been forwarded to the recruiter and they will be in touch should you meet their criteria.
                         """
-                        server.sendmail(sender_mail, email, message)
+                        send_email(recipient, message)
                 flash("Congratulations! Your application was sent successfully.")
                 return redirect(url_for("main.home"))
 

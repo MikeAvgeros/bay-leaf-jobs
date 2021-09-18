@@ -1,7 +1,7 @@
 from config import Config
 from flask import render_template, Blueprint, flash, redirect, url_for
 from application.main.forms import ContactForm
-import smtplib
+from application.email import send_email
 
 
 main = Blueprint('main', __name__, template_folder="templates")
@@ -29,12 +29,7 @@ def contact():
 
         # Send email to the website owner and email receipt confirmation to user
         sender_mail = Config.MAIL_USERNAME
-        password = Config.MAIL_PASSWORD
         recipients = [sender_mail, email]
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.ehlo()
-        server.starttls()
-        server.login(sender_mail, password)
         for recipient in recipients:
             if recipient == sender_mail:
                 message = f"""
@@ -46,7 +41,7 @@ def contact():
 
                 Message: {body}
                 """
-                server.sendmail(sender_mail, recipient, message)
+                send_email(recipient, message)
 
             elif recipient == email:
                 message = f"""
@@ -56,7 +51,7 @@ def contact():
                 
                 We'll aim to reply within the next 2 working days.
                 """
-                server.sendmail(sender_mail, recipient, message)
+                send_email(recipient, message)
 
         flash("Your message was submitted successfully")
         return redirect(url_for("main.home"))
@@ -80,3 +75,4 @@ def privacy():
 @main.route("/terms")
 def terms():
     return render_template("terms.html")
+

@@ -4,9 +4,9 @@ from flask import (
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
 from application.security import login_required
-from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
+from application.email import send_email
 from config import Config
-import smtplib
+from application.users.forms import RegistrationForm, LoginForm, UpdateProfileForm
 
 
 users = Blueprint('users', __name__, template_folder="templates")
@@ -44,12 +44,7 @@ def register():
 
             # Send welcome email to user and notification to website owner
             sender_mail = Config.MAIL_USERNAME
-            password = Config.MAIL_PASSWORD
             recipients = [sender_mail, email]
-            server = smtplib.SMTP("smtp.gmail.com", 587)
-            server.ehlo()
-            server.starttls()
-            server.login(sender_mail, password)
             for recipient in recipients:
                 if recipient == sender_mail:
                     message = f"""
@@ -63,7 +58,7 @@ def register():
 
                     Role: {role}
                     """
-                    server.sendmail(sender_mail, recipient, message)
+                    send_email(recipient, message)
 
                 elif recipient == email:
                     message = f"""
@@ -75,7 +70,7 @@ def register():
 
                     The Team at bayleafjobs!
                     """
-                    server.sendmail(sender_mail, recipient, message)
+                    send_email(recipient, message)
 
             flash("You are registered successfully. You can now sign in.")
             return redirect(url_for("users.login"))

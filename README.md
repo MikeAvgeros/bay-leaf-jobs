@@ -23,6 +23,7 @@ Required Technologies : HTML, CSS, JavaScript, Python, Flask, MongoDB.
   - [Languages](#languages)
   - [Tools & Resources](#tools--resources)   
 - [Testing](#testing)
+  - [Manual Testing](#manual-testing)
   - [User Stories Implementation](#user-stories-implementation)
   - [Browser Compatibility](#browser-compatibility)
   - [Responsiveness](#responsiveness)
@@ -489,7 +490,6 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
     This was achieved by getting an automated notification when a developer applies to one of the User's job posts. The User can also view all applicants for each job quickly on their profile.
 
-    
 
 ## Browser Compatibility
 

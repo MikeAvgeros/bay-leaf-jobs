@@ -651,7 +651,9 @@ I have used the following images from [Pixabay](https://pixabay.com/).
 
 - [GraphicMama-team](https://pixabay.com/vectors/business-man-businessman-cartoon-5258645/)
 
-I have also used the image from the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
+The hero image on the landing page is taken from the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
+
+The company icons for all the jobs posted by user Mike Avgeros were taken from the Frontend Mentor challenge [Job listings with filtering](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
 
 
 # Acknowledgements

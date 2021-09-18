@@ -105,6 +105,8 @@ This project is developed as a Minimal Viable Product. There will be room for fu
 
     - I would like to allow users to update their password in case they forget it.
 
+    - I would like to offer the option to 'Remember Password' so that Users don't have to type their password every time they log in.
+
     - I would like to add a recaptcha when registering, contacting website owner and applying to jobs to avoid bots and spam.
 
 ## Structure & Skeleton
@@ -247,9 +249,18 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
     -   cover_letter
     -   applicant_username
 
+#### I created an index on the jobs collection so that users can filter jobs using the following parameters.
+
+   -    company
+   -    position
+   -    location
+   -    level
+   -    stack
+   -    contract
+
 # Technologies Used
 
-## Languages
+## Main
 
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
@@ -263,7 +274,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
 
-## Tools & Resources
+## Secondary
 
 1. [VS Code](https://code.visualstudio.com/)
     -   VS Code was my IDE of choice for writing the HTML, CSS and JavaScript code.
@@ -321,15 +332,58 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 # Testing
 
+## Manual Testing
+
+-   **Register**   
+
+    I checked that the register button directs User to the register page. I checked that an account is created with the correct infomation from the form. I checked that all inputs on the form are validated successfully. I checked that a welcome email is sent to the email address I used and a flash message appears on screen. I checked that after registration, User is redirected to the sign in page.
+
+-   **Sign In**   
+
+    I checked that the sign in button directs User to the signin page. I checked that the sign in validation works if User add wrong information. I checked that after signing in, User is redirected to the profile page.
+
+-   **Sign Out**   
+
+    I checked that the sign our button removes the session variables, signs out the User and redirects to the home page. A flash message appears on screen to inform the User they have signed out.
+
+-   **Contact**   
+
+    I checked that the contact button directs User to the contact page. I checked that an email is successfully sent when submitting the form and a flash message appears on screen.
+
+-   **New Job**   
+
+    I tested that all inputs on the job form are correctly validated and a new job is added to the database with the correct info. I checked that after the job is created the User is redirected to their profile and a flash message appears on screen. An email notification is sent to the User to infom them the job has successfully been created.
+
+-   **Update Job**   
+
+    I tested that the job successfully updates all the info on the database and a flash message appears on screen. All inputs are successfully tested for errors.
+
+-   **Delete Job**   
+
+    I tested that the job is successfully removed from the database once deleted and a flash message appears on screen.
+
+-   **Application**   
+
+    I tested that all inputs on the application form are correctly validated and an application is added to the database with the correct info. I checked that after the application is sent, the User is redirected to their profile and a flash message appears on screen. An email notification is sent to the User to infom them the application was sent successfully.
+
+-   **Update Profile**   
+
+    I tested that the profile successfully updates all the info on the database and a flash message appears on screen. All inputs are successfully tested for errors.
+
+-   **Delete Profile**   
+
+    I tested that the profile is successfully removed from the database once deleted and a flash message appears on screen.
+
+
 ## User Stories Implementation
 
 -   **Requirement**
 
-    As a User, I want to be presented with a well-structured website, where I can easily navigate and find all the information that I need.
+    As a User, I want to be presented with a well-structured website, where I can easily navigate and find all the information that I need. 
 
 -   **Implementation**
 
-    
+    This was achieved by making a consistent design on all the pages, allow enough white space to better digest the information on each page. Text has large enough font size and colour contrast to be easily read. Relevant icons were used to signify what each button and action is meant to do.
 
 -   **Requirement**
 
@@ -337,7 +391,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-    
+    This was achieved by adding an About Us and How It Works section on the landing page as well as a F.A.Q. and Terms & Conditions page that are always accessible from the footer.
 
 -   **Requirement**
 
@@ -345,7 +399,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-    
+    This was achieved by adding a contact form which is accessible from the navigation bar at the top of the page.
 
 -   **Requirement**
 
@@ -353,7 +407,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-    
+    This was achieved by using the same typography, colors and layout on all pages. The website also includes an easy to use nav bar which makes navigation easy and quick.
 
 -   **Requirement**
 
@@ -361,7 +415,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-    
+    This was achieved by showing Update and Delete buttons on the profile card below the users information. A defense mechanism was added to the Delete button to prevent Users from accidentally deleting their profile.
 
 -   **Requirement**
 
@@ -369,7 +423,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-    
+    This was achieved by creating a page that displays all the available jobs, with a More Info button which displays the full description of each job as well as an Apply button.  
 
 -   **Requirement**
 
@@ -377,31 +431,31 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
+    This was achieved by adding a search bar on the top of the View Jobs page that filters the jobs based on keywords.
     
-
 -   **Requirement**
 
     As a User (Developer), I want to be able to view when a job was posted and other info so I can decide if I should apply.
 
 -   **Implementation**
 
+    This was achieved by showing a lot of information when Users click More Info on the job they desire as well as the date it was posted by the recruiter.
     
-
 -   **Requirement**
 
     As a User (Developer), I want to be notified that my application was sent successfully and view all the jobs I applied to on my profile.
 
 -   **Implementation**
 
-
-    
+    This was achieved by sending the User an automated email once the application has been successfully sent to the database, which can then be viewed by the relevant recruiter.
+  
 -   **Requirement**
 
     As a User (Developer), I want to be able to contact the recruiter in case I have questions about a job or simply want to follow up on my progress.
 
 -   **Implementation**
 
-
+    This was achieved by adding an Email button next to the apply button which open a new tab and allows the developer to email the recruiter directly, should they need.
 
 -   **Requirement**
 
@@ -409,7 +463,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-
+    This was achieved by creating a page with an easy to use form including a lot of Select Fields to make adding all the releavant info quick. A full description textarea is also added without a word limit so that recruiters can add as much information about the job as possible.
 
 -   **Requirement**
 
@@ -417,7 +471,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
-
+    This was achieved by adding an Applicants button on each job that a User posts which shows all the applicant for each job as well as their description including their resume and cover letter.
 
 -   **Requirement**
 
@@ -425,13 +479,15 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Implementation**
 
+    This was achieved by adding Update and Delete buttons on each full job page that allows the User to update or delete the job. A defense mechanism was added to the Delete button to prevent Users from accidentally deleting the job.
 
-    
 -   **Requirement**
 
     As a User (Recruiter), I want to be notified when a developer has applied to my job post and view all applicants quickly on my profile.
 
 -   **Implementation**
+
+    This was achieved by getting an automated notification when a developer applies to one of the User's job posts. The User can also view all applicants for each job quickly on their profile.
 
     
 
@@ -479,43 +535,18 @@ I have been constantly testing how responsive my website is by using [Google Dev
 
 The [W3C Markup Validator](https://validator.w3.org/#validate_by_upload) was used to validate my HTML code to ensure there were no syntax or semantic errors. It passed the validation without any errors.
 
-![HTML Validation Results](documentation/testing/validator-html.png)
+![HTML Validation Results](documentation/testing/validator_html.png)
 
 ## CSS Validation
 
 The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_upload) was used to validate my CSS code to ensure there were no syntax or semantic errors. It passed the validation without any errors.
 
-![CSS Validation Results](documentation/testing/validator-css.png)
+![CSS Validation Results](documentation/testing/validator_css.png)
 
 ## Javascript Validation
 
 [JS Hint](https://jshint.com/) was used to validate all my Javascript scripts. All scripts passed the tests without any errors. The main warnings were about unused variables in some scripts, which were the class declarations and the exported instances of the classes.
 
-You can view all the tests below.
-
-**gamemanager.js**
-
-![GameManager Script JS Hint](documentation/testing/gamemanager-script-jshint.png)
-
-**story.js**
-
-![GameManager Script JS Hint](documentation/testing/story-script-jshint.png)
-
-**email.js**
-
-![GameManager Script JS Hint](documentation/testing/email-script-jshint.png)
-
-**character.js**
-
-![GameManager Script JS Hint](documentation/testing/character-script-jshint.png)
-
-**scene.js**
-
-![GameManager Script JS Hint](documentation/testing/scene-script-jshint.png)
-
-**item.js**
-
-![GameManager Script JS Hint](documentation/testing/item-script-jshint.png)
 
 ## Accessibility
 
@@ -529,22 +560,13 @@ The [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) was used 
 
 -   I have tested that my required input attributes behaved as expected and warned users to fill the required fields.
 
--   I have tested that the submitted form is being sent to my email address containing all the information added by the user.
-
-You can view screenshots of the tests below.
-
-![Name Input Validation](documentation/testing/name-input-validation.png)
-![Email Input Validation](documentation/testing/email-input-validation.png)
-![Textarea Input Validation](documentation/testing/textarea-input-validation.png)
-![Submit Email](documentation/testing/email-submit.png)
-![Email Success Popup](documentation/testing/emailsuccessful-popup.png)
-![Email Received](documentation/testing/email-received.png)
+-   I have tested that the submitted form is being sent to the database containing all the information added by the user.
 
 ## Further Testing
 
--   The game was viewed and tested on a variety of devices such as Desktop, Laptop, iPad, and a variety of Android and iOs mobile phones. 
+-   The website was viewed and tested on a variety of devices such as Desktop, Laptop, iPad, and a variety of Android and iOs mobile phones. 
 
--   The game was viewed and tested on a variety of browsers.
+-   The website was viewed and tested on a variety of browsers.
     -   Chrome
     -   Firefox
     -   Safari
@@ -553,11 +575,7 @@ You can view screenshots of the tests below.
 
 -   A large amount of testing was done to ensure that all links were working as expected.
 
--   All action buttons were carefully tested to ensure they were linking to the correct node or scene.
-
--   The story branches were carefully tested to ensure they don't create a loop.
-
--   The project was submitted to the [peer-code-review Slack channel](https://code-institute-room.slack.com/archives/CGWQJQKC5/p1624179695306400) for review.
+-   All buttons were carefully tested to ensure they were linking to the correct page.
 
 -   Friends, family members and other Code Institute students were asked to review the site and documentation to point out any bugs, typos and/or user experience issues.
 
@@ -573,53 +591,63 @@ The project was stored on Github using the following steps.
 
 1.  I logged into my account on GitHub - [My account](https://github.com/MikeAvgeros)
 
-2.  I created a public repository for my 2nd Milestone project - [Cyber Escape](https://github.com/MikeAvgeros/escape-game)
+2.  I created a public repository for my 3rd Milestone project - [bayleafjobs](https://github.com/MikeAvgeros/bayleafjobs)
 
-## Github Pages
+## Heroku
 
-The project was deployed to GitHub Pages using the following steps.
+The project was deployed using Heroku, directly from the master branch via GitHub.
 
-1.  I logged in to Github and located the [Github Repository](https://github.com/MikeAvgeros/escape-game)
+The following steps were taken to complete the deployment process.
 
-2.  At the top of the Repository (not top of page), I clicked the "Settings" Button on the menu.
+1.  I created an account on Heroku
 
-3.  I Scrolled down the Settings page until you locate the "GitHub Pages" Section.
+2.  Created a requirements.txt file, using pip3 freeze --local > requirements.txt, to allow Heroku to detect this project as a python app and install any required dependencies.
 
-4.  Under "Source", I clicked the dropdown called "None" and select "main".
+3.  Created a Procfile using echo web: python app.py > Procfile so Heroku would be informed on which file runs the app and how to run this project.
 
-5.  I scrolled back down through the page to locate the now published [site link](https://mikeavgeros.github.io/escape-game/) in the "GitHub Pages" section.
+4.  Created a new Heroku app, bayleafjobs and set its region to Europe and programming language to Python.
+
+5.  Automatic deployment was set up on Heroku - On the dashboard, in the deploy menu. Connect to GitHub section. The GitHub repository was searched for and connected to the app.
+
+6.  On the settings tab on the dashboard, 'Reveal Config Vars' was used to tell Heroku which environment variables are required to run the app. The following config vars were added:
+
+    -   IP
+    -   PORT
+    -   SECRET_KEY
+    -   MONGO_URI
+    -   MONGO_DBNAME
+    -   MAIL_USERNAME
+    -   MAIL_PASSWORD
+
+7.  Clicked the Enable Automatic Deploys button located in the Deploy section of Heroku to allow for automatic deploys.
+
+8.  Clicked the Deploy Branch button located in the Deploy section of Heroku to finally deploy this project.
+
+9.  Clicked the View button to launch this project's app. You can view the live site [here](https://bayleafjobs.herokuapp.com/).
+
+10. The deployed site on Heroku will get updated automatically with any new commits to the master branch in the GitHub repo.
+
 
 ## Cloning the Github Repository
 
 The Github repository was cloned and stored locally on my machine using the following steps. 
 
-1.  I cloned my [Github Repository](https://github.com/MikeAvgeros/escape-game) using HTTPS, under "Clone with HTTPS", and copied the link.
+1.  I cloned my [Github Repository](https://github.com/MikeAvgeros/bayleafjobs) using SSH, under "Clone", and copied the link.
 
-2.  I opened [SourceTree](https://www.sourcetreeapp.com/), opened a new tab and clicked on the Clone icon. I pasted the HTTPS link and added a local directory in my machine.
+2.  I opened [SourceTree](https://www.sourcetreeapp.com/), opened a new tab and clicked on the Clone icon. I pasted the SSH link and added a local directory on my machine.
 
 3.  I opened [VS Code](https://code.visualstudio.com/), clicked on File/Open File and navigated to the local directory I had cloned my Github repository.
 
+4. I installed all the required dependencies using CLI on the local directory on my machine.
+
 # Credits
+
 
 ## Images
 
-I have used the following images from [Unsplash](https://unsplash.com/).
+I have used the following images from [Pixabay](https://pixabay.com/).
 
--   [Alexander Popov](https://unsplash.com/photos/3InMDrsuYrk)
 
--   [Alexander Popov](https://unsplash.com/photos/SLXreEd0Yu4)
-
--   [Lorenzo Herrera](https://unsplash.com/photos/p0j-mE6mGo4)
-
--   [Victor Rodriguez](https://unsplash.com/photos/UrfpprfDB0k)
-
--   [Taton Moïse](https://unsplash.com/photos/EhOCnW4wnuQ)
-
--   [Some Tale](https://unsplash.com/photos/m7K6cmWX4to)
-
--   [Recep Tiryaki](https://unsplash.com/photos/ToeuFHochZo)
-
--   [Valery Sysoev](https://unsplash.com/photos/2UPcVeOXOxc)
 
 # Acknowledgements
 
@@ -628,3 +656,4 @@ I have used the following images from [Unsplash](https://unsplash.com/).
 -   I would like to thank the [Code Institute](https://codeinstitute.net/) for the well-thought-out curriculum and their amazing and super informative and helpful Slack community!
 
 -   I would like to thank the Coding Novas group and everyone at the Full Stack Developers WhatsApp group for their helpful input during my testing phase.
+

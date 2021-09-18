@@ -533,7 +533,7 @@ I have been constantly testing how responsive my website is by using [Google Dev
 
 ## HTML Validation
 
-The [W3C Markup Validator](https://validator.w3.org/#validate_by_upload) was used to validate my HTML code to ensure there were no syntax or semantic errors. It passed the validation without any errors.
+The [W3C Markup Validator](https://validator.w3.org/#validate_by_upload) was used to validate my HTML code all on the pages to ensure there were no syntax or semantic errors. All pages passed the validation without any errors.
 
 ![HTML Validation Results](documentation/testing/validator_html.png)
 
@@ -545,8 +545,9 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_upload)
 
 ## Javascript Validation
 
-[JS Hint](https://jshint.com/) was used to validate all my Javascript scripts. All scripts passed the tests without any errors. The main warnings were about unused variables in some scripts, which were the class declarations and the exported instances of the classes.
+[JS Hint](https://jshint.com/) was used to validate my Javascript script. It showed an unused variable, which is a function that is called directly from html ("onclick"). The undefined variable $ is a valid jQuery variable.
 
+![JavaScript Validation Results](documentation/testing/validator_js.png)
 
 ## Accessibility
 
@@ -567,6 +568,7 @@ The [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) was used 
 -   The website was viewed and tested on a variety of devices such as Desktop, Laptop, iPad, and a variety of Android and iOs mobile phones. 
 
 -   The website was viewed and tested on a variety of browsers.
+
     -   Chrome
     -   Firefox
     -   Safari

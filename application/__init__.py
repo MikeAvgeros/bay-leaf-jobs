@@ -19,7 +19,7 @@ def create_app():
     mongo.init_app(app)
 
 
-    # Import and register Blueprints
+    # Import Blueprints
     from application.main.routes import main
     from application.users.routes import users
     from application.jobs.routes import jobs

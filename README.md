@@ -647,9 +647,9 @@ The challenge that the landing page was inspired by was the [URL Shortening Land
 
 I have used the following images from [Pixabay](https://pixabay.com/).
 
-    - [PanJoyCZ](https://pixabay.com/illustrations/businessman-cartoons-training-607831/)
+- [PanJoyCZ](https://pixabay.com/illustrations/businessman-cartoons-training-607831/)
 
-    - [GraphicMama-team](https://pixabay.com/vectors/business-man-businessman-cartoon-5258645/)
+- [GraphicMama-team](https://pixabay.com/vectors/business-man-businessman-cartoon-5258645/)
 
 I have also used the image from the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
 

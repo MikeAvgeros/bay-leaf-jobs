@@ -1,7 +1,9 @@
 ![Multi Device Website Mockup](documentation/mockup/mockup.png)
 
 # bayleafjobs
-bayleafjobs is a a job listing site, where users can either register as developers who are looking for work or as recruiters who are looking to hire developers for their clients. I created this site for Milestone Project 3 as part of the Code Institute's Full Stack Software Development course. I developed this project using HTML, CSS, JavaScript, Python, Flask and MongoDB as the core technologies as well as concepts and techniques learnt in the Backend module of the course. 
+bayleafjobs is a a job listing site, where users can either register as developers who are looking for work or as recruiters who are looking to hire developers for their clients. I created this site for Milestone Project 3 as part of the Code Institute's Full Stack Software Development course. 
+
+I developed this project using HTML, CSS, JavaScript, Python, Flask and MongoDB as the core technologies as well as concepts and techniques learnt in the Backend module of the course. 
 
 You can view the live site [here](https://bayleafjobs.herokuapp.com/).
 
@@ -40,11 +42,19 @@ Required Technologies : HTML, CSS, JavaScript, Python, Flask, MongoDB.
 
 ## Strategy
 
-My Milestone Project 3 from the Code Institute is a website will help users find a suitable job and start their dream career or help their clients find top developers to help their company grow.
+My Milestone Project 3, bayleafjobs, is a website will help developers find a suitable job and start their dream career or helps recruiters find top developers to help their clients' companies grow.
 
 The purpose of this project is to create a website that allows users to create, use, read, edit and delete data. In particular, recruiters can create, edit and delete jobs as well as view who applied to their jobs. The users can also update or delete their profile. Developers can apply to jobs, contact recruiters as well as update or delete their profile.
 
-- ### User Stories
+-   ### Site Owner Goals
+
+    -   I want to create an easy-to-use and engaging platform where developers can find their dream jobs and recruiters can find top talent to work on their clients' companies.
+
+    -   I want get a better understanding of backend development using Python, Flask and MongoDB.
+
+    -   I want to create a Minimum Viable Product that can be further developed with additional features.
+
+-   ### User Stories
 
     - As a User, I want to be presented with a well-structured website, where I can easily navigate and find all the information that I need.
 
@@ -168,7 +178,6 @@ I have designed the structure and layout of the website using Materialize and CS
     
     ![Terms & Conditions Page](documentation/wireframes/terms.png)
 
-
 ## Surface
 
 -   ### Colour Scheme
@@ -208,7 +217,6 @@ I have designed the structure and layout of the website using Materialize and CS
     -   Materialize was used to structure the navbar, profile, forms and landing page.
 
     -   CSS grid was also used to help position elements on the page including sticking the footer to the bottom and position the list elements of the navbar.
-
 
 # Database Design
 
@@ -375,7 +383,6 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
     I tested that the profile is successfully removed from the database once deleted and a flash message appears on screen.
 
-
 ## User Stories Implementation
 
 -   **Requirement**
@@ -490,7 +497,6 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
     This was achieved by getting an automated notification when a developer applies to one of the User's job posts. The User can also view all applicants for each job quickly on their profile.
 
-
 ## Browser Compatibility
 
 -   The website is compatible with most modern web browsers. For the best viewing experience, I recommend using Chrome, Firefox, Edge or Safari. 
@@ -554,6 +560,8 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_upload)
 -   I made sure to validate my forms and ran suitable tests using different input scenarios. I can confirm that all of them behaved as expected. 
 
 -   I have tested that my required input attributes behaved as expected and warned users to fill the required fields.
+
+-   I have tested that the input length of each field adheres to the rules I've sent in my validations.
 
 -   I have tested that the submitted form is being sent to the database containing all the information added by the user.
 
@@ -623,7 +631,6 @@ The following steps were taken to complete the deployment process.
 
 10. The deployed site on Heroku will get updated automatically with any new commits to the master branch in the GitHub repo.
 
-
 ## Cloning the Github Repository
 
 The Github repository was cloned and stored locally on my machine using the following steps. 
@@ -642,7 +649,6 @@ The design of the landing page has been inspired by a frontend challenge from [F
 
 The challenge that the landing page was inspired by was the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
 
-
 ## Images
 
 I have used the following images from [Pixabay](https://pixabay.com/).
@@ -655,6 +661,15 @@ The hero image on the landing page is taken from the [URL Shortening Landing Pag
 
 The company icons for all the jobs posted by user Mike Avgeros were taken from the Frontend Mentor challenge [Job listings with filtering](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
 
+## Code
+
+I have been inspired by the following tutorials while writing my code.
+
+- [Corey Schafer Flask YouTube Tutorial Series](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
+
+- [Mateo Prigl Pluralsight Begineer Flask Course](https://www.pluralsight.com/courses/creating-processing-web-forms-flask?exp=2)
+
+- [Mateo Prigl Pluralsight Intermediate Flask Course](https://www.pluralsight.com/courses/flask-users-sessions-authentication?exp=2)
 
 # Acknowledgements
 
@@ -663,4 +678,3 @@ The company icons for all the jobs posted by user Mike Avgeros were taken from t
 -   I would like to thank the [Code Institute](https://codeinstitute.net/) for the well-thought-out curriculum and their amazing and super informative and helpful Slack community!
 
 -   I would like to thank the Coding Novas group and everyone at the Full Stack Developers WhatsApp group for their helpful input during development.
-

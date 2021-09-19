@@ -23,11 +23,12 @@ def contact():
 
     # Check if user has submitted the form and all inputs are valid
     if form.validate_on_submit():
-        name        = form.name.data
-        email       = form.email.data
-        body        = form.body.data
+        name = form.name.data
+        email = form.email.data
+        body = form.body.data
 
-        # Send email to the website owner and email receipt confirmation to user
+        # Send email to the website owner and email receipt confirmation to
+        # user
         sender_mail = Config.MAIL_USERNAME
         recipients = [sender_mail, email]
         for recipient in recipients:
@@ -48,7 +49,7 @@ def contact():
                 Hello {name}.
 
                 Thank you for getting in touch with bayleafjobs.
-                
+
                 We'll aim to reply within the next 2 working days.
                 """
                 send_email(recipient, message)
@@ -75,4 +76,3 @@ def privacy():
 @main.route("/terms")
 def terms():
     return render_template("terms.html")
-

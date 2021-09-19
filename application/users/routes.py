@@ -1,5 +1,5 @@
 from flask import (
-    flash, render_template, redirect, 
+    flash, render_template, redirect,
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
 from application.models import User, Job, Application
@@ -22,12 +22,12 @@ def register():
     if "username" not in session:
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            username    = form.username.data
-            email       = form.email.data
-            password    = form.password.data
-            location    = form.location.data
-            role        = form.role.data
-            picture     = ""
+            username = form.username.data
+            email = form.email.data
+            password = form.password.data
+            location = form.location.data
+            role = form.role.data
+            picture = ""
 
             # Find user in MongoDB by their username
             existing_user = User.find_user_by_username(username)
@@ -37,7 +37,8 @@ def register():
                 flash("Username already exists.")
                 return redirect(url_for("users.register"))
 
-            # Create an instance of User with the info the user submitter on the form
+            # Create an instance of User with the info the user submitter on
+            # the form
             user = User(username, email, password, location, role, picture)
             # Add user to MongoDB
             user.insert_into_database()
@@ -63,7 +64,7 @@ def register():
                 elif recipient == email:
                     message = f"""
                     Hello {username}.
-                    
+
                     Thank you for registering with bayleafjobs.
 
                     We are excited to have you join us and hope you have success in finding your perfect job!
@@ -90,13 +91,13 @@ def login():
     if "username" not in session:
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            email    = form.email.data
+            email = form.email.data
             password = form.password.data
 
             # Find user in MongoDB by their email
             user = User.find_user_by_email(email)
 
-            # Check if user exists in MongoDB 
+            # Check if user exists in MongoDB
             if user:
                 # Check if password is correct
                 correct_password = user["password"]
@@ -105,7 +106,10 @@ def login():
                     session["email"] = user["email"]
                     session["role"] = user["role"]
                     session["username"] = user["username"]
-                    return redirect(url_for("users.profile", username=session["username"]))
+                    return redirect(
+                        url_for(
+                            "users.profile",
+                            username=session["username"]))
                 else:
                     form.password.errors.append("Incorrect password")
             else:
@@ -141,8 +145,12 @@ def profile(username):
         # Find all jobs and applications and pass them to the profile page
         posted_jobs = Job.find_posted_jobs(session["username"])
         applied_jobs = Job.find_applied_jobs(session["username"])
-        return render_template("profile.html", username=session["username"], 
-                            user=user, posted_jobs=posted_jobs, applied_jobs=applied_jobs)
+        return render_template(
+            "profile.html",
+            username=session["username"],
+            user=user,
+            posted_jobs=posted_jobs,
+            applied_jobs=applied_jobs)
 
     flash("Please create an account.")
     return redirect(url_for("users.register"))
@@ -162,17 +170,17 @@ def update_profile(username):
 
         # Check if user has submitted the form and all inputs are valid
         if form.validate_on_submit():
-            username    = form.username.data
-            email       = form.email.data
-            location    = form.location.data
-            picture     = form.picture.data
+            username = form.username.data
+            email = form.email.data
+            location = form.location.data
+            picture = form.picture.data
 
             # Register info based on what the user submitted on the form
             updated_info = {
-                "username" : username,
-                "email"    : email,
-                "location" : location,
-                "picture"  : picture
+                "username": username,
+                "email": email,
+                "location": location,
+                "picture": picture
             }
 
             # Update user's info using the registered updated info.
@@ -183,13 +191,16 @@ def update_profile(username):
             session["username"] = username
             flash("Your profile has been updated!")
 
-            return redirect(url_for("users.profile", username=session["username"]))
-            
+            return redirect(
+                url_for(
+                    "users.profile",
+                    username=session["username"]))
+
         # Populate form data based on existing user info
-        form.username.data  = user["username"]
-        form.email.data     = user["email"]
-        form.location.data  = user["location"]
-        form.picture.data  = user["picture"]
+        form.username.data = user["username"]
+        form.email.data = user["email"]
+        form.location.data = user["location"]
+        form.picture.data = user["picture"]
 
         return render_template("update_profile.html", form=form)
 
@@ -203,7 +214,7 @@ def update_profile(username):
 def delete_profile(username):
     # Find user in MongoDB by their username
     user = User.find_user_by_username(username)
-    
+
     # Check if user exists
     if user:
         # Delete user from MongoDB and remove info from session

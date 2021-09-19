@@ -1,7 +1,7 @@
 from functools import wraps
-from flask import (flash, redirect, 
-                    session, url_for)
-                    
+from flask import (flash, redirect,
+                   session, url_for)
+
 
 # ---------- Login required security -----------
 def login_required(f):
@@ -13,5 +13,5 @@ def login_required(f):
         else:
             flash("You must sign in to access this page!")
             return redirect(url_for("users.login"))
-            
+
     return wrap

@@ -1,6 +1,7 @@
 import smtplib
 from config import Config
 
+
 def send_email(recipient, message):
     sender_mail = Config.MAIL_USERNAME
     password = Config.MAIL_PASSWORD

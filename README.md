@@ -665,6 +665,8 @@ The company icons for all the jobs posted by user Mike Avgeros were taken from t
 
 I have been inspired by the following tutorials while writing my code.
 
+- Code Institute's Task Manager Project by Tim Nelson
+
 - [Corey Schafer Flask YouTube Tutorial Series](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
 
 - [Mateo Prigl Pluralsight Begineer Flask Course](https://www.pluralsight.com/courses/creating-processing-web-forms-flask?exp=2)

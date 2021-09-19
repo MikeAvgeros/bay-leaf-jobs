@@ -662,5 +662,5 @@ The company icons for all the jobs posted by user Mike Avgeros were taken from t
 
 -   I would like to thank the [Code Institute](https://codeinstitute.net/) for the well-thought-out curriculum and their amazing and super informative and helpful Slack community!
 
--   I would like to thank the Coding Novas group and everyone at the Full Stack Developers WhatsApp group for their helpful input during my testing phase.
+-   I would like to thank the Coding Novas group and everyone at the Full Stack Developers WhatsApp group for their helpful input during development.
 

@@ -182,6 +182,19 @@ class Application():
         return applications
 
 
+    @staticmethod
+    def find_applications_by_job(job_id):
+        """
+        Find and return all applicants for a job in MongoDB
+        """
+        all_applications = list(mongo.db.applications.find())
+        applications = []
+        for application in all_applications:
+            if str(application["job_id"]) == str(job_id):
+                applications.append(application)
+        return applications
+
+
 class User():
     """
     Class representing a user 

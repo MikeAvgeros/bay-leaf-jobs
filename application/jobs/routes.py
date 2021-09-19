@@ -251,12 +251,11 @@ def view_applicants(job_id):
         # Check if job was posted by this user
         if job["posted_by"] == session["username"]:
             #Find all applications in Mongo DB
-            applications = Application.find_all_applications()
-            return render_template("view_applicants.html", job=job, applications=applications)
+            applications = Application.find_applications_by_job(job["_id"])
+            return render_template("view_applicants.html", applications=applications)
 
         flash("This page can only be accessed by the poster.")
         return redirect(url_for("main.home"))
 
     flash("This job does not exist.")
     return redirect(url_for("main.home"))
-

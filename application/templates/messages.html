@@ -1,18 +1,17 @@
 <div class="flash-message">
     <!-- show flash messages -->
     {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="row alert">
-                    <p class="center-align message">
-                        {{ message }}
-                        <button type="button" class="close" onclick=delete_flash(this)
-                            data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </p>
-                </div>
-            {% endfor %}
-        {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row alert">
+        <p class="center-align message">
+            {{ message }}
+            <button type="button" class="close" onclick=delete_flash(this) data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </p>
+    </div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
 </div>

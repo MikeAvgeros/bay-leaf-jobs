@@ -6,14 +6,16 @@
     <div class="row job-page card">
         <br>
         {% if job.company_logo %}
-            <div class="center-align">
-                <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
-            </div>
+        <div class="center-align">
+            <img class="responsive-img" src="{{ job.company_logo }}" alt="company logo">
+        </div>
         {% endif %}
         <h2 class="center-align section-subheading">
             {{ job.company }} - {{ job.position }}
         </h2>
-        <div class="col s12 breakline-row"><hr class="breakline" /></div>
+        <div class="col s12 breakline-row">
+            <hr class="breakline" />
+        </div>
         <div class="card-content">
             <p>{{ job.location }} &middot; {{ job.contract }}</p>
             <br>
@@ -28,32 +30,27 @@
             <p>Date Posted: {{ job.date_posted}}</p>
             <br>
             {% if session.role == "Developer" %}
-            <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" 
-                aria-label="Opens job application" 
+            <a href="{{ url_for('jobs.apply_to_job', job_id=job['_id']) }}" aria-label="Opens job application"
                 class="waves-effect waves-light btn-large">
                 Apply
             </a>
-            <a href="mailto:{{ job.email }}" 
-                aria-label="Opens recruiter's email address" 
-                target="_blank" rel="noopener"
+            <a href="mailto:{{ job.email }}" aria-label="Opens recruiter's email address" target="_blank" rel="noopener"
                 class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
                 Email
             </a>
             {% elif session.role == "Recruiter" %}
-            <a href="{{ url_for('jobs.update_job', job_id=job['_id']) }}" 
-                aria-label="Opens a page to update job information" 
-                class="waves-effect waves-light btn-large">
+            <a href="{{ url_for('jobs.update_job', job_id=job['_id']) }}"
+                aria-label="Opens a page to update job information" class="waves-effect waves-light btn-large">
                 Update
             </a>
             <a onclick="return confirm('Are you sure you want to delete this job?');"
-                href="{{ url_for('jobs.delete_job', job_id=job['_id']) }}" 
-                aria-label="Deletes the job" 
+                href="{{ url_for('jobs.delete_job', job_id=job['_id']) }}" aria-label="Deletes the job"
                 class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
                 Delete
             </a>
-            <a href="{{ url_for('jobs.view_applicants', job_id=job['_id']) }}" 
-                aria-label="Opens a page to view applicants for this job" 
-                class="waves-effect waves-light btn-large" style="margin-left: 1rem;">
+            <a href="{{ url_for('jobs.view_applicants', job_id=job['_id']) }}"
+                aria-label="Opens a page to view applicants for this job" class="waves-effect waves-light btn-large"
+                style="margin-left: 1rem;">
                 Applicants
             </a>
             {% else %}

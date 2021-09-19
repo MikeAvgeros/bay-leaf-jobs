@@ -5,7 +5,9 @@
 
 <main class="container">
     <h2 class="center-align section-heading">Sign in</h2>
-    <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    <div class="col s12 breakline-row">
+        <hr class="breakline" />
+    </div>
     <div class="row card-panel grey lighten-5">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.login') }}">
             {{ form.csrf_token }}
@@ -43,5 +45,5 @@
         </div>
     </div>
 </main>
-    
+
 {% endblock content %}

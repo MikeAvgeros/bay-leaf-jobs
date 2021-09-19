@@ -1,11 +1,13 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %}Contact{% endblock title %}
 {% from "_error_messages.html" import field_error_messages %}
 {% block content %}
 
 <main class="container">
     <h2 class="center-align section-heading">Get in touch!</h2>
-    <div class="col s12 breakline-row"><hr class="breakline" /></div>
+    <div class="col s12 breakline-row">
+        <hr class="breakline" />
+    </div>
     <div class="row card-panel grey lighten-5">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('main.contact') }}">
             {{ form.csrf_token }}
@@ -41,5 +43,5 @@
         </form>
     </div>
 </main>
-    
+
 {% endblock content %}

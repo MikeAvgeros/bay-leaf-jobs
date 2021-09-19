@@ -1,5 +1,5 @@
-{% extends 'base.html' %} 
-{% block title %}Homepage{% endblock title %} 
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock title %}
 {% block content %}
 
 <main class="container">
@@ -15,18 +15,12 @@
         Start your dream career now with
         <span class="underline">bayleafjobs!</span>
       </p>
-      <a
-        class="waves-effect waves-light btn-large"
-        href="{{ url_for('users.register') }}"
-        aria-label="Create an account">Get Started</a
-      >
+      <a class="waves-effect waves-light btn-large" href="{{ url_for('users.register') }}"
+        aria-label="Create an account">Get Started</a>
     </div>
     <div class="col s12 m7">
-      <img
-        class="landing-image"
-        src="{{ url_for('static', filename='images/illustration-working.svg')}}"
-        alt="illustration of a developer working on a computer"
-      />
+      <img class="landing-image" src="{{ url_for('static', filename='images/illustration-working.svg')}}"
+        alt="illustration of a developer working on a computer" />
     </div>
   </div>
 
@@ -36,14 +30,13 @@
   <div class="row landing-page">
     <div class="col s12">
       <h2 class="center-align section-heading">About us</h2>
-      <div class="col s12 breakline-row"><hr class="breakline" /></div>
+      <div class="col s12 breakline-row">
+        <hr class="breakline" />
+      </div>
     </div>
     <div class="col s12 m5">
-      <img
-        class="responsive-img"
-        src="{{ url_for('static', filename='images/businessman.png')}}"
-        alt="illustration of a person pointing at a whiteboard"
-      />
+      <img class="responsive-img" src="{{ url_for('static', filename='images/businessman.png')}}"
+        alt="illustration of a person pointing at a whiteboard" />
     </div>
     <div class="col s12 m7 justify-text">
       <br />
@@ -56,9 +49,9 @@
       </p>
       <br />
       <p>
-        As a result, our website attracts many impressive advertisers – recruiters 
-        from around the world that care how their client's brand and vision is presented 
-        and want only the best for their client. We can offer many high-calibre candidates 
+        As a result, our website attracts many impressive advertisers – recruiters
+        from around the world that care how their client's brand and vision is presented
+        and want only the best for their client. We can offer many high-calibre candidates
         that help companies grow to their full potential.
       </p>
     </div>
@@ -70,19 +63,21 @@
   <div class="row landing-page">
     <div class="col s12">
       <h2 class="center-align section-heading">How it works</h2>
-      <div class="col s12 breakline-row"><hr class="breakline" /></div>
+      <div class="col s12 breakline-row">
+        <hr class="breakline" />
+      </div>
     </div>
     <div class="col s12 m7">
       <h4 class="small-heading">As a developer</h4>
       <ul class="fa-ul">
         <li class="list-item">
-          <span class="fa-li"><i class="fas fa-check list-icon"></i> </span
-          >Create a profile to find job posts from some of the best companies in
+          <span class="fa-li"><i class="fas fa-check list-icon"></i> </span>Create a profile to find job posts from some
+          of the best companies in
           the world
         </li>
         <li class="list-item">
-          <span class="fa-li"><i class="fas fa-check list-icon"></i> </span
-          >Apply to your favourite jobs and get notified if shortlisted
+          <span class="fa-li"><i class="fas fa-check list-icon"></i> </span>Apply to your favourite jobs and get
+          notified if shortlisted
         </li>
         <li class="list-item">
           <span class="fa-li"><i class="fas fa-check list-icon"></i> </span>Save
@@ -93,8 +88,8 @@
       <h4 class="small-heading">As a recruiter</h4>
       <ul class="fa-ul">
         <li class="list-item">
-          <span class="fa-li"><i class="fas fa-check list-icon"></i> </span
-          >Create a profile to post jobs and find the best talent in town
+          <span class="fa-li"><i class="fas fa-check list-icon"></i> </span>Create a profile to post jobs and find the
+          best talent in town
         </li>
         <li class="list-item">
           <span class="fa-li"><i class="fas fa-check list-icon"></i> </span>View
@@ -107,11 +102,8 @@
       </ul>
     </div>
     <div class="col s12 m5">
-      <img
-        class="responsive-img"
-        src="{{ url_for('static', filename='images/business.png')}}"
-        alt="illustration of a person climbing the corporate ladder"
-      />
+      <img class="responsive-img" src="{{ url_for('static', filename='images/business.png')}}"
+        alt="illustration of a person climbing the corporate ladder" />
     </div>
   </div>
 </main>

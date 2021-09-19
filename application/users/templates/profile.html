@@ -6,7 +6,9 @@
   <div class="row">
     <div class="col s12">
       <h2 class="center-align section-heading">Welcome {{ username }}</h2>
-      <div class="col s12 breakline-row"><hr class="breakline" /></div>
+      <div class="col s12 breakline-row">
+        <hr class="breakline" />
+      </div>
     </div>
   </div>
   <div class="row">
@@ -14,9 +16,9 @@
       <div class="card">
         <div class="card-image">
           {% if user.picture %}
-            <img class="responsive-img" src="{{ user.picture }}" alt="profile picture">
+          <img class="responsive-img" src="{{ user.picture }}" alt="profile picture">
           {% else %}
-            <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}" 
+          <img class="responsive-img" src="{{ url_for('static', filename='images/blank-profile-picture.png')}}"
             alt="default profile picture">
           {% endif %}
           <span class="card-title">{{ username }}</span>
@@ -29,165 +31,162 @@
           <p><i class="fas fa-envelope prefix"></i> {{ user.email }}</p>
         </div>
         <div class="card-action">
-          <a href="{{ url_for('users.update_profile', username=session['username']) }}" 
-          aria-label="Update Profile" class="waves-effect waves-light btn-small ">Update</a>
+          <a href="{{ url_for('users.update_profile', username=session['username']) }}" aria-label="Update Profile"
+            class="waves-effect waves-light btn-small ">Update</a>
           <a onclick="return confirm('Are you sure you want to delete your profile?');"
-          href="{{ url_for('users.delete_profile', username=session['username']) }}" 
-          aria-label="Delete Profile" class="waves-effect waves-light btn-small " 
-          style="margin-left: 1rem;">Delete</a>
+            href="{{ url_for('users.delete_profile', username=session['username']) }}" aria-label="Delete Profile"
+            class="waves-effect waves-light btn-small " style="margin-left: 1rem;">Delete</a>
         </div>
       </div>
     </div>
     <div class="col s12 m6 l6 offset-l1">
       <h4 class="center-align section-subheading">Information</h4>
       {% if session.role == "Developer" %}
-        <p>
-          Hello {{ username }}. On your profile page you will be able to find 
-          a list with all the jobs you have applied for.
-          You can follow up the progress of your application by contacting the
-          recruiter. You can view the email of the recruiter upon opening the full
-          job description by clicking on the cards below. 
-          Please allow at least 2 weeks before following up. This is 
-          to avoid overwhelming the recruiters so that they can reply to all the 
-          successful candidates as fast as possible.
-        </p>
-        <br>
-        <p>
-          You can update your profile details and upload a profile picture by
-          clicking the 'Update' button. 
-          You can also delete your profile by clicking the 'Delete' button if you no 
-          longer wish to use our services.
-        </p>
+      <p>
+        Hello {{ username }}. On your profile page you will be able to find
+        a list with all the jobs you have applied for.
+        You can follow up the progress of your application by contacting the
+        recruiter. You can view the email of the recruiter upon opening the full
+        job description by clicking on the cards below.
+        Please allow at least 2 weeks before following up. This is
+        to avoid overwhelming the recruiters so that they can reply to all the
+        successful candidates as fast as possible.
+      </p>
+      <br>
+      <p>
+        You can update your profile details and upload a profile picture by
+        clicking the 'Update' button.
+        You can also delete your profile by clicking the 'Delete' button if you no
+        longer wish to use our services.
+      </p>
       {% elif session.role == "Recruiter" %}
-        <p>
-          Hello {{ username }}. On your profile page you will find a list with 
-          all the jobs you have created on this page.
-          You can view the applicants' details for each job by opening the full 
-          job description on the cards below and clicking on 'Applicants'. We ask
-          that you try to contact all applicants to update them on their application progress.
-          This way, it can help us attract more talent which in turn will mean that you can 
-          find the best developers for your clients.
-        </p>
-        <br>
-        <p>
-          You can update your profile details and upload a profile picture by
-          clicking the 'Update' button. 
-          You can also delete your profile by clicking the 'Delete' button if you no 
-          longer wish to use our services.
-        </p>
+      <p>
+        Hello {{ username }}. On your profile page you will find a list with
+        all the jobs you have created on this page.
+        You can view the applicants' details for each job by opening the full
+        job description on the cards below and clicking on 'Applicants'. We ask
+        that you try to contact all applicants to update them on their application progress.
+        This way, it can help us attract more talent which in turn will mean that you can
+        find the best developers for your clients.
+      </p>
+      <br>
+      <p>
+        You can update your profile details and upload a profile picture by
+        clicking the 'Update' button.
+        You can also delete your profile by clicking the 'Delete' button if you no
+        longer wish to use our services.
+      </p>
       {% else %}
       {% endif %}
     </div>
   </div>
   <div class="row">
     {% if session.role == "Developer" %}
-      <h4 class="center-align section-subheading">Job applications</h4>
-      <div class="row">
-        {% if applied_jobs %}
-          {% for applied_job in applied_jobs %}
-            <div class="col s12 m6 l4">
-              <div class="card job-card z-depth-3">
-                <div class="card-content">
-                  {% if applied_job.company_logo %}
-                    <div class="center-align">
-                      <img class="responsive-img" src="{{ applied_job.company_logo }}" alt="company logo">
-                    </div>
-                  {% endif %}
-                  <br>
-                  <p><i class="fas fa-user-tie prefix white-text"></i> 
-                    {{ applied_job.position }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-building prefix white-text"></i> 
-                    {{ applied_job.company }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-info-circle prefix white-text"></i> 
-                    {{ applied_job.location }} &middot; {{ applied_job.contract }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-laptop-code prefix white-text"></i>
-                    {{ applied_job.level }} &middot; {{ applied_job.stack }}
-                  </p>
-                  <br>
-                  {% if applied_job.salary %}
-                    <p><i class="fas fa-money-check-alt prefix white-text"></i>
-                        {{ applied_job.salary }}
-                    </p>
-                    <br>
-                  {% endif %}
-                  <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
-                      {{ applied_job.description }}
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a href="{{ url_for('jobs.view_job', job_id=applied_job['_id']) }}" 
-                  aria-label="Open full job description"
-                  class="waves-effect waves-light btn">More info</a>
-                </div>
-              </div>
+    <h4 class="center-align section-subheading">Job applications</h4>
+    <div class="row">
+      {% if applied_jobs %}
+      {% for applied_job in applied_jobs %}
+      <div class="col s12 m6 l4">
+        <div class="card job-card z-depth-3">
+          <div class="card-content">
+            {% if applied_job.company_logo %}
+            <div class="center-align">
+              <img class="responsive-img" src="{{ applied_job.company_logo }}" alt="company logo">
             </div>
-          {% endfor %}
-        {% else %}
-          <p class="center-align">
-            You haven't applied to any jobs yet
-          </p>
-        {% endif %}
+            {% endif %}
+            <br>
+            <p><i class="fas fa-user-tie prefix white-text"></i>
+              {{ applied_job.position }}
+            </p>
+            <br>
+            <p><i class="fas fa-building prefix white-text"></i>
+              {{ applied_job.company }}
+            </p>
+            <br>
+            <p><i class="fas fa-info-circle prefix white-text"></i>
+              {{ applied_job.location }} &middot; {{ applied_job.contract }}
+            </p>
+            <br>
+            <p><i class="fas fa-laptop-code prefix white-text"></i>
+              {{ applied_job.level }} &middot; {{ applied_job.stack }}
+            </p>
+            <br>
+            {% if applied_job.salary %}
+            <p><i class="fas fa-money-check-alt prefix white-text"></i>
+              {{ applied_job.salary }}
+            </p>
+            <br>
+            {% endif %}
+            <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i>
+              {{ applied_job.description }}
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="{{ url_for('jobs.view_job', job_id=applied_job['_id']) }}" aria-label="Open full job description"
+              class="waves-effect waves-light btn">More info</a>
+          </div>
+        </div>
       </div>
+      {% endfor %}
+      {% else %}
+      <p class="center-align">
+        You haven't applied to any jobs yet
+      </p>
+      {% endif %}
+    </div>
     {% elif session.role == "Recruiter" %}
-      <h4 class="center-align section-subheading">Jobs you posted</h4>
-      <div class="row">
-        {% if posted_jobs %}
-          {% for posted_job in posted_jobs %}
-            <div class="col s12 m6 l4">
-              <div class="card job-card z-depth-3">
-                <div class="card-content">
-                  {% if posted_job.company_logo %}
-                    <div class="center-align">
-                      <img class="responsive-img" src="{{ posted_job.company_logo }}" alt="company logo">
-                    </div>
-                  {% endif %}
-                  <br>
-                  <p><i class="fas fa-user-tie prefix white-text"></i> 
-                    {{ posted_job.position }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-building prefix white-text"></i> 
-                    {{ posted_job.company }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-map-marked-alt prefix white-text"></i>
-                    {{ posted_job.location }} &middot; {{ posted_job.contract }}
-                  </p>
-                  <br>
-                  <p><i class="fas fa-laptop-code prefix white-text"></i>
-                    {{ posted_job.level }} &middot; {{ posted_job.stack }}
-                  </p>
-                  <br>
-                  {% if posted_job.salary %}
-                    <p><i class="fas fa-money-check-alt prefix white-text"></i>
-                        {{ posted_job.salary }}
-                    </p>
-                    <br>
-                  {% endif %}
-                  <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i> 
-                      {{ posted_job.description }}
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a href="{{ url_for('jobs.view_job', job_id=posted_job['_id']) }}"
-                  aria-label="Open full job description"
-                  class="waves-effect waves-light btn">More info</a>
-                </div>
-              </div>
+    <h4 class="center-align section-subheading">Jobs you posted</h4>
+    <div class="row">
+      {% if posted_jobs %}
+      {% for posted_job in posted_jobs %}
+      <div class="col s12 m6 l4">
+        <div class="card job-card z-depth-3">
+          <div class="card-content">
+            {% if posted_job.company_logo %}
+            <div class="center-align">
+              <img class="responsive-img" src="{{ posted_job.company_logo }}" alt="company logo">
             </div>
-          {% endfor %}
-        {% else %} 
-          <p class="center-align">
-            You haven't posted any jobs yet
-          </p>
-        {% endif %}
+            {% endif %}
+            <br>
+            <p><i class="fas fa-user-tie prefix white-text"></i>
+              {{ posted_job.position }}
+            </p>
+            <br>
+            <p><i class="fas fa-building prefix white-text"></i>
+              {{ posted_job.company }}
+            </p>
+            <br>
+            <p><i class="fas fa-map-marked-alt prefix white-text"></i>
+              {{ posted_job.location }} &middot; {{ posted_job.contract }}
+            </p>
+            <br>
+            <p><i class="fas fa-laptop-code prefix white-text"></i>
+              {{ posted_job.level }} &middot; {{ posted_job.stack }}
+            </p>
+            <br>
+            {% if posted_job.salary %}
+            <p><i class="fas fa-money-check-alt prefix white-text"></i>
+              {{ posted_job.salary }}
+            </p>
+            <br>
+            {% endif %}
+            <p class="truncate"><i class="fas fa-info-circle prefix white-text"></i>
+              {{ posted_job.description }}
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="{{ url_for('jobs.view_job', job_id=posted_job['_id']) }}" aria-label="Open full job description"
+              class="waves-effect waves-light btn">More info</a>
+          </div>
+        </div>
       </div>
+      {% endfor %}
+      {% else %}
+      <p class="center-align">
+        You haven't posted any jobs yet
+      </p>
+      {% endif %}
+    </div>
     {% else %}
     {% endif %}
   </div>

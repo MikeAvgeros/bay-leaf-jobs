@@ -324,17 +324,17 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 13. [CSS Minifier](https://cssminifier.com/)
     -   CSS Minifier was used to minify the CSS file in order to improve loading speed and performance.
 
-14. [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/)
-    -   WAVE Accessibility Evaluation Tool was used to help me make my content more accessible to users with disabilities.
-
-15. [Flask Mail](https://pythonhosted.org/Flask-Mail/)
+14. [Flask Mail](https://pythonhosted.org/Flask-Mail/)
     -   Flask Mail was used to enable users to send emails to the website owner as well as receive notifications from the website.
 
-16. [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
+15. [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
     -   WTForms was used to help me create and validate all the forms on the website.
 
-17. [Autoprefixer CSS](https://autoprefixer.github.io/)
+16. [Autoprefixer CSS](https://autoprefixer.github.io/)
     -   Autoprefixer CSS was used to help me add suitable vendor prefixes for better cross-browser compatibility.
+
+17. [Autopep8](https://pypi.org/project/autopep8/#installation)
+    -   Autopep8 was used to make my python files comply to pep8 standards. 
 
 18. [Canva](https://www.canva.com/)
     -   Canva was used to design the favicon of the page.

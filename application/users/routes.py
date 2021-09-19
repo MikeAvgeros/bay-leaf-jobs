@@ -2,7 +2,7 @@ from flask import (
     flash, render_template, redirect,
     session, url_for, Blueprint)
 from werkzeug.security import check_password_hash
-from application.models import User, Job, Application
+from application.models import User, Job
 from application.security import login_required
 from application.email import send_email
 from config import Config

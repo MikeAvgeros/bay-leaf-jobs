@@ -336,7 +336,10 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 17. [Autopep8](https://pypi.org/project/autopep8/#installation)
     -   Autopep8 was used to make my python files comply to pep8 standards. 
 
-18. [Canva](https://www.canva.com/)
+18. [Heroku](https://www.heroku.com/home)
+    -   Heroku was used to deploy the website.
+
+19. [Canva](https://www.canva.com/)
     -   Canva was used to design the favicon of the page.
 
 # Testing
@@ -554,6 +557,12 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_upload)
 [JS Hint](https://jshint.com/) was used to validate my Javascript script. It showed an unused variable, which is a function that is called directly from html ("onclick"). The undefined variable $ is a valid jQuery variable.
 
 ![JavaScript Validation Results](documentation/testing/validator_js.png)
+
+## Python Validation
+
+[PEP8Online](http://pep8online.com/) was used to validate my Python files. My files showed no errors.
+
+![PEP8 Validation Results](documentation/testing/validator_python.png)
 
 ## Form Validation
 

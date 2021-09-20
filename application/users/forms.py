@@ -143,3 +143,13 @@ class UpdateProfileForm(FlaskForm):
             if user:
                 raise ValidationError(
                     'That email is taken. Please choose a different one.')
+
+    def validate_picture(self, picture):
+        if picture.data:
+            if "jpg" not in picture.data:
+                if "jpeg" not in picture.data:
+                    if "png" not in picture.data:
+                        if "svg" not in picture.data:
+                            if "tiff" not in picture.data:
+                                raise ValidationError(
+                                    'Please add a valid image URL.')

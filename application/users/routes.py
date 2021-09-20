@@ -29,14 +29,6 @@ def register():
             role = form.role.data
             picture = ""
 
-            # Find user in MongoDB by their username
-            existing_user = User.find_user_by_username(username)
-
-            # Check if username exists
-            if existing_user:
-                flash("Username already exists.")
-                return redirect(url_for("users.register"))
-
             # Create an instance of User with the info the user submitter on
             # the form
             user = User(username, email, password, location, role, picture)
@@ -112,9 +104,6 @@ def login():
                             username=session["username"]))
                 else:
                     form.password.errors.append("Incorrect password")
-            else:
-                flash("Incorrect email and/or password")
-                return redirect(url_for("users.login"))
 
         return render_template("login.html", form=form)
 

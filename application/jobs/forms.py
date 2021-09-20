@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, TextAreaField, SelectField
 from wtforms.fields.html5 import URLField
-from wtforms.validators import InputRequired, DataRequired, Length
+from wtforms.validators import InputRequired, DataRequired, Length, ValidationError
 
 
 class JobForm(FlaskForm):
@@ -14,7 +14,7 @@ class JobForm(FlaskForm):
                 min=5,
                 max=50,
                 message="Company must be between 5 and 50 characters long")])
-    company_logo = URLField("Company Logo")
+    company_logo = URLField("Company Logo URL")
     position = StringField(
         "Position *",
         validators=[
@@ -54,6 +54,16 @@ class JobForm(FlaskForm):
                                     InputRequired("Input is required!"),
                                     DataRequired("Data is required!")
                                 ])
+
+    def validate_company_logo(self, company_logo):
+        if company_logo.data:
+            if "jpg" not in company_logo.data:
+                if "jpeg" not in company_logo.data:
+                    if "png" not in company_logo.data:
+                        if "svg" not in company_logo.data:
+                            if "tiff" not in company_logo.data:
+                                raise ValidationError(
+                                    'Please add a valid image URL.')
 
 
 class CreateJobForm(JobForm):
@@ -99,3 +109,25 @@ class ApplicationForm(FlaskForm):
                       ])
     cover_letter = URLField("Cover Letter URL")
     submit = SubmitField("Apply")
+
+    def validate_resume(self, resume):
+        if resume.data:
+            if "pdf" not in resume.data:
+                if "jpg" not in resume.data:
+                    if "jpeg" not in resume.data:
+                        if "png" not in resume.data:
+                            if "svg" not in resume.data:
+                                if "tiff" not in resume.data:
+                                    raise ValidationError(
+                                        'Please add a valid image URL.')
+
+    def validate_cover_letter(self, cover_letter):
+        if cover_letter.data:
+            if "pdf" not in cover_letter.data:
+                if "jpg" not in cover_letter.data:
+                    if "jpeg" not in cover_letter.data:
+                        if "png" not in cover_letter.data:
+                            if "svg" not in cover_letter.data:
+                                if "tiff" not in cover_letter.data:
+                                    raise ValidationError(
+                                        'Please add a valid image URL.')

@@ -567,7 +567,7 @@ The [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_upload)
 
 ## Python Validation
 
-[PEP8Online](http://pep8online.com/) was used to validate my Python files. My files showed no errors.
+[PEP8Online](http://pep8online.com/) was used to validate my Python files. They passed the validation without any errors.
 
 ![PEP8 Validation Results](documentation/testing/validator_python.png)
 
@@ -673,6 +673,8 @@ I have used the following images from [Pixabay](https://pixabay.com/).
 
 - [GraphicMama-team](https://pixabay.com/vectors/business-man-businessman-cartoon-5258645/)
 
+- [OpenClipart-Vectors](https://pixabay.com/vectors/laurel-wreath-wreath-accolade-150577/)
+
 The hero image on the landing page is taken from the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
 
 The company icons for all the jobs posted by user Mike Avgeros were taken from the Frontend Mentor challenge [Job listings with filtering](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
@@ -685,7 +687,7 @@ I have been inspired by the following tutorials while writing my code.
 
 - [Corey Schafer Flask YouTube Tutorial Series](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
 
-- [Mateo Prigl Pluralsight Begineer Flask Course](https://www.pluralsight.com/courses/creating-processing-web-forms-flask?exp=2)
+- [Mateo Prigl Pluralsight Beginner Flask Course](https://www.pluralsight.com/courses/creating-processing-web-forms-flask?exp=2)
 
 - [Mateo Prigl Pluralsight Intermediate Flask Course](https://www.pluralsight.com/courses/flask-users-sessions-authentication?exp=2)
 

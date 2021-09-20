@@ -154,10 +154,6 @@ nav .brand-logo {
     place-self: center;
 }
 
-.justify-text {
-    text-align: justify;
-}
-
 .fas {
     color: var(--very-dark-violet);
 }
@@ -220,7 +216,9 @@ li .footer-text:hover {
 .card-title {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    hyphens: auto;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
 }
 
 pre {

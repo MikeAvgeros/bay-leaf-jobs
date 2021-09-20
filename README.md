@@ -202,7 +202,7 @@ I have designed the structure and layout of the website using Materialize and CS
 
     -   I have used [Google Fonts](https://fonts.google.com/) to import the chosen font for the website.
 
-    -   The font that I imported is Poppins and the weights are 500, 700, 900. I have used this font as it makes the design look fun and relaxed, which works well with the landing page images. I also wanted to make the whole process of applying to jobs more fun and relaxing.
+    -   The font that I imported is Poppins and the weights are 400, 500, 700. I have used this font as it makes the design look fun and relaxed, which works well with the landing page images. I also wanted to make the whole process of applying to jobs more fun and relaxing.
 
     -   Sans Serif is used as the fallback font in case Poppins is not being imported into the site correctly.
 

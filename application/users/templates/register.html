@@ -8,11 +8,12 @@
     <div class="col s12 breakline-row">
         <hr class="breakline" />
     </div>
+    <!-- Registration Form -->
     <div class="row card-panel grey lighten-5">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('users.register') }}">
             {{ form.csrf_token }}
-            <!-- username -->
-            <div class="row lower">
+            <!-- Username -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-user-plus prefix"></i>
                     {{ form.username.label }}
@@ -20,7 +21,7 @@
                     {{ field_error_messages(form.username) }}
                 </div>
             </div>
-            <!-- email -->
+            <!-- Email -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-envelope prefix"></i>
@@ -29,7 +30,7 @@
                     {{ field_error_messages(form.email) }}
                 </div>
             </div>
-            <!-- password -->
+            <!-- Password -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-user-lock prefix"></i>
@@ -38,7 +39,7 @@
                     {{ field_error_messages(form.password) }}
                 </div>
             </div>
-            <!-- confirm password -->
+            <!-- Confirm Password -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-user-lock prefix"></i>
@@ -47,7 +48,7 @@
                     {{ field_error_messages(form.password_confirm) }}
                 </div>
             </div>
-            <!-- location -->
+            <!-- Location -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-map-marked-alt prefix"></i>
@@ -56,7 +57,7 @@
                     {{ field_error_messages(form.location) }}
                 </div>
             </div>
-            <!-- role -->
+            <!-- Role -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-briefcase prefix"></i>
@@ -66,7 +67,7 @@
                     <label for="role">I am a *</label>
                 </div>
             </div>
-            <!-- register -->
+            <!-- Submit -->
             <div class="row">
                 {{ form.submit(class="col s12 btn-large")}}
             </div>

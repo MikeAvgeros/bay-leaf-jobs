@@ -8,10 +8,11 @@
     <div class="col s12 breakline-row">
         <hr class="breakline" />
     </div>
+    <!-- Application Form -->
     <div class="row card-panel grey lighten-5">
         <form class="col s12 m8 offset-m2" method="POST" action="#">
             {{ form.csrf_token }}
-            <div class="row lower">
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-business-time prefix"></i>
                     {{ form.notice_period.label }}

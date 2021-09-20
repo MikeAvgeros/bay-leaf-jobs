@@ -8,10 +8,12 @@
     <div class="col s12 breakline-row">
         <hr class="breakline" />
     </div>
+    <!-- Contact Form -->
     <div class="row card-panel grey lighten-5">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('main.contact') }}">
             {{ form.csrf_token }}
-            <div class="row lower">
+            <div class="row">
+                <!-- Name -->
                 <div class="input-field col s12">
                     <i class="fas fa-user-alt prefix"></i>
                     {{ form.name.label }}
@@ -19,6 +21,7 @@
                     {{ field_error_messages(form.name) }}
                 </div>
             </div>
+            <!-- Email -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-envelope prefix"></i>
@@ -27,6 +30,7 @@
                     {{ field_error_messages(form.email) }}
                 </div>
             </div>
+            <!-- Message -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-comment-dots prefix"></i>
@@ -35,6 +39,7 @@
                     {{ field_error_messages(form.body) }}
                 </div>
             </div>
+            <!-- Submit -->
             <div class="row">
                 <div class="col s12 center-align">
                     {{ form.submit(class="col s12 btn-large text-shadow")}}

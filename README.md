@@ -323,7 +323,7 @@ The database consist of three collections (users, jobs, applications). It is cre
     -   JS Hint used to help me check if my Javascript code has any errors and that it adheres to the web standards. More details in the Testing section.
 
 12. [Autopep8](https://pypi.org/project/autopep8/#installation)
-    -   Autopep8 was used to make my python files comply to pep8 standards. 
+    -   Autopep8 was used to make my python files comply to pep8 standards. More details in the Testing section.
 
 13. [Am I Responsive](http://ami.responsivedesign.is/)
     -   Am I Responsive was used during my testing phase to check the responsiveness and look of all the pages.
@@ -346,8 +346,11 @@ The database consist of three collections (users, jobs, applications). It is cre
 19. [PyMongo](https://docs.mongodb.com/drivers/pymongo/)
     -   PyMongo was used to help me access and manipulate MongoDB from Python.
 
-20. [Canva](https://www.canva.com/)
-    -   Canva was used to design the favicon of the page.
+20. [Materialize](https://materializecss.com/)
+    -   Materialize was used to help me create the layout and design of the website.
+
+21. [Canva](https://www.canva.com/)
+    -   Canva was used to design the favicon of the website.
 
 # Testing
 

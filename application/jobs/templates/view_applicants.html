@@ -24,30 +24,29 @@
                             {{ application.email }}
                         </p>
                         <br>
-                        <p>Notice Period:</i>
+                        <p>Notice Period:
                             {{ application.notice_period }}
                         </p>
                         <br>
-                        <p>Current Salary:</i>
+                        <p>Current Salary:
                             {{ application.current_salary }}
                         </p>
                         <br>
-                        <p>Desired Salary:</i>
+                        <p>Desired Salary:
                             {{ application.desired_salary }}
                         </p>
                         <br>
-                        <a class="white-text" href="{{ application.resume }}" aria-label="View Resume" target="_blank"
-                            rel="noopener">
-                            <object data="{{ application.resume }}" width="100%" height="100%">
-                            </object>Resume
+                        <a href="{{ application.resume }}" aria-label="Download Resume" target="_blank" rel="noopener">
+                            <i class="fas fa-file-download prefix white-text" aria-hidden="true"></i>
+                            <span class="white-text">Download Resume</span>
                         </a>
                         <br>
                         {% if application.cover_letter %}
                         <br>
-                        <a class="white-text" href="{{ application.cover_letter }}" aria-label="View Cover Letter"
+                        <a class="white-text" href="{{ application.cover_letter }}" aria-label="Download Cover Letter"
                             target="_blank" rel="noopener">
-                            <object data="{{ application.cover_letter }}" width="100%" height="100%">
-                            </object>Cover Letter
+                            <i class="fas fa-file-download prefix white-text" aria-hidden="true"></i>
+                            <span class="white-text">Download Cover Letter</span>
                         </a>
                         {% endif %}
                     </div>

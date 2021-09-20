@@ -289,10 +289,10 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
     -   VS Code was my IDE of choice for writing the HTML, CSS and JavaScript code.
 
 2. [Google Fonts](https://fonts.google.com/)
-    -   Google Fonts was used to import my fonts of choice into CSS for use throughout the game.
+    -   Google Fonts was used to import my fonts of choice into CSS for use throughout the website.
 
 3. [Font Awesome](https://fontawesome.com/)
-    -   Font Awesome was used to add icons to the game for aesthetic and UX purposes.
+    -   Font Awesome was used to add icons to the website for aesthetic and UX purposes.
     
 4. [Git](https://git-scm.com/)
     -   Git was used to help me manage and keep track of my source code history.
@@ -654,9 +654,9 @@ The Github repository was cloned and stored locally on my machine using the foll
 
 # Credits
 
-The design of the landing page has been inspired by a frontend challenge from [FrontEnd Mentor](https://www.frontendmentor.io/challenges).
+The design of the landing page has been inspired by a frontend challenge from [FrontEnd Mentor](https://www.frontendmentor.io/challenges) called [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G).
 
-The challenge that the landing page was inspired by was the [URL Shortening Landing Page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
+The content on the Privacy and Terms & Conditions pages as well as the About section on the Home page has been inspired by [grapevinejobs](https://www.grapevinejobs.co.uk/).
 
 ## Images
 
@@ -688,4 +688,4 @@ I have been inspired by the following tutorials while writing my code.
 
 -   I would like to thank the [Code Institute](https://codeinstitute.net/) for the well-thought-out curriculum and their amazing and super informative and helpful Slack community!
 
--   I would like to thank the Coding Novas group and everyone at the Full Stack Developers WhatsApp group for their helpful input during development.
+-   I would like to thank the Coding Novas group and everyone at the Full Stack Developers WhatsApp group for their helpful input during my development and testing phase.

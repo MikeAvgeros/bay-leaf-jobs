@@ -61,9 +61,8 @@ class JobForm(FlaskForm):
                 if "jpeg" not in company_logo.data:
                     if "png" not in company_logo.data:
                         if "svg" not in company_logo.data:
-                            if "tiff" not in company_logo.data:
-                                raise ValidationError(
-                                    'Please add a valid image URL.')
+                            raise ValidationError(
+                                'We only accept jpg, png and svg image URLs.')
 
 
 class CreateJobForm(JobForm):
@@ -117,9 +116,8 @@ class ApplicationForm(FlaskForm):
                     if "jpeg" not in resume.data:
                         if "png" not in resume.data:
                             if "svg" not in resume.data:
-                                if "tiff" not in resume.data:
-                                    raise ValidationError(
-                                        'Please add a valid image URL.')
+                                raise ValidationError(
+                                    'We only accept pdf, jpg, png and svg URLs.')
 
     def validate_cover_letter(self, cover_letter):
         if cover_letter.data:
@@ -128,6 +126,5 @@ class ApplicationForm(FlaskForm):
                     if "jpeg" not in cover_letter.data:
                         if "png" not in cover_letter.data:
                             if "svg" not in cover_letter.data:
-                                if "tiff" not in cover_letter.data:
-                                    raise ValidationError(
-                                        'Please add a valid image URL.')
+                                raise ValidationError(
+                                    'We only accept pdf, jpg, png and svg URLs.')

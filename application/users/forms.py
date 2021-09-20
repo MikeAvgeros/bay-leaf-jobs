@@ -150,6 +150,5 @@ class UpdateProfileForm(FlaskForm):
                 if "jpeg" not in picture.data:
                     if "png" not in picture.data:
                         if "svg" not in picture.data:
-                            if "tiff" not in picture.data:
-                                raise ValidationError(
-                                    'Please add a valid image URL.')
+                            raise ValidationError(
+                                'We only accept jpg, png and svg image URLs.')

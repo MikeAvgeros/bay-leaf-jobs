@@ -120,6 +120,10 @@ This project is developed as a Minimal Viable Product. There will be room for fu
 
     - I would like to add a reCaptcha when registering, contacting website owner and applying to jobs to avoid bots and spam.
 
+    - I would like to include additional validations on my URL fields to ensure that all images are valid.
+
+    - I would like to include additional security when users try to access a page they are not supposed to.
+
 ## Structure & Skeleton
 
 I have designed the structure and layout of the website using Materialize and CSS Grid. I have created low fidelity wireframes for desktop and mobile using Balsamiq in order to guide me in designing the pages. The design and layout of the website has evolved from the original Balsamiq wireframes. You can view the original low fidelity wireframes below.

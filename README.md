@@ -3,13 +3,13 @@
 # bayleafjobs
 bayleafjobs is a a job listing site, where users can either register as developers who are looking for work or as recruiters who are looking to hire developers for their clients. I created this site for Milestone Project 3 as part of the Code Institute's Full Stack Software Development course. 
 
-I developed this project using HTML, CSS, JavaScript, Python, Flask and MongoDB as the core technologies as well as concepts and techniques learnt in the Backend module of the course. 
+I developed this project using HTML, CSS, JavaScript, Python, Flask and MongoDB as the core technologies as well as concepts and techniques taught in the Backend module of the course. 
 
 You can view the live site [here](https://bayleafjobs.herokuapp.com/).
 
 # Project Requirements
 
-Build a full-stack site that allows your users to store and manipulate data records about a particular domain. The website will respond to user actions and alters the way the site displays data/information.
+Build a full-stack site that allows users to store and manipulate data records about a particular domain. The website will respond to user actions and alter the way the site displays data/information.
 
 Required Technologies : HTML, CSS, JavaScript, Python, Flask, MongoDB. 
 
@@ -42,9 +42,9 @@ Required Technologies : HTML, CSS, JavaScript, Python, Flask, MongoDB.
 
 ## Strategy
 
-My Milestone Project 3, bayleafjobs, is a website will help developers find a suitable job and start their dream career or helps recruiters find top developers to help their clients' companies grow.
+My Milestone Project 3, bayleafjobs, is a website that will help developers find a suitable job and start their dream career or helps recruiters find top developers for their clients' companies.
 
-The purpose of this project is to create a website that allows users to create, use, read, edit and delete data. In particular, recruiters can create, edit and delete jobs as well as view who applied to their jobs. The users can also update or delete their profile. Developers can apply to jobs, contact recruiters as well as update or delete their profile.
+The purpose of this project is to create a website that allows users to create, use, read, edit and delete data. In particular, recruiters can create, edit and delete jobs as well as view who applied to their jobs. Developers can view, filter and apply to jobs as well as contact recruiters directly. All users can also update or delete their profile and contact the website owner.
 
 -   ### Site Owner Goals
 
@@ -52,7 +52,7 @@ The purpose of this project is to create a website that allows users to create, 
 
     -   I want get a better understanding of backend development using Python, Flask and MongoDB.
 
-    -   I want to create a Minimum Viable Product that can be further developed with additional features.
+    -   I want to create a Minimum Viable Product that can be further developed with additional features and improved design.
 
 -   ### User Stories
 
@@ -76,9 +76,9 @@ The purpose of this project is to create a website that allows users to create, 
 
     - As a User (Developer), I want to be able to contact the recruiter in case I have questions about a job or simply want to follow up on my progress.
 
-    - As a User (Recruiter), I want to easily create jobs and add role and company information that can help me find the best talent. 
+    - As a User (Recruiter), I want to easily create jobs and add relevant information that can help me find the best talent. 
 
-    - As a User (Recruiter), I want to be able to see who has applied to my job posts as well as if the applicants meet my client's criteria.
+    - As a User (Recruiter), I want to be able to see who has applied to my job posts as well as if the applicants meet my client's expectations.
 
     - As a User (Recruiter), I want to be able to update the job description as per my client's request or delete them if the position is no longer open.
 
@@ -92,11 +92,11 @@ This project is developed as a Minimal Viable Product. There will be room for fu
 
 	- Users can create and sign in to their account and get a welcoming email from the website.
 
-    - Users can customize their profile, add a picture as well as delete it if they wish.
+    - Users can customize their profile, add a profile picture as well as delete their account if they wish.
 
-    - Users can contact the website owner.
+    - Users can contact the website owner to ask questions or send feedback.
 
-    - Users can find information on how to use the website.
+    - Users can find information on how to use the website as well as its terms and conditions.
 
     - Users (Developer) can view and filter jobs based on keywords to find the ones they like.
 
@@ -110,15 +110,15 @@ This project is developed as a Minimal Viable Product. There will be room for fu
 
     - Users (Recruiter) can view everyone who applied to their job posts and find the most suitable candidate.
 
-    - Users (Recruiter) get emails once a developer has applied to their job posts.
+    - Users (Recruiter) get notification emails once a developer has applied to their job posts. They can view all applicants on their profile.
 
 - ### Future Features
 
     - I would like to allow users to update their password in case they forget it.
 
-    - I would like to offer the option to 'Remember Password' so that Users don't have to type their password every time they log in.
+    - I would like to offer the functionality to 'Remember Password' so that Users don't have to type their password every time they sign in.
 
-    - I would like to add a recaptcha when registering, contacting website owner and applying to jobs to avoid bots and spam.
+    - I would like to add a reCaptcha when registering, contacting website owner and applying to jobs to avoid bots and spam.
 
 ## Structure & Skeleton
 
@@ -182,27 +182,27 @@ I have designed the structure and layout of the website using Materialize and CS
 
 -   ### Colour Scheme
 
-    -   The main colours used are cyan, gray, dark violet and dark blue. 
-
-    -   Dark Blue is used for the headings, icons and when hovering the job cards.
-
-    -   Dark violet is used for the job cards and the footer.
+    -   The main colours used are cyan, gray, dark violet, dark blue and black. 
 
     -   Cyan is used on the background of all the buttons.
 
     -   Gray is used for secondary text and navigation.
 
-    -   Black is used for normal paragraphs.
+    -   Dark violet is used for the job cards and the footer.
+
+    -   Dark Blue is used for the headings, icons and when hovering the job cards.
+
+    -   Black is used on generic text and placeholder text.
 
 -   ### Typography
 
-    -   I have used [Google Fonts](https://fonts.google.com/) to import the fonts for the website.
+    -   I have used [Google Fonts](https://fonts.google.com/) to import the chosen font for the website.
 
-    -   The font that I imported is Poppins and the weights are 500, 700, 900. I have used this font as it makes the design look fun and relaxed, which works well with the landing page images.
+    -   The font that I imported is Poppins and the weights are 500, 700, 900. I have used this font as it makes the design look fun and relaxed, which works well with the landing page images. I also wanted to make the whole process of applying to jobs more fun and relaxing.
 
     -   Sans Serif is used as the fallback font in case Poppins is not being imported into the site correctly.
 
-    -   The default font size was increased to 18px to add to the fun and relaxed design of the website.
+    -   The default font size was increased to 18px to add to the fun and relaxed vibe and design of the website.
 
 -   ### Images
 
@@ -220,7 +220,7 @@ I have designed the structure and layout of the website using Materialize and CS
 
 # Database Design
 
-The database consist of three collections. Created and hosted using [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
+The database consist of three collections (users, jobs, applications). It is created and hosted using [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
 
 -   ### users
 
@@ -303,43 +303,46 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 6. [GitHub](https://github.com/)
     -   GitHub was used to store and manage the Git repository.
 
-7. [Balsamiq](https://balsamiq.com/)
+7. [Heroku](https://www.heroku.com/home)
+    -   Heroku was used to deploy the website.
+
+8. [Balsamiq](https://balsamiq.com/)
     -   Balsamiq was used to create the wireframes during the design and prototyping process.
 
-8. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
+9. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
     -   Chrome DevTools helped me debug issues that I've had during development. In addition to that, by using the inspection mode, I could see how responsive all the pages are.
 
-9. [W3C Validation Services](https://validator.w3.org/)
+10. [W3C Validation Services](https://validator.w3.org/)
     -   W3C Validation Services were used to help me check if my HTML and CSS code has any errors and that it adheres to the web standards. More details in the Testing section.
 
-10. [JS Hint](https://jshint.com/)
+11. [JS Hint](https://jshint.com/)
     -   JS Hint used to help me check if my Javascript code has any errors and that it adheres to the web standards. More details in the Testing section.
 
-11. [Am I Responsive](http://ami.responsivedesign.is/)
+12. [Autopep8](https://pypi.org/project/autopep8/#installation)
+    -   Autopep8 was used to make my python files comply to pep8 standards. 
+
+13. [Am I Responsive](http://ami.responsivedesign.is/)
     -   Am I Responsive was used during my testing phase to check the responsiveness and look of all the pages.
 
-12. [Techsini Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)
+14. [Techsini Multi Device Mockup Generator](https://techsini.com/multi-mockup/index.php)
     -   Techsini Multi Device Mockup Generator was used during my testing phase to check the responsiveness and look of all the pages.
 
-13. [CSS Minifier](https://cssminifier.com/)
+15. [CSS Minifier](https://cssminifier.com/)
     -   CSS Minifier was used to minify the CSS file in order to improve loading speed and performance.
-
-14. [Flask Mail](https://pythonhosted.org/Flask-Mail/)
-    -   Flask Mail was used to enable users to send emails to the website owner as well as receive notifications from the website.
-
-15. [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
-    -   WTForms was used to help me create and validate all the forms on the website.
 
 16. [Autoprefixer CSS](https://autoprefixer.github.io/)
     -   Autoprefixer CSS was used to help me add suitable vendor prefixes for better cross-browser compatibility.
 
-17. [Autopep8](https://pypi.org/project/autopep8/#installation)
-    -   Autopep8 was used to make my python files comply to pep8 standards. 
+17. [smtplib](https://docs.python.org/3/library/smtplib.html)
+    -   smtplib was used to enable users to send emails to the website owner as well as receive notifications from the website.
 
-18. [Heroku](https://www.heroku.com/home)
-    -   Heroku was used to deploy the website.
+18. [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
+    -   WTForms was used to help me create and validate all the forms on the website.
 
-19. [Canva](https://www.canva.com/)
+19. [PyMongo](https://docs.mongodb.com/drivers/pymongo/)
+    -   PyMongo was used to help me access and manipulate MongoDB from Python.
+
+20. [Canva](https://www.canva.com/)
     -   Canva was used to design the favicon of the page.
 
 # Testing
@@ -470,7 +473,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Requirement**
 
-    As a User (Recruiter), I want to easily create jobs and add role and company information that can help me find the best talent. 
+    As a User (Recruiter), I want to easily create jobs and add relevant information that can help me find the best talent. 
 
 -   **Implementation**
 
@@ -478,7 +481,7 @@ The database consist of three collections. Created and hosted using [MongoDb](ht
 
 -   **Requirement**
 
-    As a User (Recruiter), I want to be able to see who has applied to my job posts as well as if the applicants meet my client's criteria.
+    As a User (Recruiter), I want to be able to see who has applied to my job posts as well as if the applicants meet my client's expectations.
 
 -   **Implementation**
 

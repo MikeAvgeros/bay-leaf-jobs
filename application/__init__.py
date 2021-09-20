@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__, instance_relative_config=False)
 
     # Configure the application instance using the Config class
-    app.config.from_object('config.DevConfig')
+    app.config.from_object('config.ProdConfig')
 
     # Setup an instance of PyMongo
     mongo.init_app(app)

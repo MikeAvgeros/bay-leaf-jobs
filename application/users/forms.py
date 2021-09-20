@@ -44,14 +44,14 @@ class RegistrationForm(FlaskForm):
                 "password",
                 message="Passwords must match")])
     location = StringField(
-        "Location *",
+        "Location eg. city *",
         validators=[
             InputRequired("Input is required!"),
             DataRequired("Data is required!"),
             Length(
-                min=3,
+                min=2,
                 max=40,
-                message="Location must be between 3 and 40 characters long")])
+                message="Location must be between 2 and 40 characters long")])
     role = SelectField("",
                        choices=[
                            ("Developer", "Developer"),
@@ -119,14 +119,14 @@ class UpdateProfileForm(FlaskForm):
                 message="Email must be between 10 and 30 characters long"),
             Email("You did not enter a valid email!")])
     location = StringField(
-        "Location *",
+        "Location e.g. city *",
         validators=[
             InputRequired("Input is required!"),
             DataRequired("Data is required!"),
             Length(
-                min=3,
+                min=2,
                 max=40,
-                message="Location must be between 3 and 40 characters long")])
+                message="Location must be between 2 and 40 characters long")])
     picture = URLField("Profile Picture URL")
     submit = SubmitField("Update")
 

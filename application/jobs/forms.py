@@ -25,14 +25,14 @@ class JobForm(FlaskForm):
                 max=50,
                 message="Position must be between 5 and 50 characters long")])
     location = StringField(
-        "Location *",
+        "Location e.g. city*",
         validators=[
             InputRequired("Input is required!"),
             DataRequired("Data is required!"),
             Length(
-                min=3,
+                min=2,
                 max=40,
-                message="Location must be between 3 and 40 characters long")])
+                message="Location must be between 2 and 40 characters long")])
     salary = StringField("Salary")
     level = SelectField("",
                         choices=[
